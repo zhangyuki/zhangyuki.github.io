@@ -200,7 +200,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -210,7 +210,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -253,7 +253,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/04/27/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/04/27/React组件间通讯/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="玉英">
@@ -275,8 +275,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/04/27/hello-world/" itemprop="url">
-                  Hello World
+                <a class="post-title-link" href="/2017/04/27/React组件间通讯/" itemprop="url">
+                  React组件间通讯
                 </a>
               
             
@@ -290,9 +290,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-27T18:12:07+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-27T13:56:54+08:00">
                 2017-04-27
               </time>
             
@@ -329,15 +329,39 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+            <p>React开发中难以避免组件之间进行数据通讯，React规定了明确的单项数据流，利用props将数据从父组件传递给自组件。所以，在父与子的组件通讯中，可以很容易的通过props实现。但是，实际开发中不仅仅只有父子关系的组件关联，还会有多种组件关联关系的数据通讯，这里整理几种组件关系下的通讯方式。</p>
+<h3 id="父组件向子组件通讯"><a href="#父组件向子组件通讯" class="headerlink" title="父组件向子组件通讯"></a>父组件向子组件通讯</h3><p>父组件向子组件的通讯是单向的，react提供了props来进行父到子的数据传递。</p>
+<p>父组件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Child <span class="keyword">from</span> <span class="string">'./Child'</span>;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">const</span> msg = <span class="string">'hello world'</span>;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;Child msg /&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>子组件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">const</span> &#123; msg &#125; = <span class="keyword">this</span>.props;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;div&gt;&#123;msg&#125;&lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这个例子可以看出，子组件可以直接调用this.props.msg使用父组件传递进来的数据。<br>上级的props和state改变，会导致子组件的生命周期改变。</p>
+<h3 id="子组件向父组件通讯"><a href="#子组件向父组件通讯" class="headerlink" title="子组件向父组件通讯"></a>子组件向父组件通讯</h3><p>子组件向父组件通讯仍然可以通过props进行，以回调函数的形式进行数据交互，父组件讲一个函数以props传递给组数据。参数为子组件传递过来的数据，子组件出发通讯时，调用父组件props方法，把数据作为参数传过去，触发由子组件向父组件的通讯。</p>
+<p>父组件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Child <span class="keyword">from</span> <span class="string">'./Child'</span>;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">  render () &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;Child</div><div class="line">        onChange=&#123;(name) =&gt; &#123;</div><div class="line">          console.log(name);</div><div class="line">        &#125;&#125;</div><div class="line">      /&gt;</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>子组件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">  handleChange(e) &#123;</div><div class="line">    <span class="keyword">this</span>.props.onChange(e.target.value);</div><div class="line">  &#125;</div><div class="line">  render() &#123;</div><div class="line">    &lt;div&gt;</div><div class="line">      &lt;input type="text" onChange=&#123;this.handleChange.bind(this)&#125;&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上面例子可以看出，子组件中input出发onchange事件时，调用父组件传递的onChange方法，并且把值传递过去，实现子组件向父组件的通讯。</p>
+<h3 id="兄弟组件间通讯"><a href="#兄弟组件间通讯" class="headerlink" title="兄弟组件间通讯"></a>兄弟组件间通讯</h3><p>两个组件之间没有联系，但有相同的父组件之间通讯，这里整合了父组件向子组件通讯以及子组件向父组件通讯的方法，其中一个组件向共同的父组件进行通讯，然后父组件再向对应的子组件进行通讯实现兄弟组件间的数据通讯。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Child1 <span class="keyword">from</span> <span class="string">'./Child1'</span>;</div><div class="line"><span class="keyword">import</span> Child2 <span class="keyword">from</span> <span class="string">'./Child2'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">constructor</span>(props) &#123;</div><div class="line">    <span class="keyword">super</span>(props);</div><div class="line">    <span class="keyword">this</span>.state = &#123;</div><div class="line">      <span class="attr">message</span>: <span class="string">''</span></div><div class="line">    &#125;;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  handleChange(value) &#123;</div><div class="line">    <span class="keyword">this</span>.setState(&#123;</div><div class="line">      <span class="attr">message</span>: value</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;Child1 onChange=&#123;this.handleChange.bind(this)&#125; /&gt;</div><div class="line">        &lt;Child2 msg=&#123;this.state.message&#125; /&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Child1组件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child1</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">constructor</span>(props) &#123;</div><div class="line">    <span class="keyword">super</span>(props);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  handleChange(e) &#123;</div><div class="line">    <span class="built_in">console</span>.log(e.target.value);</div><div class="line">    <span class="keyword">this</span>.props.onChange(e.target.value);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;input type="text" onChange=&#123;this.handleChange.bind(this)&#125;/&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Child2组件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child2</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;div&gt;</div><div class="line">        &#123; this.props.msg &#125;</div><div class="line">      &lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>以上例子，Child1的inputonChange事件会将message传递给Parent组件，Parent收到message后，更新state，再传递给Child2，实现兄弟组件之间的通讯。</p>
+<h3 id="其他方式实现组件间通讯"><a href="#其他方式实现组件间通讯" class="headerlink" title="其他方式实现组件间通讯"></a>其他方式实现组件间通讯</h3><h4 id="Flux-和-Redux"><a href="#Flux-和-Redux" class="headerlink" title="Flux 和 Redux"></a>Flux 和 Redux</h4><p><a href="https://github.com/facebook/flux" target="_blank" rel="external">Flux</a> 是 Facebook 推出的一种应用架构方案，用以组织代码，安排内部逻辑，是项目更便于开发和维护。</p>
+<p><a href="http://redux.js.org/" target="_blank" rel="external">Redux</a> 是 JavaScript 状态容器，提供可预测化得状态管理。可以让你构建一致化的应用，运行于不同的环境，并且易于测试。</p>
+<h4 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h4><p>观察者模式也叫做<strong><em>发布者-订阅者模式</em></strong>，发布者发布事件，订阅者监听事件并作出反应。</p>
+<blockquote>
+<p>Redux 内部的实现，其实也是基于观察者模式的，reducer 的调用结果，存储在 store 内部的 state 中，并在每一次 reducer 的调用中并作为参数传入。</p>
+</blockquote>
+<p>同样是兄弟组件之间通讯，用观察者模式进行改造，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;Child1 /&gt;</div><div class="line">        &lt;Child2 /&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Child1组件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> eventProxy <span class="keyword">from</span> <span class="string">'./eventProxy'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child1</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">  handleChange(e) &#123;</div><div class="line">    eventProxy.trigger(<span class="string">'msg'</span>, e.target.value);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;input type="text" onChange=&#123;this.handleChange.bind(this)&#125;/&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Child2组件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child2</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">constructor</span>(props) &#123;</div><div class="line">    <span class="keyword">super</span>(props);</div><div class="line">    <span class="keyword">this</span>.state = &#123;</div><div class="line">      <span class="attr">msg</span>: <span class="string">''</span></div><div class="line">    &#125;;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  componentDidMount() &#123;</div><div class="line">    eventProxy.on(<span class="string">'msg'</span>, (msg) =&gt; &#123;</div><div class="line">      <span class="keyword">this</span>.setState(&#123;</div><div class="line">        msg</div><div class="line">      &#125;);</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;div&gt;</div><div class="line">        &#123; this.state.msg &#125;</div><div class="line">      &lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>以上，同样可以实现兄弟组件之间的通讯，是不是很方便？！</p>
+<p>来看看神奇的 eventProxy 源码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">  <span class="attr">onObj</span>: &#123;&#125;,</div><div class="line">  <span class="attr">oneObj</span>: &#123;&#125;,</div><div class="line">  <span class="attr">on</span>: <span class="function"><span class="keyword">function</span>(<span class="params">key, fn</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.onObj[key] === <span class="literal">undefined</span>) &#123;</div><div class="line">      <span class="keyword">this</span>.onObj[key] = [];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.onObj[key].push(fn);</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">one</span>: <span class="function"><span class="keyword">function</span>(<span class="params">key, fn</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.oneObj[key] === <span class="literal">undefined</span>) &#123;</div><div class="line">      <span class="keyword">this</span>.oneObj[key] = [];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.oneObj[key].push(fn);</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">off</span>: <span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.onObj[key] = [];</div><div class="line">    <span class="keyword">this</span>.oneObj[key] = [];</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">trigger</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> key, args;</div><div class="line">    <span class="keyword">if</span>(<span class="built_in">arguments</span>.length == <span class="number">0</span>) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">    key = <span class="built_in">arguments</span>[<span class="number">0</span>];</div><div class="line">    args = [].concat(<span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>, <span class="number">1</span>));</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.onObj[key] !== <span class="literal">undefined</span></div><div class="line">      &amp;&amp; <span class="keyword">this</span>.onObj[key].length &gt; <span class="number">0</span>) &#123;</div><div class="line">      <span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> <span class="keyword">this</span>.onObj[key]) &#123;</div><div class="line">        <span class="keyword">this</span>.onObj[key][i].apply(<span class="literal">null</span>, args);</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.oneObj[key] !== <span class="literal">undefined</span></div><div class="line">      &amp;&amp; <span class="keyword">this</span>.oneObj[key].length &gt; <span class="number">0</span>) &#123;</div><div class="line">      <span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> <span class="keyword">this</span>.oneObj[key]) &#123;</div><div class="line">        <span class="keyword">this</span>.oneObj[key][i].apply(<span class="literal">null</span>, args);</div><div class="line">        <span class="keyword">this</span>.oneObj[key][i] = <span class="literal">undefined</span>;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">this</span>.oneObj[key] = [];</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>eventProxy中，总共有 on, one, off, trigger这4个函数：</p>
+<ul>
+<li>on, one: 用于订阅者监听相应的事件，并将事件相应时的函数作为参数，on 与 one 的唯一区别就是，one 只会触发一次，on 是每次都会触发。</li>
+<li>off: 用于解除所有订阅了某个事件的所有函数</li>
+<li>trigger: 用于发布者发布事件，将除第一参数（事件名）的其他参数，作为新的参数，触发使用 on 与 one 进行订阅的函数。</li>
+</ul>
 
           
         
@@ -418,7 +442,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-27T13:56:54+08:00">
                 2017-04-27
@@ -550,7 +574,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-27T13:56:54+08:00">
                 2017-04-27
@@ -640,158 +664,6 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/04/27/React组件间通讯/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="玉英">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="玉英">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/27/React组件间通讯/" itemprop="url">
-                  React组件间通讯
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-27T13:56:54+08:00">
-                2017-04-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>React开发中难以避免组件之间进行数据通讯，React规定了明确的单项数据流，利用props将数据从父组件传递给自组件。所以，在父与子的组件通讯中，可以很容易的通过props实现。但是，实际开发中不仅仅只有父子关系的组件关联，还会有多种组件关联关系的数据通讯，这里整理几种组件关系下的通讯方式。</p>
-<h3 id="父组件向子组件通讯"><a href="#父组件向子组件通讯" class="headerlink" title="父组件向子组件通讯"></a>父组件向子组件通讯</h3><p>父组件向子组件的通讯是单向的，react提供了props来进行父到子的数据传递。</p>
-<p>父组件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Child <span class="keyword">from</span> <span class="string">'./Child'</span>;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">const</span> msg = <span class="string">'hello world'</span>;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;Child msg /&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>子组件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">const</span> &#123; msg &#125; = <span class="keyword">this</span>.props;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;div&gt;&#123;msg&#125;&lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这个例子可以看出，子组件可以直接调用this.props.msg使用父组件传递进来的数据。<br>上级的props和state改变，会导致子组件的生命周期改变。</p>
-<h3 id="子组件向父组件通讯"><a href="#子组件向父组件通讯" class="headerlink" title="子组件向父组件通讯"></a>子组件向父组件通讯</h3><p>子组件向父组件通讯仍然可以通过props进行，以回调函数的形式进行数据交互，父组件讲一个函数以props传递给组数据。参数为子组件传递过来的数据，子组件出发通讯时，调用父组件props方法，把数据作为参数传过去，触发由子组件向父组件的通讯。</p>
-<p>父组件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Child <span class="keyword">from</span> <span class="string">'./Child'</span>;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">  render () &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;Child</div><div class="line">        onChange=&#123;(name) =&gt; &#123;</div><div class="line">          console.log(name);</div><div class="line">        &#125;&#125;</div><div class="line">      /&gt;</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>子组件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">  handleChange(e) &#123;</div><div class="line">    <span class="keyword">this</span>.props.onChange(e.target.value);</div><div class="line">  &#125;</div><div class="line">  render() &#123;</div><div class="line">    &lt;div&gt;</div><div class="line">      &lt;input type="text" onChange=&#123;this.handleChange.bind(this)&#125;&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>上面例子可以看出，子组件中input出发onchange事件时，调用父组件传递的onChange方法，并且把值传递过去，实现子组件向父组件的通讯。</p>
-<h3 id="兄弟组件间通讯"><a href="#兄弟组件间通讯" class="headerlink" title="兄弟组件间通讯"></a>兄弟组件间通讯</h3><p>两个组件之间没有联系，但有相同的父组件之间通讯，这里整合了父组件向子组件通讯以及子组件向父组件通讯的方法，其中一个组件向共同的父组件进行通讯，然后父组件再向对应的子组件进行通讯实现兄弟组件间的数据通讯。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Child1 <span class="keyword">from</span> <span class="string">'./Child1'</span>;</div><div class="line"><span class="keyword">import</span> Child2 <span class="keyword">from</span> <span class="string">'./Child2'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">constructor</span>(props) &#123;</div><div class="line">    <span class="keyword">super</span>(props);</div><div class="line">    <span class="keyword">this</span>.state = &#123;</div><div class="line">      <span class="attr">message</span>: <span class="string">''</span></div><div class="line">    &#125;;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  handleChange(value) &#123;</div><div class="line">    <span class="keyword">this</span>.setState(&#123;</div><div class="line">      <span class="attr">message</span>: value</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;Child1 onChange=&#123;this.handleChange.bind(this)&#125; /&gt;</div><div class="line">        &lt;Child2 msg=&#123;this.state.message&#125; /&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Child1组件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child1</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">constructor</span>(props) &#123;</div><div class="line">    <span class="keyword">super</span>(props);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  handleChange(e) &#123;</div><div class="line">    <span class="built_in">console</span>.log(e.target.value);</div><div class="line">    <span class="keyword">this</span>.props.onChange(e.target.value);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;input type="text" onChange=&#123;this.handleChange.bind(this)&#125;/&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>Child2组件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child2</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;div&gt;</div><div class="line">        &#123; this.props.msg &#125;</div><div class="line">      &lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>以上例子，Child1的inputonChange事件会将message传递给Parent组件，Parent收到message后，更新state，再传递给Child2，实现兄弟组件之间的通讯。</p>
-<h3 id="其他方式实现组件间通讯"><a href="#其他方式实现组件间通讯" class="headerlink" title="其他方式实现组件间通讯"></a>其他方式实现组件间通讯</h3><h4 id="Flux-和-Redux"><a href="#Flux-和-Redux" class="headerlink" title="Flux 和 Redux"></a>Flux 和 Redux</h4><p><a href="https://github.com/facebook/flux" target="_blank" rel="external">Flux</a> 是 Facebook 推出的一种应用架构方案，用以组织代码，安排内部逻辑，是项目更便于开发和维护。</p>
-<p><a href="http://redux.js.org/" target="_blank" rel="external">Redux</a> 是 JavaScript 状态容器，提供可预测化得状态管理。可以让你构建一致化的应用，运行于不同的环境，并且易于测试。</p>
-<h4 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h4><p>观察者模式也叫做<strong><em>发布者-订阅者模式</em></strong>，发布者发布事件，订阅者监听事件并作出反应。</p>
-<blockquote>
-<p>Redux 内部的实现，其实也是基于观察者模式的，reducer 的调用结果，存储在 store 内部的 state 中，并在每一次 reducer 的调用中并作为参数传入。</p>
-</blockquote>
-<p>同样是兄弟组件之间通讯，用观察者模式进行改造，如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;Child1 /&gt;</div><div class="line">        &lt;Child2 /&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Child1组件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> eventProxy <span class="keyword">from</span> <span class="string">'./eventProxy'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child1</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">  handleChange(e) &#123;</div><div class="line">    eventProxy.trigger(<span class="string">'msg'</span>, e.target.value);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;input type="text" onChange=&#123;this.handleChange.bind(this)&#125;/&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>Child2组件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child2</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">constructor</span>(props) &#123;</div><div class="line">    <span class="keyword">super</span>(props);</div><div class="line">    <span class="keyword">this</span>.state = &#123;</div><div class="line">      <span class="attr">msg</span>: <span class="string">''</span></div><div class="line">    &#125;;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  componentDidMount() &#123;</div><div class="line">    eventProxy.on(<span class="string">'msg'</span>, (msg) =&gt; &#123;</div><div class="line">      <span class="keyword">this</span>.setState(&#123;</div><div class="line">        msg</div><div class="line">      &#125;);</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;div&gt;</div><div class="line">        &#123; this.state.msg &#125;</div><div class="line">      &lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>以上，同样可以实现兄弟组件之间的通讯，是不是很方便？！</p>
-<p>来看看神奇的 eventProxy 源码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">  <span class="attr">onObj</span>: &#123;&#125;,</div><div class="line">  <span class="attr">oneObj</span>: &#123;&#125;,</div><div class="line">  <span class="attr">on</span>: <span class="function"><span class="keyword">function</span>(<span class="params">key, fn</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.onObj[key] === <span class="literal">undefined</span>) &#123;</div><div class="line">      <span class="keyword">this</span>.onObj[key] = [];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.onObj[key].push(fn);</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">one</span>: <span class="function"><span class="keyword">function</span>(<span class="params">key, fn</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.oneObj[key] === <span class="literal">undefined</span>) &#123;</div><div class="line">      <span class="keyword">this</span>.oneObj[key] = [];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.oneObj[key].push(fn);</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">off</span>: <span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.onObj[key] = [];</div><div class="line">    <span class="keyword">this</span>.oneObj[key] = [];</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">trigger</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> key, args;</div><div class="line">    <span class="keyword">if</span>(<span class="built_in">arguments</span>.length == <span class="number">0</span>) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">    key = <span class="built_in">arguments</span>[<span class="number">0</span>];</div><div class="line">    args = [].concat(<span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>, <span class="number">1</span>));</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.onObj[key] !== <span class="literal">undefined</span></div><div class="line">      &amp;&amp; <span class="keyword">this</span>.onObj[key].length &gt; <span class="number">0</span>) &#123;</div><div class="line">      <span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> <span class="keyword">this</span>.onObj[key]) &#123;</div><div class="line">        <span class="keyword">this</span>.onObj[key][i].apply(<span class="literal">null</span>, args);</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.oneObj[key] !== <span class="literal">undefined</span></div><div class="line">      &amp;&amp; <span class="keyword">this</span>.oneObj[key].length &gt; <span class="number">0</span>) &#123;</div><div class="line">      <span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> <span class="keyword">this</span>.oneObj[key]) &#123;</div><div class="line">        <span class="keyword">this</span>.oneObj[key][i].apply(<span class="literal">null</span>, args);</div><div class="line">        <span class="keyword">this</span>.oneObj[key][i] = <span class="literal">undefined</span>;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">this</span>.oneObj[key] = [];</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>eventProxy中，总共有 on, one, off, trigger这4个函数：</p>
-<ul>
-<li>on, one: 用于订阅者监听相应的事件，并将事件相应时的函数作为参数，on 与 one 的唯一区别就是，one 只会触发一次，on 是每次都会触发。</li>
-<li>off: 用于解除所有订阅了某个事件的所有函数</li>
-<li>trigger: 用于发布者发布事件，将除第一参数（事件名）的其他参数，作为新的参数，触发使用 on 与 one 进行订阅的函数。</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/04/27/如何安装Nodejs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -829,7 +701,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-27T13:56:54+08:00">
                 2017-04-27
@@ -961,7 +833,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-27T13:56:54+08:00">
                 2017-04-27
@@ -1095,8 +967,8 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">6</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
@@ -1150,7 +1022,7 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
