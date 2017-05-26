@@ -90,17 +90,17 @@
 
 
 
-<meta name="description" content="Mac 打开Mack中的命令行工具 在打开的命令行工具中输入如下语句：ruby -e “$(curl –insecure -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)” 按回车键 输入密码此时能够看到 installation successful 安装成功 此时可以在命令行中输入命令brew进行测">
+<meta name="description" content="Mac  打开Mack中的命令行工具    在打开的命令行工具中输入如下语句：    1ruby -e &quot;$(curl --insecure -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;   按回车键    输入密码此时能够看到 installation successful 安装成功    此时">
 <meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mac上使用OpenVPN">
 <meta property="og:url" content="http://zhangyuki.github.io/2017/05/26/OpenVPN/index.html">
 <meta property="og:site_name" content="玉英博客">
-<meta property="og:description" content="Mac 打开Mack中的命令行工具 在打开的命令行工具中输入如下语句：ruby -e “$(curl –insecure -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)” 按回车键 输入密码此时能够看到 installation successful 安装成功 此时可以在命令行中输入命令brew进行测">
-<meta property="og:updated_time" content="2017-05-26T16:06:25.000Z">
+<meta property="og:description" content="Mac  打开Mack中的命令行工具    在打开的命令行工具中输入如下语句：    1ruby -e &quot;$(curl --insecure -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;   按回车键    输入密码此时能够看到 installation successful 安装成功    此时">
+<meta property="og:updated_time" content="2017-05-26T16:15:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac上使用OpenVPN">
-<meta name="twitter:description" content="Mac 打开Mack中的命令行工具 在打开的命令行工具中输入如下语句：ruby -e “$(curl –insecure -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)” 按回车键 输入密码此时能够看到 installation successful 安装成功 此时可以在命令行中输入命令brew进行测">
+<meta name="twitter:description" content="Mac  打开Mack中的命令行工具    在打开的命令行工具中输入如下语句：    1ruby -e &quot;$(curl --insecure -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;   按回车键    输入密码此时能够看到 installation successful 安装成功    此时">
 
 
 
@@ -334,21 +334,37 @@
       
 
       
-        <h3 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h3><ol>
+        <h4 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h4><ul>
+<li><ol>
 <li>打开Mack中的命令行工具</li>
-<li>在打开的命令行工具中输入如下语句：<br>ruby -e “$(curl –insecure -fsSL <a href="https://raw.githubusercontent.com/Homebrew/install/master/install" target="_blank" rel="external">https://raw.githubusercontent.com/Homebrew/install/master/install</a>)”</li>
+</ol>
+</li>
+<li><ol>
+<li>在打开的命令行工具中输入如下语句：</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ruby <span class="_">-e</span> <span class="string">"<span class="variable">$(curl --insecure -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>"</span></div></pre></td></tr></table></figure>
+<ul>
+<li><ol>
 <li>按回车键</li>
+</ol>
+</li>
+<li><ol>
 <li>输入密码<br>此时能够看到 installation successful 安装成功</li>
-<li>此时可以在命令行中输入命令brew进行测试，可以看到如下结果,说明安装成功。</li>
-<li>brew install openvpn  </li>
-<li>openvpn –version  查看版本</li>
-<li>git clone <a href="https://github.com/OpenVPN/easy-rsa.git" target="_blank" rel="external">https://github.com/OpenVPN/easy-rsa.git</a></li>
-<li>cd easy-rsa</li>
-<li>cd easyrsa3</li>
-<li><p>cp openssl.conf openssl.conf  </p>
+</ol>
 </li>
-<li><p>进入openvpn所在目录<br>cd /usr/local/etc/openvpn</p>
+<li><ol>
+<li>此时可以在命令行中输入命令brew进行测试，可以看到如下结果,说明安装成功。<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">* 6. brew install openvpn  </div><div class="line">* 7. openvpn --version  查看版本</div><div class="line">* 8. git <span class="built_in">clone</span> https://github.com/OpenVPN/easy-rsa.git</div><div class="line">* 9. <span class="built_in">cd</span> easy-rsa</div><div class="line">* 10. <span class="built_in">cd</span> easyrsa3</div><div class="line">* 11. cp openssl.conf openssl.conf</div></pre></td></tr></table></figure>
 </li>
+</ol>
+</li>
+<li><ol>
+<li>进入openvpn所在目录<br>cd /usr/local/etc/openvpn</li>
+</ol>
+</li>
+</ul>
+<ol>
 <li><p>安装Tunnelblick  <a href="https://tunnelblick.net" target="_blank" rel="external">https://tunnelblick.net</a></p>
 </li>
 <li><p>新增vpn 配置将config.ovpn文件拖拽到工具中</p>
@@ -396,8 +412,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/27/设置国内npm镜像/" rel="prev" title="设置国内npm镜像">
-                设置国内npm镜像 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/27/如何安装Nodejs/" rel="prev" title="如何安装Nodejs">
+                如何安装Nodejs <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -520,7 +536,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Mac"><span class="nav-number">1.</span> <span class="nav-text">Mac</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Mac"><span class="nav-number">1.</span> <span class="nav-text">Mac</span></a></li></ol></div>
             
 
           </div>

@@ -97,7 +97,7 @@
 <meta property="og:url" content="http://zhangyuki.github.io/2017/04/27/hexo搭建Github个人博客/index.html">
 <meta property="og:site_name" content="玉英博客">
 <meta property="og:description" content="网上关于hexo搭建博客的文章已经有很多，这里只做为个人博客的试笔文章，记录下hexo博客搭建的过程和心得。 Hexo Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。  搭建准备 Node.js Git &amp;amp; Github  Node.js安装方式很多，见 如何安装Node.js 文章Git">
-<meta property="og:updated_time" content="2017-04-27T15:21:06.000Z">
+<meta property="og:updated_time" content="2017-05-26T16:12:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Hexo搭建Github个人博客">
 <meta name="twitter:description" content="网上关于hexo搭建博客的文章已经有很多，这里只做为个人博客的试笔文章，记录下hexo博客搭建的过程和心得。 Hexo Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。  搭建准备 Node.js Git &amp;amp; Github  Node.js安装方式很多，见 如何安装Node.js 文章Git">
@@ -345,7 +345,7 @@
 <p>Node.js安装方式很多，见 <a href="../如何安装Nodejs/">如何安装Node.js</a> 文章<br>Git 安装方法，见 <a href="../如何安装Git/">如何安装Git</a> 文章</p>
 <p>node.js 和 git 都安装完成后即可开始搭建hexo个人博客了。</p>
 <h3 id="开始搭建"><a href="#开始搭建" class="headerlink" title="开始搭建"></a>开始搭建</h3><h4 id="安装-hexo"><a href="#安装-hexo" class="headerlink" title="安装 hexo"></a>安装 hexo</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> d:/hexo</div><div class="line">$ npm install hexo-cli -g</div><div class="line">$ hexo init blog</div><div class="line">$ <span class="built_in">cd</span> blog</div><div class="line">$ npm install</div><div class="line">$ hexo g <span class="comment"># 或者hexo generate</span></div><div class="line">$ hexo s <span class="comment"># 或者hexo server，可以在http://localhost:4000/ 查看</span></div></pre></td></tr></table></figure>
-<h4 id="这里有必要提下Hexo常用的几个命令："><a href="#这里有必要提下Hexo常用的几个命令：" class="headerlink" title="这里有必要提下Hexo常用的几个命令："></a>这里有必要提下Hexo常用的几个命令：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo generate (hexo g) 生成静态文件，会在当前目录下生成一个新的叫做public的文件夹/</div><div class="line">hexo server (hexo s) 启动本地web服务，用于博客的预览</div><div class="line">hexo deploy (hexo d) 生成部署</div></pre></td></tr></table></figure>
+<h4 id="这里有必要提下Hexo常用的几个命令："><a href="#这里有必要提下Hexo常用的几个命令：" class="headerlink" title="这里有必要提下Hexo常用的几个命令："></a>这里有必要提下Hexo常用的几个命令：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">hexo generate (hexo g) 生成静态文件，会在当前目录下生成一个新的叫做public的文件夹/</div><div class="line"></div><div class="line">$ <span class="built_in">cd</span>/themes</div><div class="line">hexo server (hexo s) 启动本地web服务，用于博客的预览</div><div class="line">hexo deploy (hexo d) 生成部署</div></pre></td></tr></table></figure>
 <h4 id="目前我安装所用的本地环境如下：-可以通过hexo-v查看"><a href="#目前我安装所用的本地环境如下：-可以通过hexo-v查看" class="headerlink" title="目前我安装所用的本地环境如下：(可以通过hexo -v查看)"></a>目前我安装所用的本地环境如下：(可以通过hexo -v查看)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">hexo: 3.2.0</div><div class="line">hexo-cli: 1.0.1</div><div class="line">os: Windows_NT 6.3.9600 win32 x64</div><div class="line">http_parser: 2.5.2</div><div class="line">node: 4.4.1</div><div class="line">v8: 4.5.103.35</div><div class="line">uv: 1.8.0</div><div class="line">zlib: 1.2.8</div><div class="line">ares: 1.10.1-DEV</div><div class="line">icu: 56.1</div><div class="line">modules: 46</div><div class="line">openssl: 1.0.2g</div></pre></td></tr></table></figure>
 <h4 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div></pre></td></tr></table></figure>
 <h4 id="应用主题"><a href="#应用主题" class="headerlink" title="应用主题"></a>应用主题</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span>/themes</div><div class="line">$ git <span class="built_in">clone</span> git@github.com:iissnan/hexo-theme-next.git</div><div class="line">$ git pull</div><div class="line">$ hexo g <span class="comment"># 生成</span></div><div class="line">$ hexo s <span class="comment"># 启动本地web服务器</span></div></pre></td></tr></table></figure>
@@ -397,8 +397,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/27/如何安装Git/" rel="next" title="如何安装Git">
-                <i class="fa fa-chevron-left"></i> 如何安装Git
+              <a href="/2017/04/27/设置国内npm镜像/" rel="next" title="设置国内npm镜像">
+                <i class="fa fa-chevron-left"></i> 设置国内npm镜像
               </a>
             
           </div>
