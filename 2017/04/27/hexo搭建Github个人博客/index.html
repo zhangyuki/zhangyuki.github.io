@@ -97,7 +97,7 @@
 <meta property="og:url" content="http://zhangyuki.github.io/2017/04/27/hexo搭建Github个人博客/index.html">
 <meta property="og:site_name" content="玉英博客">
 <meta property="og:description" content="网上关于hexo搭建博客的文章已经有很多，这里只做为个人博客的试笔文章，记录下hexo博客搭建的过程和心得。 Hexo Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。  搭建准备 Node.js Git &amp;amp; Github  Node.js安装方式很多，见 如何安装Node.js 文章Git">
-<meta property="og:updated_time" content="2017-05-26T16:12:46.000Z">
+<meta property="og:updated_time" content="2017-07-10T08:37:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Hexo搭建Github个人博客">
 <meta name="twitter:description" content="网上关于hexo搭建博客的文章已经有很多，这里只做为个人博客的试笔文章，记录下hexo博客搭建的过程和心得。 Hexo Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。  搭建准备 Node.js Git &amp;amp; Github  Node.js安装方式很多，见 如何安装Node.js 文章Git">
@@ -357,7 +357,7 @@
 <p> 然后在命令行中执行<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo d</div></pre></td></tr></table></figure></p>
 <p> 即可完成部署。</p>
 <p> 1）如果出现下面这样的错误：<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Permission denied (publickey).</div><div class="line">fatal: Could not <span class="built_in">read</span> from remote repository.</div><div class="line">Please make sure you have the correct access rights</div><div class="line">and the repository exists.</div></pre></td></tr></table></figure></p>
-<p>则是因为没有设置好public key所致。<br>在本机生成public key(参考github帮助)：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">＃ssh-keygen -t rsa -b 4096 -C <span class="string">"xxx@xxx.com"</span></div></pre></td></tr></table></figure></p>
+<p>则是因为没有设置好public key所致。<br>在本机生成public key(参考github帮助)：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">＃ssh-keygen -t rsa -b 4096 -C <span class="string">"963022018@qq.com"</span></div><div class="line">回车</div><div class="line">Overwrite (y/n)? y</div><div class="line">yuying$ ls <span class="_">-a</span></div><div class="line"><span class="built_in">cd</span> /Users/yuying/.ssh/</div><div class="line">.ssh yuying$ ls <span class="_">-a</span></div><div class="line">cat id_rsa.pub</div></pre></td></tr></table></figure></p>
 <p>然后在#user_id/.ssh目录下会生成两个文件，id_rsa.pub和id_rsa.<br>然后登陆github，在SSH设置页面添加上刚才的public key文件也就是id_rsa.pub的内容即可。</p>
 <h4 id="Hexo-主题配置"><a href="#Hexo-主题配置" class="headerlink" title="Hexo 主题配置"></a>Hexo 主题配置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Header</span></div><div class="line">menu:</div><div class="line">  主页: /</div><div class="line">  所有文章: /archives</div><div class="line">  <span class="comment"># 随笔: /tags/随笔</span></div><div class="line"></div><div class="line"><span class="comment"># SubNav</span></div><div class="line">subnav:</div><div class="line">  github: <span class="string">"dushao103500"</span></div><div class="line">  weibo: <span class="string">"DanD逆光之处是暖伤"</span></div><div class="line">  rss: <span class="string">"#"</span></div><div class="line">  zhihu: <span class="string">"#"</span></div><div class="line">  <span class="comment">#douban: "#"</span></div><div class="line">  <span class="comment">#mail: "dushao1314@foxmail.com"</span></div><div class="line">  <span class="comment">#facebook: "#"</span></div><div class="line">  <span class="comment">#google: "#"</span></div><div class="line">  <span class="comment">#twitter: "#"</span></div><div class="line">  <span class="comment">#linkedin: "#"</span></div><div class="line"></div><div class="line">rss: /atom.xml</div><div class="line"></div><div class="line"><span class="comment"># Content</span></div><div class="line">excerpt_link: more</div><div class="line">fancybox: <span class="literal">true</span></div><div class="line">mathjax: <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment"># Miscellaneous</span></div><div class="line">google_analytics: <span class="string">''</span></div><div class="line">favicon: /favicon.png</div><div class="line"></div><div class="line"><span class="comment">#你的头像url</span></div><div class="line">avatar: <span class="string">""</span></div><div class="line"><span class="comment">#是否开启分享</span></div><div class="line">share: <span class="literal">true</span></div><div class="line"><span class="comment">#是否开启多说评论，填写你在多说申请的项目名称 duoshuo: duoshuo-key</span></div><div class="line"><span class="comment">#若使用disqus，请在博客config文件中填写disqus_shortname，并关闭多说评论</span></div><div class="line">duoshuo: <span class="literal">true</span></div><div class="line"><span class="comment">#是否开启云标签</span></div><div class="line">tagcloud: <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment">#是否开启友情链接</span></div><div class="line"><span class="comment">#不开启——</span></div><div class="line"><span class="comment">#friends: false</span></div><div class="line"></div><div class="line"><span class="comment">#是否开启“关于我”。</span></div><div class="line"><span class="comment">#不开启——</span></div><div class="line"><span class="comment">#aboutme: false</span></div><div class="line"><span class="comment">#开启——</span></div><div class="line">aboutme: 我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div></pre></td></tr></table></figure>
 <p>至此，Hexo+Github Pages搭建个人博客完成</p>
@@ -397,8 +397,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/27/设置国内npm镜像/" rel="next" title="设置国内npm镜像">
-                <i class="fa fa-chevron-left"></i> 设置国内npm镜像
+              <a href="/2017/04/27/个人面试过程/" rel="next" title="我的面试过程">
+                <i class="fa fa-chevron-left"></i> 我的面试过程
               </a>
             
           </div>
@@ -407,8 +407,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/27/个人面试过程/" rel="prev" title="我的面试过程">
-                我的面试过程 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/27/React组件间通讯/" rel="prev" title="React组件间通讯">
+                React组件间通讯 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -481,7 +481,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
