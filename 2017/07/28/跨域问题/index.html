@@ -1,0 +1,716 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="玉英博客" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="document.domain这跨域个方法主要适用于 ajax跨子域，比如在 a.takozhang.cn 中使用ajax调用 takozhang.cn 中的接口时。  在被访问接口的服务器中，新建一个proxy.html文件，里面的代码是：1234567891011121314&amp;lt;script&amp;gt;  document.domain = &apos;takozhang.cn&apos;&amp;lt;/script&amp;">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="跨域">
+<meta property="og:url" content="http://zhangyuki.github.io/2017/07/28/跨域问题/index.html">
+<meta property="og:site_name" content="玉英博客">
+<meta property="og:description" content="document.domain这跨域个方法主要适用于 ajax跨子域，比如在 a.takozhang.cn 中使用ajax调用 takozhang.cn 中的接口时。  在被访问接口的服务器中，新建一个proxy.html文件，里面的代码是：1234567891011121314&amp;lt;script&amp;gt;  document.domain = &apos;takozhang.cn&apos;&amp;lt;/script&amp;">
+<meta property="og:updated_time" content="2017-07-28T07:26:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="跨域">
+<meta name="twitter:description" content="document.domain这跨域个方法主要适用于 ajax跨子域，比如在 a.takozhang.cn 中使用ajax调用 takozhang.cn 中的接口时。  在被访问接口的服务器中，新建一个proxy.html文件，里面的代码是：1234567891011121314&amp;lt;script&amp;gt;  document.domain = &apos;takozhang.cn&apos;&amp;lt;/script&amp;">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhangyuki.github.io/2017/07/28/跨域问题/"/>
+
+
+
+
+
+  <title>跨域 | 玉英博客</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">玉英博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">家庭、工作、学习、旅行</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/07/28/跨域问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="玉英（小丸子）">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://imgsrc.baidu.com/forum/w%3D580/sign=aa09a14c8244ebf86d716437e9f8d736/ea6dc811728b4710787b6583c6cec3fdfd032371.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="玉英博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                跨域
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-28T14:47:23+08:00">
+                2017-07-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="document-domain"><a href="#document-domain" class="headerlink" title="document.domain"></a>document.domain</h4><p>这跨域个方法主要适用于 ajax跨子域，比如在 a.takozhang.cn 中使用ajax调用 takozhang.cn 中的接口时。</p>
+<ol>
+<li>在被访问接口的服务器中，新建一个proxy.html文件，里面的代码是：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">  document.domain = <span class="string">'takozhang.cn'</span></div><div class="line">&lt;/script&gt;</div><div class="line">&lt;script src = <span class="string">'jquery.js'</span>&gt;&lt;/script&gt;</div><div class="line">2. 在调用页面使用一个隐藏的iframe，地址指向proxy.html，代码如下：</div><div class="line">&lt;iframe src=<span class="string">"http://takozhang.cn/proxy.html"</span> id=<span class="string">"proxy"</span>&gt;&lt;/iframe&gt;</div><div class="line">3. 在a.takozhang.cn服务器中进行ajax发送请求的时候，代码如下：</div><div class="line">var iframe = document.getElementById(<span class="string">'proxy'</span>).contentWindow;</div><div class="line">iframe.window.JQuery.ajax(&#123;</div><div class="line">  url: <span class="string">'takozhang.cn/php/index.php'</span>,</div><div class="line">  method: <span class="string">'post'</span>,</div><div class="line">  success: <span class="keyword">function</span>(data)&#123;&#125;,</div><div class="line">  error: <span class="keyword">function</span>(err)&#123;&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="jsonp"><a href="#jsonp" class="headerlink" title="jsonp"></a>jsonp</h4><p>基本可以适用于任何场景</p>
+<ol>
+<li>客户端动态创建script标签，并利用src属性去向服务端获取数据 src=”www.a.com/index.php?callback=fn”,切记一定要在后面加上一个callback回调函数</li>
+<li>服务端会将请求的json数据放在这个你指定的回调函数里作为参数返回回来，如服务器会返回 fn(data),</li>
+<li>客户端写好回调函数的实现，处理数据。</li>
+</ol>
+<h4 id="window-name-也就是-iframe"><a href="#window-name-也就是-iframe" class="headerlink" title="window.name 也就是 iframe"></a>window.name 也就是 iframe</h4><p>只用于两个完全不同源的域，比如www.a.com   www.b.com<br>window.name属性有个特征：即在一个窗口(window)的生命周期内,窗口载入的所有的页面都是共享一个window.name</p>
+<ol>
+<li><p>在www.a.com的服务器中创建一个iframe，并引入www.b.com，代码如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">  var inf=document.createElement(<span class="string">"iframe"</span>);       //创建iframe</div><div class="line">  inf.src=<span class="string">"http://www.b.com/index.html"</span>+<span class="string">"?h=5"</span>  //加载数据页www.b.com/index.html的同时携带参数h=5</div><div class="line">  var body=document.getElementsByTagName(<span class="string">"body"</span>)[0];</div><div class="line">  body.appendChild(inf);                          //引入iframe</div><div class="line"></div><div class="line">  inf.onload=<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">      inf.src=<span class="string">'http://www.a.com/index.html'</span>       //iframe加载完成，加载www.a.com域下边的空白页index.html</div><div class="line">      console.log(inf.contentWindow.name)        //输出window.name中的数据</div><div class="line">      body.removeChild(inf)                      //清除iframe</div><div class="line">  &#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在www.b.com中的index.html中进行ajax，并把返回值通过window.name储存，代码如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var str=window.location.href.substr(-1,1);      //获取url中携带的参数值</div><div class="line">$.ajax(&#123;</div><div class="line">    <span class="built_in">type</span>:<span class="string">"post"</span>,</div><div class="line">    url:<span class="string">"http://www.b.com/index.php"</span>+<span class="string">"?m="</span>+str, //通过ajax将查询参数传给php页面</div><div class="line">    success:<span class="keyword">function</span>(res)&#123;</div><div class="line">        window.name=res                         //将接收到的查询数据赋值给window.name</div><div class="line">    &#125;,</div><div class="line">    error:<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">        window.name=<span class="string">'error'</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>整体过程就是：a服务器的页面中中创建一个iframe，iframe引入b服务器中进行ajax的页面，该页面ajax之后将返回值赋值给window.name，<br>a服务器页面监听iframe事件的加载完成，再将iframe地址指向a服务器中的某个空白页面，然后读取iframe的window.name。</p>
+<h4 id="window-postMessage-message-targetOrigin"><a href="#window-postMessage-message-targetOrigin" class="headerlink" title="window.postMessage(message,targetOrigin)"></a>window.postMessage(message,targetOrigin)</h4><p>这个方法是html5新引进的特性，可以使用它来向其它的window对象发送消息，<br>无论这个window对象是属于同源或不同源，目前IE8+、FireFox、Chrome、Opera等浏览器都已经支持window.postMessage方法。</p>
+<p>在父页面中嵌入子页面，通过postMessage发送数据。parent.com/index.html中的代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;iframe id=<span class="string">"ifr"</span> src=<span class="string">"child.com/index.html"</span>&gt;&lt;/iframe&gt;</div><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">window.onload = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    var ifr = document.getElementById(<span class="string">'ifr'</span>);</div><div class="line">    var targetOrigin = <span class="string">'http://child.com'</span>;</div><div class="line">    // 若写成<span class="string">'http://child.com/c/proxy.html'</span>效果一样</div><div class="line">    // 若写成<span class="string">'http://c.com'</span>就不会执行postMessage了</div><div class="line">    ifr.contentWindow.postMessage(<span class="string">'I was there!'</span>, targetOrigin);</div><div class="line">&#125;;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>在子页面中通过message事件监听父页面发送来的消息并显示。child.com/index.html中的代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">window.addEventListener(<span class="string">'message'</span>, <span class="keyword">function</span>(event)&#123;</div><div class="line">    // 通过origin属性判断消息来源地址</div><div class="line">    <span class="keyword">if</span> (event.origin == <span class="string">'http://parent.com'</span>) &#123;</div><div class="line">        alert(event.data);    // 弹出<span class="string">"I was there!"</span></div><div class="line">        alert(event.source);</div><div class="line">        // 对parent.com、index.html中window对象的引用</div><div class="line">        // 但由于同源策略，这里event.source不可以访问window对象</div><div class="line">    &#125;</div><div class="line">&#125;, <span class="literal">false</span>);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>主要是用来传递信息，父页面使用window.postMessage(),子页面使用window.addEventListener(‘message’,function(event){})</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/10/js中toFixed精度问题的解决办法/" rel="prev" title="js中toFixed精度问题的解决办法">
+                js中toFixed精度问题的解决办法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://imgsrc.baidu.com/forum/w%3D580/sign=aa09a14c8244ebf86d716437e9f8d736/ea6dc811728b4710787b6583c6cec3fdfd032371.jpg"
+               alt="玉英（小丸子）" />
+          <p class="site-author-name" itemprop="name">玉英（小丸子）</p>
+           
+              <p class="site-description motion-element" itemprop="description">过程用心，结果随缘。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangyuki" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#document-domain"><span class="nav-number">1.</span> <span class="nav-text">document.domain</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#jsonp"><span class="nav-number">2.</span> <span class="nav-text">jsonp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#window-name-也就是-iframe"><span class="nav-number">3.</span> <span class="nav-text">window.name 也就是 iframe</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#window-postMessage-message-targetOrigin"><span class="nav-number">4.</span> <span class="nav-text">window.postMessage(message,targetOrigin)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">玉英（小丸子）</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
