@@ -90,17 +90,17 @@
 
 
 
-<meta name="description" content="document.domain这跨域个方法主要适用于 ajax跨子域，比如在 a.takozhang.cn 中使用ajax调用 takozhang.cn 中的接口时。  在被访问接口的服务器中，新建一个proxy.html文件，里面的代码是：1234567891011121314&amp;lt;script&amp;gt;  document.domain = &apos;takozhang.cn&apos;&amp;lt;/script&amp;">
+<meta name="description" content="document.domain 子域名跨域这跨域个方法主要适用于 ajax跨子域，比如在 a.takozhang.cn 中使用ajax调用 takozhang.cn 中的接口时。  在被访问接口的服务器中，新建一个proxy.html文件，里面的代码是：1234567891011121314&amp;lt;script&amp;gt;  document.domain = &apos;takozhang.cn&apos;&amp;lt;/s">
 <meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="跨域">
 <meta property="og:url" content="http://zhangyuki.github.io/2017/07/28/跨域问题/index.html">
 <meta property="og:site_name" content="玉英博客">
-<meta property="og:description" content="document.domain这跨域个方法主要适用于 ajax跨子域，比如在 a.takozhang.cn 中使用ajax调用 takozhang.cn 中的接口时。  在被访问接口的服务器中，新建一个proxy.html文件，里面的代码是：1234567891011121314&amp;lt;script&amp;gt;  document.domain = &apos;takozhang.cn&apos;&amp;lt;/script&amp;">
-<meta property="og:updated_time" content="2017-07-28T07:26:52.000Z">
+<meta property="og:description" content="document.domain 子域名跨域这跨域个方法主要适用于 ajax跨子域，比如在 a.takozhang.cn 中使用ajax调用 takozhang.cn 中的接口时。  在被访问接口的服务器中，新建一个proxy.html文件，里面的代码是：1234567891011121314&amp;lt;script&amp;gt;  document.domain = &apos;takozhang.cn&apos;&amp;lt;/s">
+<meta property="og:updated_time" content="2017-08-02T09:46:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="跨域">
-<meta name="twitter:description" content="document.domain这跨域个方法主要适用于 ajax跨子域，比如在 a.takozhang.cn 中使用ajax调用 takozhang.cn 中的接口时。  在被访问接口的服务器中，新建一个proxy.html文件，里面的代码是：1234567891011121314&amp;lt;script&amp;gt;  document.domain = &apos;takozhang.cn&apos;&amp;lt;/script&amp;">
+<meta name="twitter:description" content="document.domain 子域名跨域这跨域个方法主要适用于 ajax跨子域，比如在 a.takozhang.cn 中使用ajax调用 takozhang.cn 中的接口时。  在被访问接口的服务器中，新建一个proxy.html文件，里面的代码是：1234567891011121314&amp;lt;script&amp;gt;  document.domain = &apos;takozhang.cn&apos;&amp;lt;/s">
 
 
 
@@ -334,7 +334,7 @@
       
 
       
-        <h4 id="document-domain"><a href="#document-domain" class="headerlink" title="document.domain"></a>document.domain</h4><p>这跨域个方法主要适用于 ajax跨子域，比如在 a.takozhang.cn 中使用ajax调用 takozhang.cn 中的接口时。</p>
+        <h4 id="document-domain-子域名跨域"><a href="#document-domain-子域名跨域" class="headerlink" title="document.domain 子域名跨域"></a>document.domain 子域名跨域</h4><p>这跨域个方法主要适用于 ajax跨子域，比如在 a.takozhang.cn 中使用ajax调用 takozhang.cn 中的接口时。</p>
 <ol>
 <li>在被访问接口的服务器中，新建一个proxy.html文件，里面的代码是：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">  document.domain = <span class="string">'takozhang.cn'</span></div><div class="line">&lt;/script&gt;</div><div class="line">&lt;script src = <span class="string">'jquery.js'</span>&gt;&lt;/script&gt;</div><div class="line">2. 在调用页面使用一个隐藏的iframe，地址指向proxy.html，代码如下：</div><div class="line">&lt;iframe src=<span class="string">"http://takozhang.cn/proxy.html"</span> id=<span class="string">"proxy"</span>&gt;&lt;/iframe&gt;</div><div class="line">3. 在a.takozhang.cn服务器中进行ajax发送请求的时候，代码如下：</div><div class="line">var iframe = document.getElementById(<span class="string">'proxy'</span>).contentWindow;</div><div class="line">iframe.window.JQuery.ajax(&#123;</div><div class="line">  url: <span class="string">'takozhang.cn/php/index.php'</span>,</div><div class="line">  method: <span class="string">'post'</span>,</div><div class="line">  success: <span class="keyword">function</span>(data)&#123;&#125;,</div><div class="line">  error: <span class="keyword">function</span>(err)&#123;&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </li>
@@ -343,12 +343,12 @@
 <ol>
 <li>客户端动态创建script标签，并利用src属性去向服务端获取数据 src=”www.a.com/index.php?callback=fn”,切记一定要在后面加上一个callback回调函数</li>
 <li>服务端会将请求的json数据放在这个你指定的回调函数里作为参数返回回来，如服务器会返回 fn(data),</li>
-<li>客户端写好回调函数的实现，处理数据。</li>
+<li>客户端写好回调函数的实现，处理数据。<br>4.但是jsonp是存在着一定的风险的,就是你用jsonp, 然后黑客给你发了一张图片。图片的src=”xxx/xxx/xx.jsonp?data=sxx&amp;name=xxxx”,  你点击后。直接请求成功。 。这个就是CSRF 。跨域请求伪造<br>还有一个比较典型的安全问题、XSS 。跨脚本注入js</li>
 </ol>
 <h4 id="window-name-也就是-iframe"><a href="#window-name-也就是-iframe" class="headerlink" title="window.name 也就是 iframe"></a>window.name 也就是 iframe</h4><p>只用于两个完全不同源的域，比如www.a.com   www.b.com<br>window.name属性有个特征：即在一个窗口(window)的生命周期内,窗口载入的所有的页面都是共享一个window.name</p>
 <ol>
 <li><p>在www.a.com的服务器中创建一个iframe，并引入www.b.com，代码如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">  var inf=document.createElement(<span class="string">"iframe"</span>);       //创建iframe</div><div class="line">  inf.src=<span class="string">"http://www.b.com/index.html"</span>+<span class="string">"?h=5"</span>  //加载数据页www.b.com/index.html的同时携带参数h=5</div><div class="line">  var body=document.getElementsByTagName(<span class="string">"body"</span>)[0];</div><div class="line">  body.appendChild(inf);                          //引入iframe</div><div class="line"></div><div class="line">  inf.onload=<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">      inf.src=<span class="string">'http://www.a.com/index.html'</span>       //iframe加载完成，加载www.a.com域下边的空白页index.html</div><div class="line">      console.log(inf.contentWindow.name)        //输出window.name中的数据</div><div class="line">      body.removeChild(inf)                      //清除iframe</div><div class="line">  &#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">  var inf=document.createElement(<span class="string">"iframe"</span>);       //创建iframe</div><div class="line">  inf.src=<span class="string">"http://www.b.com/index.html"</span>+<span class="string">"?h=5"</span>  //加载数据页www.b.com/index.html的同时携带参数h=5</div><div class="line">  var body=document.getElementsByTagName(<span class="string">"body"</span>)[0];</div><div class="line">  body.appendChild(inf);                          //引入iframe</div><div class="line"></div><div class="line">  inf.onload=<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">    inf.src=<span class="string">'http://www.a.com/index.html'</span>       //iframe加载完成，加载www.a.com域下边的空白页index.html</div><div class="line">    console.log(inf.contentWindow.name)        //输出window.name中的数据</div><div class="line">    body.removeChild(inf)                      //清除iframe</div><div class="line">  &#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
 </li>
 <li><p>在www.b.com中的index.html中进行ajax，并把返回值通过window.name储存，代码如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var str=window.location.href.substr(-1,1);      //获取url中携带的参数值</div><div class="line">$.ajax(&#123;</div><div class="line">    <span class="built_in">type</span>:<span class="string">"post"</span>,</div><div class="line">    url:<span class="string">"http://www.b.com/index.php"</span>+<span class="string">"?m="</span>+str, //通过ajax将查询参数传给php页面</div><div class="line">    success:<span class="keyword">function</span>(res)&#123;</div><div class="line">        window.name=res                         //将接收到的查询数据赋值给window.name</div><div class="line">    &#125;,</div><div class="line">    error:<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">        window.name=<span class="string">'error'</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
@@ -356,9 +356,9 @@
 </ol>
 <p>整体过程就是：a服务器的页面中中创建一个iframe，iframe引入b服务器中进行ajax的页面，该页面ajax之后将返回值赋值给window.name，<br>a服务器页面监听iframe事件的加载完成，再将iframe地址指向a服务器中的某个空白页面，然后读取iframe的window.name。</p>
 <h4 id="window-postMessage-message-targetOrigin"><a href="#window-postMessage-message-targetOrigin" class="headerlink" title="window.postMessage(message,targetOrigin)"></a>window.postMessage(message,targetOrigin)</h4><p>这个方法是html5新引进的特性，可以使用它来向其它的window对象发送消息，<br>无论这个window对象是属于同源或不同源，目前IE8+、FireFox、Chrome、Opera等浏览器都已经支持window.postMessage方法。</p>
-<p>在父页面中嵌入子页面，通过postMessage发送数据。parent.com/index.html中的代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;iframe id=<span class="string">"ifr"</span> src=<span class="string">"child.com/index.html"</span>&gt;&lt;/iframe&gt;</div><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">window.onload = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    var ifr = document.getElementById(<span class="string">'ifr'</span>);</div><div class="line">    var targetOrigin = <span class="string">'http://child.com'</span>;</div><div class="line">    // 若写成<span class="string">'http://child.com/c/proxy.html'</span>效果一样</div><div class="line">    // 若写成<span class="string">'http://c.com'</span>就不会执行postMessage了</div><div class="line">    ifr.contentWindow.postMessage(<span class="string">'I was there!'</span>, targetOrigin);</div><div class="line">&#125;;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
-<p>在子页面中通过message事件监听父页面发送来的消息并显示。child.com/index.html中的代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">window.addEventListener(<span class="string">'message'</span>, <span class="keyword">function</span>(event)&#123;</div><div class="line">    // 通过origin属性判断消息来源地址</div><div class="line">    <span class="keyword">if</span> (event.origin == <span class="string">'http://parent.com'</span>) &#123;</div><div class="line">        alert(event.data);    // 弹出<span class="string">"I was there!"</span></div><div class="line">        alert(event.source);</div><div class="line">        // 对parent.com、index.html中window对象的引用</div><div class="line">        // 但由于同源策略，这里event.source不可以访问window对象</div><div class="line">    &#125;</div><div class="line">&#125;, <span class="literal">false</span>);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
-<p>主要是用来传递信息，父页面使用window.postMessage(),子页面使用window.addEventListener(‘message’,function(event){})</p>
+<p>在父页面中嵌入子页面，通过postMessage发送数据。parent.com/index.html中的代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;iframe id=<span class="string">"ifr"</span> src=<span class="string">"child.com/index.html"</span>&gt;&lt;/iframe&gt;</div><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">window.onload = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">  var ifr = document.getElementById(<span class="string">'ifr'</span>);</div><div class="line">  var targetOrigin = <span class="string">'http://child.com'</span>;</div><div class="line">  // 若写成<span class="string">'http://child.com/c/proxy.html'</span>效果一样</div><div class="line">  // 若写成<span class="string">'http://c.com'</span>就不会执行postMessage了</div><div class="line">  ifr.contentWindow.postMessage(<span class="string">'I was there!'</span>, targetOrigin);</div><div class="line">&#125;;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>在子页面中通过message事件监听父页面发送来的消息并显示。child.com/index.html中的代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">window.addEventListener(<span class="string">'message'</span>, <span class="keyword">function</span>(event)&#123;</div><div class="line">  // 通过origin属性判断消息来源地址</div><div class="line">  <span class="keyword">if</span> (event.origin == <span class="string">'http://parent.com'</span>) &#123;</div><div class="line">      alert(event.data);    // 弹出<span class="string">"I was there!"</span></div><div class="line">      alert(event.source);</div><div class="line">      // 对parent.com、index.html中window对象的引用</div><div class="line">      // 但由于同源策略，这里event.source不可以访问window对象</div><div class="line">  &#125;</div><div class="line">&#125;, <span class="literal">false</span>);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>主要是用来传递信息，父页面使用window.postMessage(),子页面使用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">window.addEventListener(<span class="string">'message'</span>,<span class="keyword">function</span>(event)&#123;&#125;)</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -394,6 +394,10 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/01/总结技术/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
             
           </div>
 
@@ -467,7 +471,7 @@
                alt="玉英（小丸子）" />
           <p class="site-author-name" itemprop="name">玉英（小丸子）</p>
            
-              <p class="site-description motion-element" itemprop="description">过程用心，结果随缘。</p>
+              <p class="site-description motion-element" itemprop="description">将来的你，一定会感谢现在拼命努力的自己</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -475,7 +479,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -525,7 +529,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#document-domain"><span class="nav-number">1.</span> <span class="nav-text">document.domain</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#jsonp"><span class="nav-number">2.</span> <span class="nav-text">jsonp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#window-name-也就是-iframe"><span class="nav-number">3.</span> <span class="nav-text">window.name 也就是 iframe</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#window-postMessage-message-targetOrigin"><span class="nav-number">4.</span> <span class="nav-text">window.postMessage(message,targetOrigin)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#document-domain-子域名跨域"><span class="nav-number">1.</span> <span class="nav-text">document.domain 子域名跨域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#jsonp"><span class="nav-number">2.</span> <span class="nav-text">jsonp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#window-name-也就是-iframe"><span class="nav-number">3.</span> <span class="nav-text">window.name 也就是 iframe</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#window-postMessage-message-targetOrigin"><span class="nav-number">4.</span> <span class="nav-text">window.postMessage(message,targetOrigin)</span></a></li></ol></div>
             
 
           </div>

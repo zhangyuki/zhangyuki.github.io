@@ -90,15 +90,15 @@
 
 
 
-<meta name="description" content="过程用心，结果随缘。">
+<meta name="description" content="将来的你，一定会感谢现在拼命努力的自己">
 <meta property="og:type" content="website">
 <meta property="og:title" content="玉英博客">
 <meta property="og:url" content="http://zhangyuki.github.io/index.html">
 <meta property="og:site_name" content="玉英博客">
-<meta property="og:description" content="过程用心，结果随缘。">
+<meta property="og:description" content="将来的你，一定会感谢现在拼命努力的自己">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="玉英博客">
-<meta name="twitter:description" content="过程用心，结果随缘。">
+<meta name="twitter:description" content="将来的你，一定会感谢现在拼命努力的自己">
 
 
 
@@ -263,6 +263,174 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/08/01/总结技术/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="玉英（小丸子）">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://imgsrc.baidu.com/forum/w%3D580/sign=aa09a14c8244ebf86d716437e9f8d736/ea6dc811728b4710787b6583c6cec3fdfd032371.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="玉英博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/08/01/总结技术/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-01T18:35:36+08:00">
+                2017-08-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>webpack与gulp</p>
+<p>webpack是一个打包工具</p>
+<p>gulp是构建工具</p>
+<p>MVC</p>
+<ol>
+<li>View 传送指令到 Controller</li>
+<li>Controller 完成业务逻辑后，要求 Model 改变状态</li>
+<li>Model 将新的数据发送到 View，用户得到反馈</li>
+</ol>
+<p>MVVM</p>
+<p>model - View - ViewModle</p>
+<p>分离视图和模型 </p>
+<ul>
+<li>ViewModel，注意这里的“Model”指的是View的Model，跟上面那个Model不是一回事。所谓View的Model就是包含View的一些数据属性和操作的这么一个东东，这种模式的关键技术就是数据绑定（data binding），View的变化会直接影响ViewModel，ViewModel的变化或者内容也会直接体现在View上。这种模式实际上是框架替应用开发者做了一些工作，开发者只需要较少的代码就能实现比较复杂的交互。</li>
+</ul>
+<p>布局</p>
+<p>less</p>
+<ul>
+<li>变量是@</li>
+<li>.class()作为mixin</li>
+<li>&amp;:entend(.class); 直接引入</li>
+<li>直接申明函数<br>.mixin(@x: 200px) {<br>  text-align: center;<br>  width: @x;<br>}</li>
+<li>when 代替if</li>
+<li>// 循环<br>.loop(@counter) when (@counter &gt; 0) {<br>  .loop((@counter - 1));    // next iteration<br>  width: (10px * @counter); // code for each iteration<br>}</li>
+</ul>
+<p>SASS</p>
+<ul>
+<li>变量 $fontSize: 12px;  也可以以数组。map形式出现， ！global。！default</li>
+<li>变量作为属性或在某些特殊情况下等则必须要以#{$variables}</li>
+<li>@each遍历<br>$headings: (h1: 2em, h2: 1.5em, h3: 1.2em);<br>@each $header, $size in $headings {<br>  #{$header} {<pre><code>font-size: $size;
+</code></pre>  }<br>}</li>
+<li>// mixin<br>@mixin center($aa: 100px) {<br>  width: $aa;<br>}<br>.demo {<br>  @include center(80px)<br>}</li>
+<li>继承 @extend .class;</li>
+</ul>
+<p>安全问题</p>
+<p>XSS（cross-site-srcipting）</p>
+<p>js注入</p>
+<ul>
+<li>将前端输出数据都进行转义encodeURI</li>
+<li>cookie 加上HttPOnly</li>
+</ul>
+<p>CSRF攻击—跨站请求伪造</p>
+<p>第三方请求调用</p>
+<h4 id="es6-新特性"><a href="#es6-新特性" class="headerlink" title="es6 新特性"></a>es6 新特性</h4><p>箭头操作符<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var arr = [1, 2, 3];</div><div class="line">arr.forEach(<span class="keyword">function</span>(i, v, a) &#123;</div><div class="line">  console.log(v);</div><div class="line">&#125;);</div><div class="line">arr.forEach(v = &gt; console.log(v));</div></pre></td></tr></table></figure></p>
+<h4 id="类的支持"><a href="#类的支持" class="headerlink" title="类的支持"></a>类的支持</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">//类的定义</div><div class="line">class baseModel &#123;</div><div class="line">  //ES6中新型构造器</div><div class="line">  constructor(options, data) &#123; // class constructor，node.js 5.6暂时不支持options = &#123;&#125;, data = []这样传参</div><div class="line">    this.name = <span class="string">'Base'</span>;</div><div class="line">    this.url = <span class="string">'http://azat.co/api'</span>;</div><div class="line">    this.data = data;</div><div class="line">    this.options = options;</div><div class="line">  &#125;</div><div class="line">  //实例方法</div><div class="line">   <span class="function"><span class="title">getName</span></span>() &#123; // class method</div><div class="line">      console.log(`Class name: <span class="variable">$&#123;this.name&#125;</span>`);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//测试我们的类</div><div class="line">var animal=new Animal(<span class="string">'dummy'</span>),</div><div class="line">wayou=new Programmer(<span class="string">'wayou'</span>);</div><div class="line">animal.sayName(); //输出 ‘My name is dummy’</div><div class="line">wayou.sayName(); //输出 ‘My name is wayou’</div><div class="line">wayou.program(); //输出 ‘I<span class="string">'m coding...’</span></div></pre></td></tr></table></figure>
+<h4 id="字符串模板"><a href="#字符串模板" class="headerlink" title="字符串模板"></a>字符串模板</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 产生一个随机数</div><div class="line">var num = Math.random();</div><div class="line">// 将这个数字输出到console</div><div class="line">console.log(`your num is <span class="variable">$&#123;num&#125;</span>`);</div></pre></td></tr></table></figure>
+<h4 id="解构"><a href="#解构" class="headerlink" title="解构"></a>解构</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var [x,y]=getVal(),//函数返回值的解构</div><div class="line">    [name,,age]=[<span class="string">'wayou'</span>,<span class="string">'male'</span>,<span class="string">'secrect'</span>];//数组解构</div><div class="line"></div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">getVal</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> [ 1, 2 ];</div><div class="line">&#125;</div><div class="line"></div><div class="line">console.log(<span class="string">'x:'</span>+x+<span class="string">', y:'</span>+y);//输出：x:1, y:2 </div><div class="line">console.log(<span class="string">'name:'</span>+name+<span class="string">', age:'</span>+age);//输出： name:wayou, age:secrect</div></pre></td></tr></table></figure>
+<h4 id="let与const-关键字"><a href="#let与const-关键字" class="headerlink" title="let与const 关键字"></a>let与const 关键字</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="built_in">let</span> i=0;i&lt;2;i++)console.log(i);//输出: 0,1</div><div class="line">console.log(i);//输出：undefined,严格模式下会报错</div></pre></td></tr></table></figure>
+<h4 id="Promises"><a href="#Promises" class="headerlink" title="Promises"></a>Promises</h4><p>Promises是处理异步操作的一种模式，之前在很多三方库中有实现，比如jQuery的deferred 对象。当你发起一个异步请求，并绑定了.when(), .done()等事件处理程序时，其实就是在应用promise模式。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">//创建promise</div><div class="line">var promise = new Promise(<span class="keyword">function</span>(resolve, reject) &#123;</div><div class="line">    // 进行一些异步或耗时操作</div><div class="line">    <span class="keyword">if</span> ( /*如果成功 */ ) &#123;</div><div class="line">        resolve(<span class="string">"Stuff worked!"</span>);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        reject(Error(<span class="string">"It broke"</span>));</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">//绑定处理程序</div><div class="line">promise.then(<span class="keyword">function</span>(result) &#123;</div><div class="line">  //promise成功的话会执行这里</div><div class="line">    console.log(result); // <span class="string">"Stuff worked!"</span></div><div class="line">&#125;, <span class="keyword">function</span>(err) &#123;</div><div class="line">  //promise失败会执行这里</div><div class="line">    console.log(err); // Error: <span class="string">"It broke"</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/07/28/跨域问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -339,7 +507,7 @@
       
         
           
-            <h4 id="document-domain"><a href="#document-domain" class="headerlink" title="document.domain"></a>document.domain</h4><p>这跨域个方法主要适用于 ajax跨子域，比如在 a.takozhang.cn 中使用ajax调用 takozhang.cn 中的接口时。</p>
+            <h4 id="document-domain-子域名跨域"><a href="#document-domain-子域名跨域" class="headerlink" title="document.domain 子域名跨域"></a>document.domain 子域名跨域</h4><p>这跨域个方法主要适用于 ajax跨子域，比如在 a.takozhang.cn 中使用ajax调用 takozhang.cn 中的接口时。</p>
 <ol>
 <li>在被访问接口的服务器中，新建一个proxy.html文件，里面的代码是：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">  document.domain = <span class="string">'takozhang.cn'</span></div><div class="line">&lt;/script&gt;</div><div class="line">&lt;script src = <span class="string">'jquery.js'</span>&gt;&lt;/script&gt;</div><div class="line">2. 在调用页面使用一个隐藏的iframe，地址指向proxy.html，代码如下：</div><div class="line">&lt;iframe src=<span class="string">"http://takozhang.cn/proxy.html"</span> id=<span class="string">"proxy"</span>&gt;&lt;/iframe&gt;</div><div class="line">3. 在a.takozhang.cn服务器中进行ajax发送请求的时候，代码如下：</div><div class="line">var iframe = document.getElementById(<span class="string">'proxy'</span>).contentWindow;</div><div class="line">iframe.window.JQuery.ajax(&#123;</div><div class="line">  url: <span class="string">'takozhang.cn/php/index.php'</span>,</div><div class="line">  method: <span class="string">'post'</span>,</div><div class="line">  success: <span class="keyword">function</span>(data)&#123;&#125;,</div><div class="line">  error: <span class="keyword">function</span>(err)&#123;&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </li>
@@ -348,12 +516,12 @@
 <ol>
 <li>客户端动态创建script标签，并利用src属性去向服务端获取数据 src=”www.a.com/index.php?callback=fn”,切记一定要在后面加上一个callback回调函数</li>
 <li>服务端会将请求的json数据放在这个你指定的回调函数里作为参数返回回来，如服务器会返回 fn(data),</li>
-<li>客户端写好回调函数的实现，处理数据。</li>
+<li>客户端写好回调函数的实现，处理数据。<br>4.但是jsonp是存在着一定的风险的,就是你用jsonp, 然后黑客给你发了一张图片。图片的src=”xxx/xxx/xx.jsonp?data=sxx&amp;name=xxxx”,  你点击后。直接请求成功。 。这个就是CSRF 。跨域请求伪造<br>还有一个比较典型的安全问题、XSS 。跨脚本注入js</li>
 </ol>
 <h4 id="window-name-也就是-iframe"><a href="#window-name-也就是-iframe" class="headerlink" title="window.name 也就是 iframe"></a>window.name 也就是 iframe</h4><p>只用于两个完全不同源的域，比如www.a.com   www.b.com<br>window.name属性有个特征：即在一个窗口(window)的生命周期内,窗口载入的所有的页面都是共享一个window.name</p>
 <ol>
 <li><p>在www.a.com的服务器中创建一个iframe，并引入www.b.com，代码如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">  var inf=document.createElement(<span class="string">"iframe"</span>);       //创建iframe</div><div class="line">  inf.src=<span class="string">"http://www.b.com/index.html"</span>+<span class="string">"?h=5"</span>  //加载数据页www.b.com/index.html的同时携带参数h=5</div><div class="line">  var body=document.getElementsByTagName(<span class="string">"body"</span>)[0];</div><div class="line">  body.appendChild(inf);                          //引入iframe</div><div class="line"></div><div class="line">  inf.onload=<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">      inf.src=<span class="string">'http://www.a.com/index.html'</span>       //iframe加载完成，加载www.a.com域下边的空白页index.html</div><div class="line">      console.log(inf.contentWindow.name)        //输出window.name中的数据</div><div class="line">      body.removeChild(inf)                      //清除iframe</div><div class="line">  &#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">  var inf=document.createElement(<span class="string">"iframe"</span>);       //创建iframe</div><div class="line">  inf.src=<span class="string">"http://www.b.com/index.html"</span>+<span class="string">"?h=5"</span>  //加载数据页www.b.com/index.html的同时携带参数h=5</div><div class="line">  var body=document.getElementsByTagName(<span class="string">"body"</span>)[0];</div><div class="line">  body.appendChild(inf);                          //引入iframe</div><div class="line"></div><div class="line">  inf.onload=<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">    inf.src=<span class="string">'http://www.a.com/index.html'</span>       //iframe加载完成，加载www.a.com域下边的空白页index.html</div><div class="line">    console.log(inf.contentWindow.name)        //输出window.name中的数据</div><div class="line">    body.removeChild(inf)                      //清除iframe</div><div class="line">  &#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
 </li>
 <li><p>在www.b.com中的index.html中进行ajax，并把返回值通过window.name储存，代码如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var str=window.location.href.substr(-1,1);      //获取url中携带的参数值</div><div class="line">$.ajax(&#123;</div><div class="line">    <span class="built_in">type</span>:<span class="string">"post"</span>,</div><div class="line">    url:<span class="string">"http://www.b.com/index.php"</span>+<span class="string">"?m="</span>+str, //通过ajax将查询参数传给php页面</div><div class="line">    success:<span class="keyword">function</span>(res)&#123;</div><div class="line">        window.name=res                         //将接收到的查询数据赋值给window.name</div><div class="line">    &#125;,</div><div class="line">    error:<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">        window.name=<span class="string">'error'</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
@@ -361,9 +529,9 @@
 </ol>
 <p>整体过程就是：a服务器的页面中中创建一个iframe，iframe引入b服务器中进行ajax的页面，该页面ajax之后将返回值赋值给window.name，<br>a服务器页面监听iframe事件的加载完成，再将iframe地址指向a服务器中的某个空白页面，然后读取iframe的window.name。</p>
 <h4 id="window-postMessage-message-targetOrigin"><a href="#window-postMessage-message-targetOrigin" class="headerlink" title="window.postMessage(message,targetOrigin)"></a>window.postMessage(message,targetOrigin)</h4><p>这个方法是html5新引进的特性，可以使用它来向其它的window对象发送消息，<br>无论这个window对象是属于同源或不同源，目前IE8+、FireFox、Chrome、Opera等浏览器都已经支持window.postMessage方法。</p>
-<p>在父页面中嵌入子页面，通过postMessage发送数据。parent.com/index.html中的代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;iframe id=<span class="string">"ifr"</span> src=<span class="string">"child.com/index.html"</span>&gt;&lt;/iframe&gt;</div><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">window.onload = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    var ifr = document.getElementById(<span class="string">'ifr'</span>);</div><div class="line">    var targetOrigin = <span class="string">'http://child.com'</span>;</div><div class="line">    // 若写成<span class="string">'http://child.com/c/proxy.html'</span>效果一样</div><div class="line">    // 若写成<span class="string">'http://c.com'</span>就不会执行postMessage了</div><div class="line">    ifr.contentWindow.postMessage(<span class="string">'I was there!'</span>, targetOrigin);</div><div class="line">&#125;;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
-<p>在子页面中通过message事件监听父页面发送来的消息并显示。child.com/index.html中的代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">window.addEventListener(<span class="string">'message'</span>, <span class="keyword">function</span>(event)&#123;</div><div class="line">    // 通过origin属性判断消息来源地址</div><div class="line">    <span class="keyword">if</span> (event.origin == <span class="string">'http://parent.com'</span>) &#123;</div><div class="line">        alert(event.data);    // 弹出<span class="string">"I was there!"</span></div><div class="line">        alert(event.source);</div><div class="line">        // 对parent.com、index.html中window对象的引用</div><div class="line">        // 但由于同源策略，这里event.source不可以访问window对象</div><div class="line">    &#125;</div><div class="line">&#125;, <span class="literal">false</span>);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
-<p>主要是用来传递信息，父页面使用window.postMessage(),子页面使用window.addEventListener(‘message’,function(event){})</p>
+<p>在父页面中嵌入子页面，通过postMessage发送数据。parent.com/index.html中的代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;iframe id=<span class="string">"ifr"</span> src=<span class="string">"child.com/index.html"</span>&gt;&lt;/iframe&gt;</div><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">window.onload = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">  var ifr = document.getElementById(<span class="string">'ifr'</span>);</div><div class="line">  var targetOrigin = <span class="string">'http://child.com'</span>;</div><div class="line">  // 若写成<span class="string">'http://child.com/c/proxy.html'</span>效果一样</div><div class="line">  // 若写成<span class="string">'http://c.com'</span>就不会执行postMessage了</div><div class="line">  ifr.contentWindow.postMessage(<span class="string">'I was there!'</span>, targetOrigin);</div><div class="line">&#125;;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>在子页面中通过message事件监听父页面发送来的消息并显示。child.com/index.html中的代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">window.addEventListener(<span class="string">'message'</span>, <span class="keyword">function</span>(event)&#123;</div><div class="line">  // 通过origin属性判断消息来源地址</div><div class="line">  <span class="keyword">if</span> (event.origin == <span class="string">'http://parent.com'</span>) &#123;</div><div class="line">      alert(event.data);    // 弹出<span class="string">"I was there!"</span></div><div class="line">      alert(event.source);</div><div class="line">      // 对parent.com、index.html中window对象的引用</div><div class="line">      // 但由于同源策略，这里event.source不可以访问window对象</div><div class="line">  &#125;</div><div class="line">&#125;, <span class="literal">false</span>);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>主要是用来传递信息，父页面使用window.postMessage(),子页面使用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">window.addEventListener(<span class="string">'message'</span>,<span class="keyword">function</span>(event)&#123;&#125;)</div></pre></td></tr></table></figure></p>
 
           
         
@@ -1253,154 +1421,6 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/04/27/React组件间通讯/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="玉英（小丸子）">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://imgsrc.baidu.com/forum/w%3D580/sign=aa09a14c8244ebf86d716437e9f8d736/ea6dc811728b4710787b6583c6cec3fdfd032371.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="玉英博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/27/React组件间通讯/" itemprop="url">
-                  React组件间通讯
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-27T13:56:54+08:00">
-                2017-04-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>React开发中难以避免组件之间进行数据通讯，React规定了明确的单项数据流，利用props将数据从父组件传递给自组件。所以，在父与子的组件通讯中，可以很容易的通过props实现。但是，实际开发中不仅仅只有父子关系的组件关联，还会有多种组件关联关系的数据通讯，这里整理几种组件关系下的通讯方式。</p>
-<h3 id="父组件向子组件通讯"><a href="#父组件向子组件通讯" class="headerlink" title="父组件向子组件通讯"></a>父组件向子组件通讯</h3><p>父组件向子组件的通讯是单向的，react提供了props来进行父到子的数据传递。</p>
-<p>父组件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Child <span class="keyword">from</span> <span class="string">'./Child'</span>;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">const</span> msg = <span class="string">'hello world'</span>;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;Child msg /&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>子组件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">const</span> &#123; msg &#125; = <span class="keyword">this</span>.props;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;div&gt;&#123;msg&#125;&lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这个例子可以看出，子组件可以直接调用this.props.msg使用父组件传递进来的数据。<br>上级的props和state改变，会导致子组件的生命周期改变。</p>
-<h3 id="子组件向父组件通讯"><a href="#子组件向父组件通讯" class="headerlink" title="子组件向父组件通讯"></a>子组件向父组件通讯</h3><p>子组件向父组件通讯仍然可以通过props进行，以回调函数的形式进行数据交互，父组件讲一个函数以props传递给组数据。参数为子组件传递过来的数据，子组件出发通讯时，调用父组件props方法，把数据作为参数传过去，触发由子组件向父组件的通讯。</p>
-<p>父组件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Child <span class="keyword">from</span> <span class="string">'./Child'</span>;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">  render () &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;Child</div><div class="line">        onChange=&#123;(name) =&gt; &#123;</div><div class="line">          console.log(name);</div><div class="line">        &#125;&#125;</div><div class="line">      /&gt;</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>子组件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">  handleChange(e) &#123;</div><div class="line">    <span class="keyword">this</span>.props.onChange(e.target.value);</div><div class="line">  &#125;</div><div class="line">  render() &#123;</div><div class="line">    &lt;div&gt;</div><div class="line">      &lt;input type="text" onChange=&#123;this.handleChange.bind(this)&#125;&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>上面例子可以看出，子组件中input出发onchange事件时，调用父组件传递的onChange方法，并且把值传递过去，实现子组件向父组件的通讯。</p>
-<h3 id="兄弟组件间通讯"><a href="#兄弟组件间通讯" class="headerlink" title="兄弟组件间通讯"></a>兄弟组件间通讯</h3><p>两个组件之间没有联系，但有相同的父组件之间通讯，这里整合了父组件向子组件通讯以及子组件向父组件通讯的方法，其中一个组件向共同的父组件进行通讯，然后父组件再向对应的子组件进行通讯实现兄弟组件间的数据通讯。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Child1 <span class="keyword">from</span> <span class="string">'./Child1'</span>;</div><div class="line"><span class="keyword">import</span> Child2 <span class="keyword">from</span> <span class="string">'./Child2'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">constructor</span>(props) &#123;</div><div class="line">    <span class="keyword">super</span>(props);</div><div class="line">    <span class="keyword">this</span>.state = &#123;</div><div class="line">      <span class="attr">message</span>: <span class="string">''</span></div><div class="line">    &#125;;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  handleChange(value) &#123;</div><div class="line">    <span class="keyword">this</span>.setState(&#123;</div><div class="line">      <span class="attr">message</span>: value</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;Child1 onChange=&#123;this.handleChange.bind(this)&#125; /&gt;</div><div class="line">        &lt;Child2 msg=&#123;this.state.message&#125; /&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Child1组件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child1</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">constructor</span>(props) &#123;</div><div class="line">    <span class="keyword">super</span>(props);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  handleChange(e) &#123;</div><div class="line">    <span class="built_in">console</span>.log(e.target.value);</div><div class="line">    <span class="keyword">this</span>.props.onChange(e.target.value);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;input type="text" onChange=&#123;this.handleChange.bind(this)&#125;/&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>Child2组件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child2</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;div&gt;</div><div class="line">        &#123; this.props.msg &#125;</div><div class="line">      &lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>以上例子，Child1的inputonChange事件会将message传递给Parent组件，Parent收到message后，更新state，再传递给Child2，实现兄弟组件之间的通讯。</p>
-<h3 id="其他方式实现组件间通讯"><a href="#其他方式实现组件间通讯" class="headerlink" title="其他方式实现组件间通讯"></a>其他方式实现组件间通讯</h3><h4 id="Flux-和-Redux"><a href="#Flux-和-Redux" class="headerlink" title="Flux 和 Redux"></a>Flux 和 Redux</h4><p><a href="https://github.com/facebook/flux" target="_blank" rel="external">Flux</a> 是 Facebook 推出的一种应用架构方案，用以组织代码，安排内部逻辑，是项目更便于开发和维护。</p>
-<p><a href="http://redux.js.org/" target="_blank" rel="external">Redux</a> 是 JavaScript 状态容器，提供可预测化得状态管理。可以让你构建一致化的应用，运行于不同的环境，并且易于测试。</p>
-<h4 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h4><p>观察者模式也叫做<strong><em>发布者-订阅者模式</em></strong>，发布者发布事件，订阅者监听事件并作出反应。</p>
-<blockquote>
-<p>Redux 内部的实现，其实也是基于观察者模式的，reducer 的调用结果，存储在 store 内部的 state 中，并在每一次 reducer 的调用中并作为参数传入。</p>
-</blockquote>
-<p>同样是兄弟组件之间通讯，用观察者模式进行改造，如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;Child1 /&gt;</div><div class="line">        &lt;Child2 /&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Child1组件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> eventProxy <span class="keyword">from</span> <span class="string">'./eventProxy'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child1</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">  handleChange(e) &#123;</div><div class="line">    eventProxy.trigger(<span class="string">'msg'</span>, e.target.value);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;input type="text" onChange=&#123;this.handleChange.bind(this)&#125;/&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>Child2组件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child2</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">constructor</span>(props) &#123;</div><div class="line">    <span class="keyword">super</span>(props);</div><div class="line">    <span class="keyword">this</span>.state = &#123;</div><div class="line">      <span class="attr">msg</span>: <span class="string">''</span></div><div class="line">    &#125;;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  componentDidMount() &#123;</div><div class="line">    eventProxy.on(<span class="string">'msg'</span>, (msg) =&gt; &#123;</div><div class="line">      <span class="keyword">this</span>.setState(&#123;</div><div class="line">        msg</div><div class="line">      &#125;);</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;div&gt;</div><div class="line">        &#123; this.state.msg &#125;</div><div class="line">      &lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>以上，同样可以实现兄弟组件之间的通讯，是不是很方便？！</p>
-<p>来看看神奇的 eventProxy 源码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">  <span class="attr">onObj</span>: &#123;&#125;,</div><div class="line">  <span class="attr">oneObj</span>: &#123;&#125;,</div><div class="line">  <span class="attr">on</span>: <span class="function"><span class="keyword">function</span>(<span class="params">key, fn</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.onObj[key] === <span class="literal">undefined</span>) &#123;</div><div class="line">      <span class="keyword">this</span>.onObj[key] = [];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.onObj[key].push(fn);</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">one</span>: <span class="function"><span class="keyword">function</span>(<span class="params">key, fn</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.oneObj[key] === <span class="literal">undefined</span>) &#123;</div><div class="line">      <span class="keyword">this</span>.oneObj[key] = [];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.oneObj[key].push(fn);</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">off</span>: <span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.onObj[key] = [];</div><div class="line">    <span class="keyword">this</span>.oneObj[key] = [];</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">trigger</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> key, args;</div><div class="line">    <span class="keyword">if</span>(<span class="built_in">arguments</span>.length == <span class="number">0</span>) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">    key = <span class="built_in">arguments</span>[<span class="number">0</span>];</div><div class="line">    args = [].concat(<span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>, <span class="number">1</span>));</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.onObj[key] !== <span class="literal">undefined</span></div><div class="line">      &amp;&amp; <span class="keyword">this</span>.onObj[key].length &gt; <span class="number">0</span>) &#123;</div><div class="line">      <span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> <span class="keyword">this</span>.onObj[key]) &#123;</div><div class="line">        <span class="keyword">this</span>.onObj[key][i].apply(<span class="literal">null</span>, args);</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.oneObj[key] !== <span class="literal">undefined</span></div><div class="line">      &amp;&amp; <span class="keyword">this</span>.oneObj[key].length &gt; <span class="number">0</span>) &#123;</div><div class="line">      <span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> <span class="keyword">this</span>.oneObj[key]) &#123;</div><div class="line">        <span class="keyword">this</span>.oneObj[key][i].apply(<span class="literal">null</span>, args);</div><div class="line">        <span class="keyword">this</span>.oneObj[key][i] = <span class="literal">undefined</span>;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">this</span>.oneObj[key] = [];</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>eventProxy中，总共有 on, one, off, trigger这4个函数：</p>
-<p>on, one: 用于订阅者监听相应的事件，并将事件相应时的函数作为参数，on 与 one 的唯一区别就是，one 只会触发一次，on 是每次都会触发。<br>off: 用于解除所有订阅了某个事件的所有函数<br>trigger: 用于发布者发布事件，将除第一参数（事件名）的其他参数，作为新的参数，触发使用 on 与 one 进行订阅的函数。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/04/27/如何安装Git/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1528,7 +1548,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/04/27/hexo搭建Github个人博客/">
+    <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/04/27/如何安装Nodejs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="玉英（小丸子）">
@@ -1550,8 +1570,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/04/27/hexo搭建Github个人博客/" itemprop="url">
-                  使用Hexo搭建Github个人博客
+                <a class="post-title-link" href="/2017/04/27/如何安装Nodejs/" itemprop="url">
+                  如何安装Nodejs
                 </a>
               
             
@@ -1604,33 +1624,19 @@
       
         
           
-            <p>网上关于hexo搭建博客的文章已经有很多，这里只做为个人博客的试笔文章，记录下hexo博客搭建的过程和心得。</p>
-<h3 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h3><blockquote>
-<p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
-</blockquote>
-<h3 id="搭建准备"><a href="#搭建准备" class="headerlink" title="搭建准备"></a>搭建准备</h3><ul>
-<li>Node.js</li>
-<li>Git &amp; Github</li>
-</ul>
-<p>Node.js安装方式很多，见 <a href="../如何安装Nodejs/">如何安装Node.js</a> 文章<br>Git 安装方法，见 <a href="../如何安装Git/">如何安装Git</a> 文章</p>
-<p>node.js 和 git 都安装完成后即可开始搭建hexo个人博客了。</p>
-<h3 id="开始搭建"><a href="#开始搭建" class="headerlink" title="开始搭建"></a>开始搭建</h3><h4 id="安装-hexo"><a href="#安装-hexo" class="headerlink" title="安装 hexo"></a>安装 hexo</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> d:/hexo</div><div class="line">$ npm install hexo-cli -g</div><div class="line">$ hexo init blog</div><div class="line">$ <span class="built_in">cd</span> blog</div><div class="line">$ npm install</div><div class="line">$ hexo g <span class="comment"># 或者hexo generate</span></div><div class="line">$ hexo s <span class="comment"># 或者hexo server，可以在http://localhost:4000/ 查看</span></div></pre></td></tr></table></figure>
-<h4 id="这里有必要提下Hexo常用的几个命令："><a href="#这里有必要提下Hexo常用的几个命令：" class="headerlink" title="这里有必要提下Hexo常用的几个命令："></a>这里有必要提下Hexo常用的几个命令：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span>/themes</div><div class="line">hexo generate (hexo g) 生成静态文件，会在当前目录下生成一个新的叫做public的文件夹/</div><div class="line">hexo server (hexo s) 启动本地web服务，用于博客的预览</div><div class="line">hexo deploy (hexo d) 生成部署</div></pre></td></tr></table></figure>
-<h4 id="目前我安装所用的本地环境如下：-可以通过hexo-v查看"><a href="#目前我安装所用的本地环境如下：-可以通过hexo-v查看" class="headerlink" title="目前我安装所用的本地环境如下：(可以通过hexo -v查看)"></a>目前我安装所用的本地环境如下：(可以通过hexo -v查看)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">hexo: 3.2.0</div><div class="line">hexo-cli: 1.0.1</div><div class="line">os: Windows_NT 6.3.9600 win32 x64</div><div class="line">http_parser: 2.5.2</div><div class="line">node: 4.4.1</div><div class="line">v8: 4.5.103.35</div><div class="line">uv: 1.8.0</div><div class="line">zlib: 1.2.8</div><div class="line">ares: 1.10.1-DEV</div><div class="line">icu: 56.1</div><div class="line">modules: 46</div><div class="line">openssl: 1.0.2g</div></pre></td></tr></table></figure>
-<h4 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div></pre></td></tr></table></figure>
-<h4 id="应用主题"><a href="#应用主题" class="headerlink" title="应用主题"></a>应用主题</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span>/themes</div><div class="line">$ git <span class="built_in">clone</span> git@github.com:iissnan/hexo-theme-next.git</div><div class="line">$ git pull</div><div class="line">$ hexo g <span class="comment"># 生成</span></div><div class="line">$ hexo s <span class="comment"># 启动本地web服务器</span></div></pre></td></tr></table></figure>
-<h4 id="二：Github-Pages设置"><a href="#二：Github-Pages设置" class="headerlink" title="二：Github Pages设置"></a>二：Github Pages设置</h4><p>什么是Github Pages</p>
-<p>GitHub Pages 本用于介绍托管在GitHub的项目，不过，由于他的空间免费稳定，用来做搭建一个博客再好不过了。</p>
-<p>每个帐号只能有一个仓库来存放个人主页，而且仓库的名字必须是username/username.github.io，这是特殊的命名约定。你可以通过<a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a> 来访问你的个人主页。</p>
-<p>这里特别提醒一下，需要注意的个人主页的网站内容是在master分支下的。</p>
-<h4 id="使用hexo-deploy部署"><a href="#使用hexo-deploy部署" class="headerlink" title="使用hexo deploy部署"></a>使用hexo deploy部署</h4><p>hexo deploy可以部署到很多平台，具体可以参考这个链接. 如果部署到github，需要在配置文件_config.xml中作如下修改：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  <span class="built_in">type</span>: git</div><div class="line">  repo: git@github.com:jiji262/jiji262.github.io.git</div><div class="line">  branch: master</div><div class="line"></div><div class="line">$ <span class="built_in">cd</span>/blog</div><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure></p>
-<p> 然后在命令行中执行<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo d</div></pre></td></tr></table></figure></p>
-<p> 即可完成部署。</p>
-<p> 1）如果出现下面这样的错误：<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Permission denied (publickey).</div><div class="line">fatal: Could not <span class="built_in">read</span> from remote repository.</div><div class="line">Please make sure you have the correct access rights</div><div class="line">and the repository exists.</div></pre></td></tr></table></figure></p>
-<p>则是因为没有设置好public key所致。<br>在本机生成public key(参考github帮助)：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">＃ssh-keygen -t rsa -b 4096 -C <span class="string">"963022018@qq.com"</span></div><div class="line">回车</div><div class="line">Overwrite (y/n)? y</div><div class="line">yuying$ ls <span class="_">-a</span></div><div class="line"><span class="built_in">cd</span> /Users/yuying/.ssh/</div><div class="line">.ssh yuying$ ls <span class="_">-a</span></div><div class="line">cat id_rsa.pub</div></pre></td></tr></table></figure></p>
-<p>然后在#user_id/.ssh目录下会生成两个文件，id_rsa.pub和id_rsa.<br>然后登陆github，在SSH设置页面添加上刚才的public key文件也就是id_rsa.pub的内容即可。</p>
-<h4 id="Hexo-主题配置"><a href="#Hexo-主题配置" class="headerlink" title="Hexo 主题配置"></a>Hexo 主题配置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Header</span></div><div class="line">menu:</div><div class="line">  主页: /</div><div class="line">  所有文章: /archives</div><div class="line">  <span class="comment"># 随笔: /tags/随笔</span></div><div class="line"></div><div class="line"><span class="comment"># SubNav</span></div><div class="line">subnav:</div><div class="line">  github: <span class="string">"dushao103500"</span></div><div class="line">  weibo: <span class="string">"DanD逆光之处是暖伤"</span></div><div class="line">  rss: <span class="string">"#"</span></div><div class="line">  zhihu: <span class="string">"#"</span></div><div class="line">  <span class="comment">#douban: "#"</span></div><div class="line">  <span class="comment">#mail: "dushao1314@foxmail.com"</span></div><div class="line">  <span class="comment">#facebook: "#"</span></div><div class="line">  <span class="comment">#google: "#"</span></div><div class="line">  <span class="comment">#twitter: "#"</span></div><div class="line">  <span class="comment">#linkedin: "#"</span></div><div class="line"></div><div class="line">rss: /atom.xml</div><div class="line"></div><div class="line"><span class="comment"># Content</span></div><div class="line">excerpt_link: more</div><div class="line">fancybox: <span class="literal">true</span></div><div class="line">mathjax: <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment"># Miscellaneous</span></div><div class="line">google_analytics: <span class="string">''</span></div><div class="line">favicon: /favicon.png</div><div class="line"></div><div class="line"><span class="comment">#你的头像url</span></div><div class="line">avatar: <span class="string">""</span></div><div class="line"><span class="comment">#是否开启分享</span></div><div class="line">share: <span class="literal">true</span></div><div class="line"><span class="comment">#是否开启多说评论，填写你在多说申请的项目名称 duoshuo: duoshuo-key</span></div><div class="line"><span class="comment">#若使用disqus，请在博客config文件中填写disqus_shortname，并关闭多说评论</span></div><div class="line">duoshuo: <span class="literal">true</span></div><div class="line"><span class="comment">#是否开启云标签</span></div><div class="line">tagcloud: <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment">#是否开启友情链接</span></div><div class="line"><span class="comment">#不开启——</span></div><div class="line"><span class="comment">#friends: false</span></div><div class="line"></div><div class="line"><span class="comment">#是否开启“关于我”。</span></div><div class="line"><span class="comment">#不开启——</span></div><div class="line"><span class="comment">#aboutme: false</span></div><div class="line"><span class="comment">#开启——</span></div><div class="line">aboutme: 我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div></pre></td></tr></table></figure>
-<p>至此，Hexo+Github Pages搭建个人博客完成</p>
+            <p>安装Node.js的方式有很多，这里推荐使用 <a href="https://github.com/creationix/nvm" target="_blank" rel="external">nvm</a> 版本控制器进行安装。因为可以进行node.js版本管理，方便升级和倒退。</p>
+<h4 id="安装-nvm"><a href="#安装-nvm" class="headerlink" title="安装 nvm"></a>安装 nvm</h4><p><strong>下载 nvm</strong></p>
+<p>curl：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ curl https://raw.github.com/creationix/nvm/master/install.sh | sh</div></pre></td></tr></table></figure></p>
+<p>wget:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh</div></pre></td></tr></table></figure></p>
+<p>brew:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ brew install nvm</div></pre></td></tr></table></figure></p>
+<p>完成后 nvm 就安装在了 ~/.nvm 目录，需要为 nvm 配置环境变量，即可在终端使用 nvm 了。</p>
+<p><strong>配置 nvm 环境变量</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ vim ~/.bash_profile</div></pre></td></tr></table></figure>
+<p>添加如下内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">"<span class="variable">$HOME</span>/.nvm"</span></div><div class="line">[ <span class="_">-s</span> <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> ] &amp;&amp; . <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span></div></pre></td></tr></table></figure>
+<p>brew 配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> NUM_DIR=~/.nvm</div><div class="line"><span class="built_in">source</span> $(brew --prefix nvm)/nvm.sh</div></pre></td></tr></table></figure></p>
+<h4 id="nvm-安装-node-js"><a href="#nvm-安装-node-js" class="headerlink" title="nvm 安装 node.js"></a>nvm 安装 node.js</h4><p>安装完成后，重启终端并执行下列命令即可安装 Node.js。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ nvm install stable</div></pre></td></tr></table></figure>
 
           
         
@@ -1706,7 +1712,7 @@
                alt="玉英（小丸子）" />
           <p class="site-author-name" itemprop="name">玉英（小丸子）</p>
            
-              <p class="site-description motion-element" itemprop="description">过程用心，结果随缘。</p>
+              <p class="site-description motion-element" itemprop="description">将来的你，一定会感谢现在拼命努力的自己</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -1714,7 +1720,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

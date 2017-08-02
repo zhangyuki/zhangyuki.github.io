@@ -1,0 +1,740 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="玉英博客" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="webpack与gulp webpack是一个打包工具 gulp是构建工具 MVC  View 传送指令到 Controller Controller 完成业务逻辑后，要求 Model 改变状态 Model 将新的数据发送到 View，用户得到反馈  MVVM model - View - ViewModle 分离视图和模型   ViewModel，注意这里的“Model”指的是View的Mode">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="玉英博客">
+<meta property="og:url" content="http://zhangyuki.github.io/2017/08/01/总结技术/index.html">
+<meta property="og:site_name" content="玉英博客">
+<meta property="og:description" content="webpack与gulp webpack是一个打包工具 gulp是构建工具 MVC  View 传送指令到 Controller Controller 完成业务逻辑后，要求 Model 改变状态 Model 将新的数据发送到 View，用户得到反馈  MVVM model - View - ViewModle 分离视图和模型   ViewModel，注意这里的“Model”指的是View的Mode">
+<meta property="og:updated_time" content="2017-08-02T09:46:23.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="玉英博客">
+<meta name="twitter:description" content="webpack与gulp webpack是一个打包工具 gulp是构建工具 MVC  View 传送指令到 Controller Controller 完成业务逻辑后，要求 Model 改变状态 Model 将新的数据发送到 View，用户得到反馈  MVVM model - View - ViewModle 分离视图和模型   ViewModel，注意这里的“Model”指的是View的Mode">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhangyuki.github.io/2017/08/01/总结技术/"/>
+
+
+
+
+
+  <title> | 玉英博客</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">玉英博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">家庭、工作、学习、旅行</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/08/01/总结技术/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="玉英（小丸子）">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://imgsrc.baidu.com/forum/w%3D580/sign=aa09a14c8244ebf86d716437e9f8d736/ea6dc811728b4710787b6583c6cec3fdfd032371.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="玉英博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-01T18:35:36+08:00">
+                2017-08-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>webpack与gulp</p>
+<p>webpack是一个打包工具</p>
+<p>gulp是构建工具</p>
+<p>MVC</p>
+<ol>
+<li>View 传送指令到 Controller</li>
+<li>Controller 完成业务逻辑后，要求 Model 改变状态</li>
+<li>Model 将新的数据发送到 View，用户得到反馈</li>
+</ol>
+<p>MVVM</p>
+<p>model - View - ViewModle</p>
+<p>分离视图和模型 </p>
+<ul>
+<li>ViewModel，注意这里的“Model”指的是View的Model，跟上面那个Model不是一回事。所谓View的Model就是包含View的一些数据属性和操作的这么一个东东，这种模式的关键技术就是数据绑定（data binding），View的变化会直接影响ViewModel，ViewModel的变化或者内容也会直接体现在View上。这种模式实际上是框架替应用开发者做了一些工作，开发者只需要较少的代码就能实现比较复杂的交互。</li>
+</ul>
+<p>布局</p>
+<p>less</p>
+<ul>
+<li>变量是@</li>
+<li>.class()作为mixin</li>
+<li>&amp;:entend(.class); 直接引入</li>
+<li>直接申明函数<br>.mixin(@x: 200px) {<br>  text-align: center;<br>  width: @x;<br>}</li>
+<li>when 代替if</li>
+<li>// 循环<br>.loop(@counter) when (@counter &gt; 0) {<br>  .loop((@counter - 1));    // next iteration<br>  width: (10px * @counter); // code for each iteration<br>}</li>
+</ul>
+<p>SASS</p>
+<ul>
+<li>变量 $fontSize: 12px;  也可以以数组。map形式出现， ！global。！default</li>
+<li>变量作为属性或在某些特殊情况下等则必须要以#{$variables}</li>
+<li>@each遍历<br>$headings: (h1: 2em, h2: 1.5em, h3: 1.2em);<br>@each $header, $size in $headings {<br>  #{$header} {<pre><code>font-size: $size;
+</code></pre>  }<br>}</li>
+<li>// mixin<br>@mixin center($aa: 100px) {<br>  width: $aa;<br>}<br>.demo {<br>  @include center(80px)<br>}</li>
+<li>继承 @extend .class;</li>
+</ul>
+<p>安全问题</p>
+<p>XSS（cross-site-srcipting）</p>
+<p>js注入</p>
+<ul>
+<li>将前端输出数据都进行转义encodeURI</li>
+<li>cookie 加上HttPOnly</li>
+</ul>
+<p>CSRF攻击—跨站请求伪造</p>
+<p>第三方请求调用</p>
+<h4 id="es6-新特性"><a href="#es6-新特性" class="headerlink" title="es6 新特性"></a>es6 新特性</h4><p>箭头操作符<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var arr = [1, 2, 3];</div><div class="line">arr.forEach(<span class="keyword">function</span>(i, v, a) &#123;</div><div class="line">  console.log(v);</div><div class="line">&#125;);</div><div class="line">arr.forEach(v = &gt; console.log(v));</div></pre></td></tr></table></figure></p>
+<h4 id="类的支持"><a href="#类的支持" class="headerlink" title="类的支持"></a>类的支持</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">//类的定义</div><div class="line">class baseModel &#123;</div><div class="line">  //ES6中新型构造器</div><div class="line">  constructor(options, data) &#123; // class constructor，node.js 5.6暂时不支持options = &#123;&#125;, data = []这样传参</div><div class="line">    this.name = <span class="string">'Base'</span>;</div><div class="line">    this.url = <span class="string">'http://azat.co/api'</span>;</div><div class="line">    this.data = data;</div><div class="line">    this.options = options;</div><div class="line">  &#125;</div><div class="line">  //实例方法</div><div class="line">   <span class="function"><span class="title">getName</span></span>() &#123; // class method</div><div class="line">      console.log(`Class name: <span class="variable">$&#123;this.name&#125;</span>`);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//测试我们的类</div><div class="line">var animal=new Animal(<span class="string">'dummy'</span>),</div><div class="line">wayou=new Programmer(<span class="string">'wayou'</span>);</div><div class="line">animal.sayName(); //输出 ‘My name is dummy’</div><div class="line">wayou.sayName(); //输出 ‘My name is wayou’</div><div class="line">wayou.program(); //输出 ‘I<span class="string">'m coding...’</span></div></pre></td></tr></table></figure>
+<h4 id="字符串模板"><a href="#字符串模板" class="headerlink" title="字符串模板"></a>字符串模板</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 产生一个随机数</div><div class="line">var num = Math.random();</div><div class="line">// 将这个数字输出到console</div><div class="line">console.log(`your num is <span class="variable">$&#123;num&#125;</span>`);</div></pre></td></tr></table></figure>
+<h4 id="解构"><a href="#解构" class="headerlink" title="解构"></a>解构</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var [x,y]=getVal(),//函数返回值的解构</div><div class="line">    [name,,age]=[<span class="string">'wayou'</span>,<span class="string">'male'</span>,<span class="string">'secrect'</span>];//数组解构</div><div class="line"></div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">getVal</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> [ 1, 2 ];</div><div class="line">&#125;</div><div class="line"></div><div class="line">console.log(<span class="string">'x:'</span>+x+<span class="string">', y:'</span>+y);//输出：x:1, y:2 </div><div class="line">console.log(<span class="string">'name:'</span>+name+<span class="string">', age:'</span>+age);//输出： name:wayou, age:secrect</div></pre></td></tr></table></figure>
+<h4 id="let与const-关键字"><a href="#let与const-关键字" class="headerlink" title="let与const 关键字"></a>let与const 关键字</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="built_in">let</span> i=0;i&lt;2;i++)console.log(i);//输出: 0,1</div><div class="line">console.log(i);//输出：undefined,严格模式下会报错</div></pre></td></tr></table></figure>
+<h4 id="Promises"><a href="#Promises" class="headerlink" title="Promises"></a>Promises</h4><p>Promises是处理异步操作的一种模式，之前在很多三方库中有实现，比如jQuery的deferred 对象。当你发起一个异步请求，并绑定了.when(), .done()等事件处理程序时，其实就是在应用promise模式。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">//创建promise</div><div class="line">var promise = new Promise(<span class="keyword">function</span>(resolve, reject) &#123;</div><div class="line">    // 进行一些异步或耗时操作</div><div class="line">    <span class="keyword">if</span> ( /*如果成功 */ ) &#123;</div><div class="line">        resolve(<span class="string">"Stuff worked!"</span>);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        reject(Error(<span class="string">"It broke"</span>));</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">//绑定处理程序</div><div class="line">promise.then(<span class="keyword">function</span>(result) &#123;</div><div class="line">  //promise成功的话会执行这里</div><div class="line">    console.log(result); // <span class="string">"Stuff worked!"</span></div><div class="line">&#125;, <span class="keyword">function</span>(err) &#123;</div><div class="line">  //promise失败会执行这里</div><div class="line">    console.log(err); // Error: <span class="string">"It broke"</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/28/跨域问题/" rel="prev" title="跨域">
+                跨域 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://imgsrc.baidu.com/forum/w%3D580/sign=aa09a14c8244ebf86d716437e9f8d736/ea6dc811728b4710787b6583c6cec3fdfd032371.jpg"
+               alt="玉英（小丸子）" />
+          <p class="site-author-name" itemprop="name">玉英（小丸子）</p>
+           
+              <p class="site-description motion-element" itemprop="description">将来的你，一定会感谢现在拼命努力的自己</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangyuki" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#es6-新特性"><span class="nav-number">1.</span> <span class="nav-text">es6 新特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类的支持"><span class="nav-number">2.</span> <span class="nav-text">类的支持</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串模板"><span class="nav-number">3.</span> <span class="nav-text">字符串模板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解构"><span class="nav-number">4.</span> <span class="nav-text">解构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#let与const-关键字"><span class="nav-number">5.</span> <span class="nav-text">let与const 关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Promises"><span class="nav-number">6.</span> <span class="nav-text">Promises</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">玉英（小丸子）</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
