@@ -90,17 +90,17 @@
 
 
 
-<meta name="description" content="作为半路出家转前端开发零基础的我，在经历了2.5年工作后再次面试前端所获得的一些经验，我想在这给大家分享一下（也是写给多年后的自己），四月初正式开始了漫长的面试过程，面了4家就拿到了满意的offer，但是还是想比较一下，所以又面来几家公司。 面试之前的小故事 精心准备的我，不停刷面试题，整夜整夜的看着HTML/JS/CSS知识点，还有那些最新的、时髦的技术，看看到时候能不能唬住面试官；而有些人对自">
+<meta name="description" content="react生命周期流程1.初始化，首次rendergetDefaultProps 方法可以用来设置组件属性的默认值,在组件被建立时候就立即调用 getInitialState 方法用于定义初始状态 componentWillMount只在初始化时候被调用一次 render() componentDidmount()在子组件也都加载完毕后执行，在RN中就是指组件初始化加载完毕，在react中DOM渲">
 <meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我的面试过程">
-<meta property="og:url" content="http://zhangyuki.github.io/2017/04/27/个人面试过程/index.html">
+<meta property="og:title" content="React生命周期总结">
+<meta property="og:url" content="http://zhangyuki.github.io/2017/08/03/React生命周期总结/index.html">
 <meta property="og:site_name" content="玉英博客">
-<meta property="og:description" content="作为半路出家转前端开发零基础的我，在经历了2.5年工作后再次面试前端所获得的一些经验，我想在这给大家分享一下（也是写给多年后的自己），四月初正式开始了漫长的面试过程，面了4家就拿到了满意的offer，但是还是想比较一下，所以又面来几家公司。 面试之前的小故事 精心准备的我，不停刷面试题，整夜整夜的看着HTML/JS/CSS知识点，还有那些最新的、时髦的技术，看看到时候能不能唬住面试官；而有些人对自">
-<meta property="og:updated_time" content="2017-04-27T07:56:34.000Z">
+<meta property="og:description" content="react生命周期流程1.初始化，首次rendergetDefaultProps 方法可以用来设置组件属性的默认值,在组件被建立时候就立即调用 getInitialState 方法用于定义初始状态 componentWillMount只在初始化时候被调用一次 render() componentDidmount()在子组件也都加载完毕后执行，在RN中就是指组件初始化加载完毕，在react中DOM渲">
+<meta property="og:updated_time" content="2017-08-03T12:16:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的面试过程">
-<meta name="twitter:description" content="作为半路出家转前端开发零基础的我，在经历了2.5年工作后再次面试前端所获得的一些经验，我想在这给大家分享一下（也是写给多年后的自己），四月初正式开始了漫长的面试过程，面了4家就拿到了满意的offer，但是还是想比较一下，所以又面来几家公司。 面试之前的小故事 精心准备的我，不停刷面试题，整夜整夜的看着HTML/JS/CSS知识点，还有那些最新的、时髦的技术，看看到时候能不能唬住面试官；而有些人对自">
+<meta name="twitter:title" content="React生命周期总结">
+<meta name="twitter:description" content="react生命周期流程1.初始化，首次rendergetDefaultProps 方法可以用来设置组件属性的默认值,在组件被建立时候就立即调用 getInitialState 方法用于定义初始状态 componentWillMount只在初始化时候被调用一次 render() componentDidmount()在子组件也都加载完毕后执行，在RN中就是指组件初始化加载完毕，在react中DOM渲">
 
 
 
@@ -128,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://zhangyuki.github.io/2017/04/27/个人面试过程/"/>
+  <link rel="canonical" href="http://zhangyuki.github.io/2017/08/03/React生命周期总结/"/>
 
 
 
 
 
-  <title>我的面试过程 | 玉英博客</title>
+  <title>React生命周期总结 | 玉英博客</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -263,7 +263,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/04/27/个人面试过程/">
+    <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/08/03/React生命周期总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="玉英（小丸子）">
@@ -284,7 +284,7 @@
             
             
               
-                我的面试过程
+                React生命周期总结
               
             
           </h1>
@@ -299,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-27T13:56:54+08:00">
-                2017-04-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-03T20:10:22+08:00">
+                2017-08-03
               </time>
             
 
@@ -334,19 +334,28 @@
       
 
       
-        <p>作为半路出家转前端开发零基础的我，在经历了2.5年工作后再次面试前端所获得的一些经验，我想在这给大家分享一下（也是写给多年后的自己），<br>四月初正式开始了漫长的面试过程，面了4家就拿到了满意的offer，但是还是想比较一下，所以又面来几家公司。</p>
-<p>面试之前的小故事</p>
-<p>精心准备的我，不停刷面试题，整夜整夜的看着HTML/JS/CSS知识点，还有那些最新的、时髦的技术，看看到时候能不能唬住面试官；而有些人对自己胸有成竹，这么多年的前端经验了，啥项目没有经历过，不就一个面试，怕啥呢。</p>
-<p>很快或者很慢的来到那天。我打扮的清清爽爽漂漂亮亮的，打扮的好会有加分不，没错，第一印象也是挺重要的。途中有些人可能会还一直想着面试官会问啥题目呢，那啥**属性是什么来着呢，再次拿出手机默默的看起资料；有些人可能就会想着公司不知道环境和福利不知道咋样，最好别碰到傻逼一样的面试官哎，不然这以后咋相处好呢。</p>
-<p>来到公司，大小公司大家都见多了嘛，也是得看发展是吧，我也不是肤浅的人，见到前台妹妹，领进会议室里，让稍等一下，她去通知面试官，过了一会儿，不是面试官进来，而是前台妹妹给我送来一杯水。面试官踱步向前，咦~，我是继续坐着呢，还是站着呢，还是站起来显礼貌一些嗯。</p>
-<p>给面试的一般会是Team Leader或者非常资深的工程师。首先会让你自我介绍下，然后巴拉巴拉介绍自己，途中或者聊到面试官喜欢的部分那就会中断问几个问题吧，介绍完自己，就进入正式的战斗了吧，一般会有2-3轮的回合。</p>
-<p>普通型</p>
-<p>面试中问题会比较的零碎，html/js/css肯定都会有涉及。知识点不会有太大的规律，可能几个公司面试下来你遇到的问题一个都不带重复的。哎，前端的知识点就是乍一看深似海，仔细一看深似黑洞啊。问题好的话，一方面考察了面试人对前端接触的广度，深度的话也可以从中接触到一些。因为面试的时间有限，其实也非常考验面试官对一个人的洞察能力。</p>
-<p>进阶型</p>
-<p>除了基本的问题，面试中会有一些明显设计过的题目。针对某几个知识点，或让你手写代码，或让你提供算法或思路。如果之前没有遇到过这类问题的话其实一下子真的挺难回答，或者直接懵逼了，或者回答不出面试官满意的答案。这其实对工程师的要求也是比较的高，不能只是单纯的切切页面，用用插件，需要对某一类问题或者模式或者算法有深入的了解，对问题的解决思路有很好的把握。</p>
-<p>算法可能不是前端工程师的长项，但作为优秀的工程师，对算法的了解应该会只深不浅。</p>
-<p>这种面试的题目既提现了公司对面试者的要求，也相对而言的会有所体现公司的水平。<br>一般如果不是应届生的话，也就是会跟你交流你之前的项目，你担当的角色，你遇到的难题，怎么解决问题，用的框架，与其他工程师的交流沟通协作等等。 这些其实你心里肯定是有答案的（可能也有懵逼的），就看你的表达，能不能对上面试官的胃口。</p>
-<h3 id="依稀记得的面试题"><a href="#依稀记得的面试题" class="headerlink" title="依稀记得的面试题"></a>依稀记得的面试题</h3><p>1、 gulp webpack的区别以及原理？<br>2、diff算法原理？<br>3、v8引擎？<br>4、写一段同步休眠的代码？<br>5、git flow的工作原理？<br>6、作者写h5的思想是什么？<br>7、node.js与浏览器环境javascript有那些区别<br>8、node.js作为web服务中间层可以做那些事情</p>
+        <h3 id="react生命周期流程"><a href="#react生命周期流程" class="headerlink" title="react生命周期流程"></a>react生命周期流程</h3><h4 id="1-初始化，首次render"><a href="#1-初始化，首次render" class="headerlink" title="1.初始化，首次render"></a>1.初始化，首次render</h4><p>getDefaultProps 方法可以用来设置组件属性的默认值,在组件被建立时候就立即调用</p>
+<p>getInitialState 方法用于定义初始状态</p>
+<p>componentWillMount只在初始化时候被调用一次</p>
+<p>render()</p>
+<p>componentDidmount()在子组件也都加载完毕后执行，在RN中就是指组件初始化加载完毕，在react中DOM渲染完成</p>
+<h4 id="2-props发生改变时候更新"><a href="#2-props发生改变时候更新" class="headerlink" title="2.props发生改变时候更新"></a>2.props发生改变时候更新</h4><p>componentWillReceiveProps(nextProps)</p>
+<p>componentWillReceiveProps方法可以比较this.props和nextProps来看是否发生了变化，然后可以进行setState等操作。<br>注意只要父组件此方法触发，那么子组件也会触发，也就是说父组件更新，子组件也会跟着更新。</p>
+<p>shouldComponentUpdate(nextProps, nextState)</p>
+<p>shouldComponentUpdate 方法在接收了新的props或state后触发，可以通过返回true或false来控制后面的生命周期流程是否触发。</p>
+<p>componentWillUpdate(nextProps, nextState)</p>
+<p>componentWillUpdate在props或state改变或shouldComponentUpdate返回true后触发。不可在其中使用setState。<br>render()</p>
+<p>重新渲染。</p>
+<p>componentDidupdate(prevProps, prevState)</p>
+<p>会等子组件也都更新完后才触发。</p>
+<h4 id="3-state发生改变时候更新"><a href="#3-state发生改变时候更新" class="headerlink" title="3.state发生改变时候更新"></a>3.state发生改变时候更新</h4><p>shouldComponentUpdate(nextProps, nextState)</p>
+<p>shouldComponentUpdate 方法在setState后state发生改变后触发，你可以通过返回true或false来控制后面的生命周期流程是否触发。</p>
+<p>componentWillUpdate(nextProps, nextState)</p>
+<p>componentWillUpdate在state改变或shouldComponentUpdate返回true后触发。不可在其中使用setState。</p>
+<p>render()</p>
+<p>重新渲染。</p>
+<p>componentDidupdate(prevProps, prevState)</p>
+<p>会等子组件也都更新完后才触发。</p>
 
       
     </div>
@@ -383,18 +392,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/26/OpenVPN/" rel="next" title="Mac上使用OpenVPN">
-                <i class="fa fa-chevron-left"></i> Mac上使用OpenVPN
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/27/React组件间通讯/" rel="prev" title="React组件间通讯">
-                React组件间通讯 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/08/01/总结技术/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -517,7 +522,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#依稀记得的面试题"><span class="nav-number">1.</span> <span class="nav-text">依稀记得的面试题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#react生命周期流程"><span class="nav-number">1.</span> <span class="nav-text">react生命周期流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-初始化，首次render"><span class="nav-number">1.1.</span> <span class="nav-text">1.初始化，首次render</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-props发生改变时候更新"><span class="nav-number">1.2.</span> <span class="nav-text">2.props发生改变时候更新</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-state发生改变时候更新"><span class="nav-number">1.3.</span> <span class="nav-text">3.state发生改变时候更新</span></a></li></ol></li></ol></div>
             
 
           </div>

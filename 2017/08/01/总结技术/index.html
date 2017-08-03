@@ -90,17 +90,17 @@
 
 
 
-<meta name="description" content="webpack与gulp webpack是一个打包工具 gulp是构建工具 MVC  View 传送指令到 Controller Controller 完成业务逻辑后，要求 Model 改变状态 Model 将新的数据发送到 View，用户得到反馈  MVVM model - View - ViewModle 分离视图和模型   ViewModel，注意这里的“Model”指的是View的Mode">
+<meta name="description" content="webpack与gulp webpack是一个打包工具gulp是构建工具 MVC  View 传送指令到 Controller Controller 完成业务逻辑后，要求 Model 改变状态 Model 将新的数据发送到 View，用户得到反馈  MVVM model - View - ViewModle 分离视图和模型   ViewModel，注意这里的“Model”指的是View的Model">
 <meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="玉英博客">
 <meta property="og:url" content="http://zhangyuki.github.io/2017/08/01/总结技术/index.html">
 <meta property="og:site_name" content="玉英博客">
-<meta property="og:description" content="webpack与gulp webpack是一个打包工具 gulp是构建工具 MVC  View 传送指令到 Controller Controller 完成业务逻辑后，要求 Model 改变状态 Model 将新的数据发送到 View，用户得到反馈  MVVM model - View - ViewModle 分离视图和模型   ViewModel，注意这里的“Model”指的是View的Mode">
-<meta property="og:updated_time" content="2017-08-02T09:46:23.000Z">
+<meta property="og:description" content="webpack与gulp webpack是一个打包工具gulp是构建工具 MVC  View 传送指令到 Controller Controller 完成业务逻辑后，要求 Model 改变状态 Model 将新的数据发送到 View，用户得到反馈  MVVM model - View - ViewModle 分离视图和模型   ViewModel，注意这里的“Model”指的是View的Model">
+<meta property="og:updated_time" content="2017-08-03T05:54:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="玉英博客">
-<meta name="twitter:description" content="webpack与gulp webpack是一个打包工具 gulp是构建工具 MVC  View 传送指令到 Controller Controller 完成业务逻辑后，要求 Model 改变状态 Model 将新的数据发送到 View，用户得到反馈  MVVM model - View - ViewModle 分离视图和模型   ViewModel，注意这里的“Model”指的是View的Mode">
+<meta name="twitter:description" content="webpack与gulp webpack是一个打包工具gulp是构建工具 MVC  View 传送指令到 Controller Controller 完成业务逻辑后，要求 Model 改变状态 Model 将新的数据发送到 View，用户得到反馈  MVVM model - View - ViewModle 分离视图和模型   ViewModel，注意这里的“Model”指的是View的Model">
 
 
 
@@ -335,8 +335,7 @@
 
       
         <p>webpack与gulp</p>
-<p>webpack是一个打包工具</p>
-<p>gulp是构建工具</p>
+<p>webpack是一个打包工具<br>gulp是构建工具</p>
 <p>MVC</p>
 <ol>
 <li>View 传送指令到 Controller</li>
@@ -349,15 +348,14 @@
 <ul>
 <li>ViewModel，注意这里的“Model”指的是View的Model，跟上面那个Model不是一回事。所谓View的Model就是包含View的一些数据属性和操作的这么一个东东，这种模式的关键技术就是数据绑定（data binding），View的变化会直接影响ViewModel，ViewModel的变化或者内容也会直接体现在View上。这种模式实际上是框架替应用开发者做了一些工作，开发者只需要较少的代码就能实现比较复杂的交互。</li>
 </ul>
-<p>布局</p>
-<p>less</p>
+<p>布局less</p>
 <ul>
 <li>变量是@</li>
 <li>.class()作为mixin</li>
 <li>&amp;:entend(.class); 直接引入</li>
-<li>直接申明函数<br>.mixin(@x: 200px) {<br>  text-align: center;<br>  width: @x;<br>}</li>
+<li>直接申明函数<br>.mixin(@x: 200px) {<br>text-align: center;<br>width: @x;<br>}</li>
 <li>when 代替if</li>
-<li>// 循环<br>.loop(@counter) when (@counter &gt; 0) {<br>  .loop((@counter - 1));    // next iteration<br>  width: (10px * @counter); // code for each iteration<br>}</li>
+<li>// 循环<br>.loop(@counter) when (@counter &gt; 0) {<br>.loop((@counter - 1));    // next iteration<br>width: (10px * @counter); // code for each iteration<br>}</li>
 </ul>
 <p>SASS</p>
 <ul>
@@ -418,6 +416,10 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/03/React生命周期总结/" rel="next" title="React生命周期总结">
+                <i class="fa fa-chevron-left"></i> React生命周期总结
+              </a>
             
           </div>
 
@@ -499,7 +501,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

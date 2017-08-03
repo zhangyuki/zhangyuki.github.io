@@ -263,6 +263,147 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/08/03/React生命周期总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="玉英（小丸子）">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://imgsrc.baidu.com/forum/w%3D580/sign=aa09a14c8244ebf86d716437e9f8d736/ea6dc811728b4710787b6583c6cec3fdfd032371.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="玉英博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/08/03/React生命周期总结/" itemprop="url">
+                  React生命周期总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-03T20:10:22+08:00">
+                2017-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="react生命周期流程"><a href="#react生命周期流程" class="headerlink" title="react生命周期流程"></a>react生命周期流程</h3><h4 id="1-初始化，首次render"><a href="#1-初始化，首次render" class="headerlink" title="1.初始化，首次render"></a>1.初始化，首次render</h4><p>getDefaultProps 方法可以用来设置组件属性的默认值,在组件被建立时候就立即调用</p>
+<p>getInitialState 方法用于定义初始状态</p>
+<p>componentWillMount只在初始化时候被调用一次</p>
+<p>render()</p>
+<p>componentDidmount()在子组件也都加载完毕后执行，在RN中就是指组件初始化加载完毕，在react中DOM渲染完成</p>
+<h4 id="2-props发生改变时候更新"><a href="#2-props发生改变时候更新" class="headerlink" title="2.props发生改变时候更新"></a>2.props发生改变时候更新</h4><p>componentWillReceiveProps(nextProps)</p>
+<p>componentWillReceiveProps方法可以比较this.props和nextProps来看是否发生了变化，然后可以进行setState等操作。<br>注意只要父组件此方法触发，那么子组件也会触发，也就是说父组件更新，子组件也会跟着更新。</p>
+<p>shouldComponentUpdate(nextProps, nextState)</p>
+<p>shouldComponentUpdate 方法在接收了新的props或state后触发，可以通过返回true或false来控制后面的生命周期流程是否触发。</p>
+<p>componentWillUpdate(nextProps, nextState)</p>
+<p>componentWillUpdate在props或state改变或shouldComponentUpdate返回true后触发。不可在其中使用setState。<br>render()</p>
+<p>重新渲染。</p>
+<p>componentDidupdate(prevProps, prevState)</p>
+<p>会等子组件也都更新完后才触发。</p>
+<h4 id="3-state发生改变时候更新"><a href="#3-state发生改变时候更新" class="headerlink" title="3.state发生改变时候更新"></a>3.state发生改变时候更新</h4><p>shouldComponentUpdate(nextProps, nextState)</p>
+<p>shouldComponentUpdate 方法在setState后state发生改变后触发，你可以通过返回true或false来控制后面的生命周期流程是否触发。</p>
+<p>componentWillUpdate(nextProps, nextState)</p>
+<p>componentWillUpdate在state改变或shouldComponentUpdate返回true后触发。不可在其中使用setState。</p>
+<p>render()</p>
+<p>重新渲染。</p>
+<p>componentDidupdate(prevProps, prevState)</p>
+<p>会等子组件也都更新完后才触发。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/08/01/总结技术/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -340,8 +481,7 @@
         
           
             <p>webpack与gulp</p>
-<p>webpack是一个打包工具</p>
-<p>gulp是构建工具</p>
+<p>webpack是一个打包工具<br>gulp是构建工具</p>
 <p>MVC</p>
 <ol>
 <li>View 传送指令到 Controller</li>
@@ -354,15 +494,14 @@
 <ul>
 <li>ViewModel，注意这里的“Model”指的是View的Model，跟上面那个Model不是一回事。所谓View的Model就是包含View的一些数据属性和操作的这么一个东东，这种模式的关键技术就是数据绑定（data binding），View的变化会直接影响ViewModel，ViewModel的变化或者内容也会直接体现在View上。这种模式实际上是框架替应用开发者做了一些工作，开发者只需要较少的代码就能实现比较复杂的交互。</li>
 </ul>
-<p>布局</p>
-<p>less</p>
+<p>布局less</p>
 <ul>
 <li>变量是@</li>
 <li>.class()作为mixin</li>
 <li>&amp;:entend(.class); 直接引入</li>
-<li>直接申明函数<br>.mixin(@x: 200px) {<br>  text-align: center;<br>  width: @x;<br>}</li>
+<li>直接申明函数<br>.mixin(@x: 200px) {<br>text-align: center;<br>width: @x;<br>}</li>
 <li>when 代替if</li>
-<li>// 循环<br>.loop(@counter) when (@counter &gt; 0) {<br>  .loop((@counter - 1));    // next iteration<br>  width: (10px * @counter); // code for each iteration<br>}</li>
+<li>// 循环<br>.loop(@counter) when (@counter &gt; 0) {<br>.loop((@counter - 1));    // next iteration<br>width: (10px * @counter); // code for each iteration<br>}</li>
 </ul>
 <p>SASS</p>
 <ul>
@@ -1421,133 +1560,6 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/04/27/如何安装Git/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="玉英（小丸子）">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://imgsrc.baidu.com/forum/w%3D580/sign=aa09a14c8244ebf86d716437e9f8d736/ea6dc811728b4710787b6583c6cec3fdfd032371.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="玉英博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/27/如何安装Git/" itemprop="url">
-                  如何安装Git
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-27T13:56:54+08:00">
-                2017-04-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p>下载安装 <a href="https://git-scm.com/downloads" target="_blank" rel="external">git</a></p>
-<h3 id="Linxu"><a href="#Linxu" class="headerlink" title="Linxu"></a>Linxu</h3><h4 id="Debian-Ubuntu"><a href="#Debian-Ubuntu" class="headerlink" title="Debian/Ubuntu"></a>Debian/Ubuntu</h4><p>12.04 下</p>
-<p>Ubuntu12.04中默认没有安装Git。需要自行安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo add-apt-repository ppa:git-core/ppa</div><div class="line">$ sudo apt-get update</div><div class="line">$ sudo apt-get install git</div></pre></td></tr></table></figure>
-<p>12.04 以上</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install git</div></pre></td></tr></table></figure>
-<h4 id="Centos-RedHat"><a href="#Centos-RedHat" class="headerlink" title="Centos/RedHat"></a>Centos/RedHat</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel</div><div class="line">$ sudo yum -y install git-core</div></pre></td></tr></table></figure>
-<h3 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h3><p>mac 下自带 git，也可以从官网下载安装 <a href="https://git-scm.com/downloads" target="_blank" rel="external">git</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/04/27/如何安装Nodejs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1720,7 +1732,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
