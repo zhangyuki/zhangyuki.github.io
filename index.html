@@ -263,6 +263,140 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/08/04/js知识总结整理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="玉英（小丸子）">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://imgsrc.baidu.com/forum/w%3D580/sign=aa09a14c8244ebf86d716437e9f8d736/ea6dc811728b4710787b6583c6cec3fdfd032371.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="玉英博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/08/04/js知识总结整理/" itemprop="url">
+                  js知识总结整理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-04T13:59:06+08:00">
+                2017-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="1-js的数据类型？"><a href="#1-js的数据类型？" class="headerlink" title="1 js的数据类型？"></a>1 js的数据类型？</h4><p>基本数据类型：String、boolean、Number、undefined、null<br>引用数据类型：Object、Array、Date、RegExp、Function</p>
+<p>拓展：如何判断数组数据类型？<br>1、通过专有方法判断如：push(),pop();        //可自己给变量定义该方法，有时失效<br>2、obj instanceof Array 返回值判断；<br>3、es5和jquery都有方法Array.isArray()。<br>4、toString.call(param) 判断；返回格式 [object Undefined]<br>5、obj.constructor === Function 返回值判断</p>
+<h4 id="2-获取所有的checkbox？"><a href="#2-获取所有的checkbox？" class="headerlink" title="2 获取所有的checkbox？"></a>2 获取所有的checkbox？</h4><p>var domlist = document.getElementsByTagName(“input”);<br>var checkboxlist = [];<br>var len = domlist.length;</p>
+<p>for (var i = 0; i &lt; len; i++) {<br>    if(domlist[i].type == “checkbox”){<br>            checkboxlist.push(domlist[i])<br>    }<br>}<br>//(for效率更高)在测试五百多个不同input中，while：for = 3~2ms：1~0ms，显然for效率更高</p>
+<h4 id="3-数组："><a href="#3-数组：" class="headerlink" title="3 数组："></a>3 数组：</h4><p>var numberArray = [3,6,2,4,1,5];<br>倒序：numberArray.reverse();<br>降序：numberArray.sort(function(a-b){return b-a})<br>a.concat(b,c,d)</p>
+<h4 id="4-随机取10个10-100数？"><a href="#4-随机取10个10-100数？" class="headerlink" title="4 随机取10个10-100数？"></a>4 随机取10个10-100数？</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> getNumArr(n)&#123;</div><div class="line">	var arr = [];</div><div class="line">	<span class="keyword">for</span>(var i = 0;i &lt;n;i++)&#123;</div><div class="line">	        arr.push(parseInt(Math.random()*90+10))</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">return</span> arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="5-闭包的使用？"><a href="#5-闭包的使用？" class="headerlink" title="5 闭包的使用？"></a>5 闭包的使用？</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(var i = 0,len=domlist.length;i&lt;len;i++)&#123;</div><div class="line">    domlist[i].onclick = <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">        console.log(i);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">都输出domlist.length；</div><div class="line">onclick 是一个异步函数；当onclick执行的时候i此时变成了domlist.length；</div><div class="line">解决：（闭包）</div><div class="line">```bash</div><div class="line"><span class="keyword">for</span>(var i=0,len=domlist.length;i&lt;len;i++)&#123;</div><div class="line">	domlist[i].onclick = (<span class="keyword">function</span>(a)&#123;</div><div class="line">        <span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">                console.log(a)</div><div class="line">        &#125;</div><div class="line">	&#125;)(i);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>//也可以设置私有属性；</p>
+<h4 id="6、双等号的类型转换？"><a href="#6、双等号的类型转换？" class="headerlink" title="6、双等号的类型转换？"></a>6、双等号的类型转换？</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var undefined;</div><div class="line">undefined == null; // <span class="literal">true</span></div><div class="line">1 == <span class="literal">true</span>;  // <span class="literal">true</span></div><div class="line">2 == <span class="literal">true</span>;  // <span class="literal">false</span></div><div class="line">0 == <span class="literal">false</span>; // <span class="literal">true</span></div><div class="line">0 == <span class="string">''</span>;   // <span class="literal">true</span></div><div class="line">NaN == NaN; // <span class="literal">false</span></div><div class="line">[] == <span class="literal">false</span>; // <span class="literal">true</span></div><div class="line">[] == ![];  // <span class="literal">true</span></div><div class="line"></div><div class="line">// alert(!![])        //<span class="literal">true</span></div><div class="line">// alert(![])        //<span class="literal">false</span></div><div class="line">// alert([] == 0)        //<span class="literal">true</span></div><div class="line">// alert(<span class="literal">false</span> == 0)        //<span class="literal">true</span></div></pre></td></tr></table></figure>
+<p>分析：undefined与null 但不全等（===）<br>当为number与string时，会将string转换为number；<br>number和boolean时，会将boolean转换为number<br>number或string与Object，会将Object转换成number或string</p>
+<p>（附：js中的数据类型转换？）<br>函数转换：parseInt()、parseFloat()、toString()<br>强类型转换：Boolean()、Number()、String()<br>弱类型转换：“==”、“-”、“+”、if（）</p>
+<p>（拓展：for循环中的效率问题？）<br>1.for(var i=0;i&lt;arr.length;i++)</p>
+<p>2.for(var i in arr)</p>
+<p>3.for(var i=0,len=arr.length;i&lt;len;i++)</p>
+<p>第三种效率更高！<br>在大数据下：<br>第三种方式比第一种执行速度快3~4倍；<br>至于第三种比第三种快100多倍开外（详细数据：<a href="http://www.111cn.net/wy/js-ajax/39368.htm）" target="_blank" rel="external">http://www.111cn.net/wy/js-ajax/39368.htm）</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/08/04/px、em、rem区别介绍/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1547,133 +1681,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/06/16/js阻止移动端默认事件以及只阻止横向滚动事件方法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="玉英（小丸子）">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://imgsrc.baidu.com/forum/w%3D580/sign=aa09a14c8244ebf86d716437e9f8d736/ea6dc811728b4710787b6583c6cec3fdfd032371.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="玉英博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/06/16/js阻止移动端默认事件以及只阻止横向滚动事件方法/" itemprop="url">
-                  js阻止移动端默认事件以及只阻止横向滚动事件方法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-16T14:19:50+08:00">
-                2017-06-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="js阻止移动端默认事件，是在相关的touch事件的时候利用event-preventDefault-来阻止默认滚动行为，但是如果要实现阻止横向滚动事件而不阻止竖向滚动行为就要写一个方法通过手指滑动的"><a href="#js阻止移动端默认事件，是在相关的touch事件的时候利用event-preventDefault-来阻止默认滚动行为，但是如果要实现阻止横向滚动事件而不阻止竖向滚动行为就要写一个方法通过手指滑动的" class="headerlink" title="js阻止移动端默认事件，是在相关的touch事件的时候利用event.preventDefault();来阻止默认滚动行为，但是如果要实现阻止横向滚动事件而不阻止竖向滚动行为就要写一个方法通过手指滑动的"></a>js阻止移动端默认事件，是在相关的touch事件的时候利用event.preventDefault();来阻止默认滚动行为，但是如果要实现阻止横向滚动事件而不阻止竖向滚动行为就要写一个方法通过手指滑动的</h5><h5 id="js阻止移动端默认事件，是在相关的touch事件的时候利用event-preventDefault-来阻止默认滚动行为，但是如果要实现阻止横向滚动行为而不阻止竖向滚动行为就要写一个方法通过手指滑动的偏移量来判断了。"><a href="#js阻止移动端默认事件，是在相关的touch事件的时候利用event-preventDefault-来阻止默认滚动行为，但是如果要实现阻止横向滚动行为而不阻止竖向滚动行为就要写一个方法通过手指滑动的偏移量来判断了。" class="headerlink" title="js阻止移动端默认事件，是在相关的touch事件的时候利用event.preventDefault();来阻止默认滚动行为，但是如果要实现阻止横向滚动行为而不阻止竖向滚动行为就要写一个方法通过手指滑动的偏移量来判断了。"></a>js阻止移动端默认事件，是在相关的touch事件的时候利用event.preventDefault();来阻止默认滚动行为，但是如果要实现阻止横向滚动行为而不阻止竖向滚动行为就要写一个方法通过手指滑动的偏移量来判断了。</h5><p>在手机移动端手指在滑动整个屏幕时，会影响浏览器的行为，比如滚动和缩放。所以在调用touch事件时，所以要先禁止缩放。</p>
-<h5 id="移动端禁止缩放"><a href="#移动端禁止缩放" class="headerlink" title="移动端禁止缩放"></a>移动端禁止缩放</h5><p>通过meta元标签来设置。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"</span>&gt;&lt;/pre&gt;</div></pre></td></tr></table></figure>
-<h5 id="移动端禁止滚动"><a href="#移动端禁止滚动" class="headerlink" title="移动端禁止滚动"></a>移动端禁止滚动</h5><p>preventDefault是阻止默认行为，touch事件的默认行为就是滚动。<br>event.preventDefault();</p>
-<h5 id="只禁止横向滚动而不禁止竖向滚动"><a href="#只禁止横向滚动而不禁止竖向滚动" class="headerlink" title="只禁止横向滚动而不禁止竖向滚动"></a>只禁止横向滚动而不禁止竖向滚动</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">move:<span class="keyword">function</span>(event)&#123;</div><div class="line">　　//当屏幕有多个touch或者页面被缩放过，就不执行move操作 懒人建站</div><div class="line">　　<span class="keyword">if</span>(event.targetTouches.length &gt; 1 || event.scale &amp;&amp; event.scale !== 1) <span class="built_in">return</span>;</div><div class="line">　　var touch = event.targetTouches[0];</div><div class="line">　　endPos = &#123;x:touch.pageX - startPos.x,y:touch.pageY - startPos.y&#125;;</div><div class="line">　　isScrolling = Math.abs(endPos.x) &lt; Math.abs(endPos.y) ? 1:0; //isScrolling为1时，表示纵向滑动，0为横向滑动</div><div class="line">　　<span class="keyword">if</span>(isScrolling === 0)&#123;</div><div class="line">　　　　event.preventDefault(); //阻止触摸事件的默认行为，即阻止滚屏</div><div class="line">　　&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>touchmove触发后，会生成一个event对象，在event对象中获取touches触屏列表，取得第一个touch,并记下pageX,pageY的坐标，算出差值，得出手指滑动的偏移量，使当前DOM元素滑动。<br>当然move方法要在touchmove事件中调用</p>
-<h5 id="阻止移动端默认事件完整测试代码："><a href="#阻止移动端默认事件完整测试代码：" class="headerlink" title="阻止移动端默认事件完整测试代码："></a>阻止移动端默认事件完整测试代码：</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">var startPos = 0,endPos = 0,isScrolling = 0;</div><div class="line">    document.addEventListener(<span class="string">'touchstart'</span>,<span class="keyword">function</span>(event)&#123;</div><div class="line">        var touch = event.targetTouches[0]; //touches数组对象获得屏幕上所有的touch，取第一个touch</div><div class="line">        startPos = &#123;x:touch.pageX,y:touch.pageY,time:+new Date&#125;; //取第一个touch的坐标值</div><div class="line">        isScrolling = 0; //这个参数判断是垂直滚动还是水平滚动</div><div class="line">    &#125;, <span class="literal">false</span>);</div><div class="line"></div><div class="line">    //解绑事件 web前端开发</div><div class="line">    document.addEventListener(<span class="string">'touchend'</span>,<span class="keyword">function</span>(event)&#123;</div><div class="line">        document.removeEventListener(<span class="string">'touchmove'</span>,this,<span class="literal">false</span>);</div><div class="line">        document.removeEventListener(<span class="string">'touchend'</span>,this,<span class="literal">false</span>);</div><div class="line">    &#125;, <span class="literal">false</span>);</div><div class="line"></div><div class="line">    document.addEventListener(<span class="string">'touchmove'</span>,<span class="keyword">function</span>(event)&#123;</div><div class="line">        //当屏幕有多个touch或者页面被缩放过，就不执行move操作</div><div class="line">        <span class="keyword">if</span>(event.targetTouches.length &gt; 1 || event.scale &amp;&amp; event.scale !== 1) <span class="built_in">return</span>;</div><div class="line">        var touch = event.targetTouches[0];</div><div class="line">        endPos = &#123;x:touch.pageX - startPos.x,y:touch.pageY - startPos.y&#125;;</div><div class="line">        isScrolling = Math.abs(endPos.x) &lt; Math.abs(endPos.y) ? 1:0; //isScrolling为1时，表示纵向滑动，0为横向滑动</div><div class="line">        <span class="keyword">if</span>(isScrolling === 1)&#123;</div><div class="line">            alert(0);</div><div class="line">            event.preventDefault(); //阻止触摸事件的默认行为，即阻止滚屏</div><div class="line">        &#125;</div><div class="line">    &#125;, <span class="literal">false</span>);</div></pre></td></tr></table></figure>
-<h5 id="例如"><a href="#例如" class="headerlink" title="例如"></a>例如</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line">&lt;script <span class="built_in">type</span> = <span class="string">"text/javascript"</span>&gt;</div><div class="line">  document.addEventListener(<span class="string">'targetTouches'</span>, <span class="keyword">function</span>(event) &#123;</div><div class="line">    move(event);</div><div class="line">    event.preventDefault();</div><div class="line">  &#125;)</div><div class="line"></div><div class="line">  <span class="keyword">function</span> move(event) &#123;</div><div class="line">    <span class="keyword">if</span>(event.changedTouches.length &gt; 1 || event.scale &amp;&amp; event.scale !== 1) <span class="built_in">return</span>;</div><div class="line">  　　var touch = event.changedTouches[0];</div><div class="line">  　　endPos = &#123;x:touch.pageX - startPos.x,y:touch.pageY - startPos.y&#125;;</div><div class="line">  　　isScrolling = Math.abs(endPos.x) &lt; Math.abs(endPos.y) ? 1:0; //isScrolling为1时，表示纵向滑动，0为横向滑动</div><div class="line">  　　<span class="keyword">if</span>(isScrolling === 0)&#123;</div><div class="line">  　　　　event.preventDefault(); //阻止触摸事件的默认行为，即阻止滚屏</div><div class="line">  　　&#125;</div><div class="line">  &#125;;</div><div class="line">&lt;/script&gt;</div><div class="line"><span class="comment">##### h5页面在移动端浏览器中旋转自适应</span></div><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">  window.addEventListener(<span class="string">'resize'</span>, dpr);</div><div class="line">  dpr(<span class="string">'init'</span>);</div><div class="line">  <span class="keyword">function</span> dpr(<span class="built_in">type</span>) &#123;</div><div class="line">    var d = document;</div><div class="line">    const desWidth = 750;</div><div class="line">    var _dpr = (1 / window.devicePixelRatio);</div><div class="line">    var orientation =</div><div class="line">      screen.orientation &amp;&amp; screen.orientation.type === <span class="string">'portrait-primary'</span> ? 0 : (window.orientation === 0 ? 0 : -90);</div><div class="line">    console.log(<span class="string">'type:'</span> + <span class="built_in">type</span> + <span class="string">' orientation:'</span> + orientation);</div><div class="line">    _dpr = 1;</div><div class="line">    const _MaxWidth = 414 * window.devicePixelRatio;</div><div class="line">    const userAgent = navigator.userAgent;</div><div class="line">    var widthStr = <span class="string">'device-width'</span>;</div><div class="line">    var isMobile = <span class="literal">true</span>;</div><div class="line">    var iWidth = 0;</div><div class="line">    var _html = d.getElementsByTagName(<span class="string">'html'</span>)[0];</div><div class="line">    /* eslint eqeqeq: 0 */</div><div class="line">    <span class="keyword">if</span> (userAgent.toLowerCase().indexOf(<span class="string">'iphone'</span>) == -1 &amp;&amp; userAgent.toLowerCase().indexOf(<span class="string">'android'</span>) == -1) &#123;</div><div class="line">      isMobile = <span class="literal">false</span>; // iWidth = _MaxWidth;</div><div class="line">      widthStr = iWidth + <span class="string">'px'</span>;</div><div class="line">    &#125;</div><div class="line">    d.querySelector(<span class="string">'[name="viewport"]'</span>).setAttribute(<span class="string">'content'</span>,</div><div class="line">      <span class="string">'width='</span> + widthStr + <span class="string">' , initial-scale='</span> + _dpr + <span class="string">', maximum-scale='</span> + _dpr + <span class="string">', minimum-scale='</span> + _dpr + <span class="string">', user-scalable=no'</span>);</div><div class="line">    // 竖屏</div><div class="line">    <span class="keyword">if</span> (orientation === 0) &#123;</div><div class="line">      iWidth = Math.min(d.documentElement.clientWidth, window.innerWidth);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      iWidth = Math.min(d.documentElement.clientWidth, window.innerWidth, window.innerHeight);</div><div class="line">    &#125;</div><div class="line">    console.log(<span class="string">'clientWidth:'</span> + d.documentElement.clientWidth + <span class="string">' innerWidth:'</span> + window.innerWidth + <span class="string">' innerHeight:'</span> + window.innerHeight);</div><div class="line">    console.log(<span class="string">'iWidth: '</span> + iWidth + <span class="string">' desWidth: '</span> + desWidth);</div><div class="line">    <span class="keyword">if</span> (!isMobile) iWidth = _MaxWidth;</div><div class="line">    _html.style.fontSize = (((100 * iWidth) / desWidth)) + <span class="string">'px'</span>;</div><div class="line">    _html.dataset.dpr = 1; // window.devicePixelRatio;</div><div class="line">  &#125;;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1723,7 +1730,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
