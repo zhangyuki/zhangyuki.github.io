@@ -263,6 +263,132 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/08/04/react踩过的坑/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="玉英（小丸子）">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://imgsrc.baidu.com/forum/w%3D580/sign=aa09a14c8244ebf86d716437e9f8d736/ea6dc811728b4710787b6583c6cec3fdfd032371.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="玉英博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/08/04/react踩过的坑/" itemprop="url">
+                  react 踩过的坑
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-04T09:13:31+08:00">
+                2017-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="1-在JSX的元素中写入内联样式，例如"><a href="#1-在JSX的元素中写入内联样式，例如" class="headerlink" title="1 在JSX的元素中写入内联样式，例如"></a>1 在JSX的元素中写入内联样式，例如</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;div style=&#123;<span class="string">"color:blue"</span>&#125;&gt;&lt;/div&gt;</div><div class="line">报错：warning：Style prop value must be an object  react/style-prop-object</div></pre></td></tr></table></figure>
+<p>原因：在React框架的JSX编码格式要求，style必须是一个对象<br>解决方法：除了外部那个表示Javascript语句的花括号外，里面必须再写一个花括号{}包含的对象，例如<div style="{" {="" color:“blue”="" }=""></div>，外部的{ }表示这是Javascript句法，里面的{  }是一个对象</p>
+<h4 id="2-遍历数组元素："><a href="#2-遍历数组元素：" class="headerlink" title="2 遍历数组元素："></a>2 遍历数组元素：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var arr=[1,2,3]</div><div class="line">arr.map(<span class="keyword">function</span>(x)&#123;</div><div class="line">  <span class="built_in">return</span> (&lt;div&gt;&lt;/div&gt;);</div><div class="line">&#125;)</div><div class="line">报错：Warning:Each child <span class="keyword">in</span> an array or iterator should have a unique <span class="string">"key"</span> prop. Check the render method of `NavBlock`</div></pre></td></tr></table></figure>
+<p>原因：在React中数组遍历返回元素或组件时需加上key属性作为唯一标识<br>解决方法：写成<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var arr=[1,2,3]</div><div class="line">arr.map(<span class="keyword">function</span>(x,i)&#123;</div><div class="line">  <span class="built_in">return</span> (&lt;div key=i&gt;&lt;/div&gt;);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h4 id="3-在render-函数中返回时这样写："><a href="#3-在render-函数中返回时这样写：" class="headerlink" title="3 在render()函数中返回时这样写："></a>3 在render()函数中返回时这样写：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">render</span></span>()&#123;</div><div class="line">  <span class="built_in">return</span> &lt;div&gt;&lt;/div&gt;</div><div class="line">        &lt;div&gt;&lt;/div&gt;</div><div class="line">        &lt;div&gt;&lt;/div&gt;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>报错：Adjacent JSX elements must be wrapped in an enclosing tag (75:8)<br>原因：render()函数中返回的所有元素需要包裹在一个外部元素里面<br>解决方法：可改写为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">render</span></span>()&#123;</div><div class="line">  <span class="built_in">return</span>  &lt;section&gt;</div><div class="line">                &lt;div&gt;&lt;/div&gt;</div><div class="line">                &lt;div&gt;&lt;/div&gt;</div><div class="line">                &lt;div&gt;&lt;/div&gt;</div><div class="line">          &lt;/section&gt;</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<p>最后一点—不能写成：（return语句和返回元素不在同一行会被解析器视为返回null导致错误)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">render</span></span>()&#123;</div><div class="line">  <span class="built_in">return</span>  </div><div class="line">       &lt;section&gt;</div><div class="line">          &lt;div&gt;&lt;/div&gt;</div><div class="line">          &lt;div&gt;&lt;/div&gt;</div><div class="line">          &lt;div&gt;&lt;/div&gt;</div><div class="line">       &lt;/section&gt;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/08/03/React生命周期总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1551,138 +1677,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/04/27/如何安装Nodejs/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="玉英（小丸子）">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://imgsrc.baidu.com/forum/w%3D580/sign=aa09a14c8244ebf86d716437e9f8d736/ea6dc811728b4710787b6583c6cec3fdfd032371.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="玉英博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/27/如何安装Nodejs/" itemprop="url">
-                  如何安装Nodejs
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-27T13:56:54+08:00">
-                2017-04-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>安装Node.js的方式有很多，这里推荐使用 <a href="https://github.com/creationix/nvm" target="_blank" rel="external">nvm</a> 版本控制器进行安装。因为可以进行node.js版本管理，方便升级和倒退。</p>
-<h4 id="安装-nvm"><a href="#安装-nvm" class="headerlink" title="安装 nvm"></a>安装 nvm</h4><p><strong>下载 nvm</strong></p>
-<p>curl：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ curl https://raw.github.com/creationix/nvm/master/install.sh | sh</div></pre></td></tr></table></figure></p>
-<p>wget:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh</div></pre></td></tr></table></figure></p>
-<p>brew:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ brew install nvm</div></pre></td></tr></table></figure></p>
-<p>完成后 nvm 就安装在了 ~/.nvm 目录，需要为 nvm 配置环境变量，即可在终端使用 nvm 了。</p>
-<p><strong>配置 nvm 环境变量</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ vim ~/.bash_profile</div></pre></td></tr></table></figure>
-<p>添加如下内容：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">"<span class="variable">$HOME</span>/.nvm"</span></div><div class="line">[ <span class="_">-s</span> <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> ] &amp;&amp; . <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span></div></pre></td></tr></table></figure>
-<p>brew 配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> NUM_DIR=~/.nvm</div><div class="line"><span class="built_in">source</span> $(brew --prefix nvm)/nvm.sh</div></pre></td></tr></table></figure></p>
-<h4 id="nvm-安装-node-js"><a href="#nvm-安装-node-js" class="headerlink" title="nvm 安装 node.js"></a>nvm 安装 node.js</h4><p>安装完成后，重启终端并执行下列命令即可安装 Node.js。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ nvm install stable</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1732,7 +1726,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

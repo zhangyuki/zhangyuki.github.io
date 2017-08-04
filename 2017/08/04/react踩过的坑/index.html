@@ -90,17 +90,17 @@
 
 
 
-<meta name="description" content="最近写vue2.0项目中用到了轮播图的一个插件，也就是vue-awesome-swiper，swiper官网中的API及配置均可使用(支持3.0)，以下说下使用该插件的一些步骤： 第一步安装12npm install vue-awesome-swiper --save` 第二部在main.js中引入1234import Vue from &apos;vue&apos;import VueAwesomeSwiper f">
+<meta name="description" content="1 在JSX的元素中写入内联样式，例如12&amp;lt;div style=&amp;#123;&quot;color:blue&quot;&amp;#125;&amp;gt;&amp;lt;/div&amp;gt;报错：warning：Style prop value must be an object  react/style-prop-object 原因：在React框架的JSX编码格式要求，style必须是一个对象解决方法：除了外部那个表示Javascr">
 <meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue轮播图插件vue-awesome-swiper的使用">
-<meta property="og:url" content="http://zhangyuki.github.io/2017/04/27/vue轮播图插件vue-awesome-swiper/index.html">
+<meta property="og:title" content="react 踩过的坑">
+<meta property="og:url" content="http://zhangyuki.github.io/2017/08/04/react踩过的坑/index.html">
 <meta property="og:site_name" content="玉英博客">
-<meta property="og:description" content="最近写vue2.0项目中用到了轮播图的一个插件，也就是vue-awesome-swiper，swiper官网中的API及配置均可使用(支持3.0)，以下说下使用该插件的一些步骤： 第一步安装12npm install vue-awesome-swiper --save` 第二部在main.js中引入1234import Vue from &apos;vue&apos;import VueAwesomeSwiper f">
-<meta property="og:updated_time" content="2017-06-01T06:05:12.000Z">
+<meta property="og:description" content="1 在JSX的元素中写入内联样式，例如12&amp;lt;div style=&amp;#123;&quot;color:blue&quot;&amp;#125;&amp;gt;&amp;lt;/div&amp;gt;报错：warning：Style prop value must be an object  react/style-prop-object 原因：在React框架的JSX编码格式要求，style必须是一个对象解决方法：除了外部那个表示Javascr">
+<meta property="og:updated_time" content="2017-08-04T01:31:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vue轮播图插件vue-awesome-swiper的使用">
-<meta name="twitter:description" content="最近写vue2.0项目中用到了轮播图的一个插件，也就是vue-awesome-swiper，swiper官网中的API及配置均可使用(支持3.0)，以下说下使用该插件的一些步骤： 第一步安装12npm install vue-awesome-swiper --save` 第二部在main.js中引入1234import Vue from &apos;vue&apos;import VueAwesomeSwiper f">
+<meta name="twitter:title" content="react 踩过的坑">
+<meta name="twitter:description" content="1 在JSX的元素中写入内联样式，例如12&amp;lt;div style=&amp;#123;&quot;color:blue&quot;&amp;#125;&amp;gt;&amp;lt;/div&amp;gt;报错：warning：Style prop value must be an object  react/style-prop-object 原因：在React框架的JSX编码格式要求，style必须是一个对象解决方法：除了外部那个表示Javascr">
 
 
 
@@ -128,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://zhangyuki.github.io/2017/04/27/vue轮播图插件vue-awesome-swiper/"/>
+  <link rel="canonical" href="http://zhangyuki.github.io/2017/08/04/react踩过的坑/"/>
 
 
 
 
 
-  <title>vue轮播图插件vue-awesome-swiper的使用 | 玉英博客</title>
+  <title>react 踩过的坑 | 玉英博客</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -263,7 +263,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/04/27/vue轮播图插件vue-awesome-swiper/">
+    <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/08/04/react踩过的坑/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="玉英（小丸子）">
@@ -284,7 +284,7 @@
             
             
               
-                vue轮播图插件vue-awesome-swiper的使用
+                react 踩过的坑
               
             
           </h1>
@@ -299,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-27T13:56:54+08:00">
-                2017-04-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-04T09:13:31+08:00">
+                2017-08-04
               </time>
             
 
@@ -334,10 +334,13 @@
       
 
       
-        <p>最近写vue2.0项目中用到了轮播图的一个插件，也就是vue-awesome-swiper，swiper官网中的API及配置均可使用(支持3.0)，以下说下使用该插件的一些步骤：</p>
-<h3 id="第一步安装"><a href="#第一步安装" class="headerlink" title="第一步安装"></a>第一步安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install vue-awesome-swiper --save</div><div class="line">`</div></pre></td></tr></table></figure>
-<h3 id="第二部在main-js中引入"><a href="#第二部在main-js中引入" class="headerlink" title="第二部在main.js中引入"></a>第二部在main.js中引入</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">import Vue from <span class="string">'vue'</span></div><div class="line">import VueAwesomeSwiper from <span class="string">'vue-awesome-swiper'</span></div><div class="line">Vue.use(VueAwesomeSwiper)</div><div class="line">`</div></pre></td></tr></table></figure>
-<p>然后就可以在组件中使用该插件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line">[html] view plain copy</div><div class="line">&lt;template&gt;  </div><div class="line">    &lt;div&gt;  </div><div class="line">        &lt;swiper :options=<span class="string">"swiperOption"</span>  ref=<span class="string">"mySwiper"</span>&gt;  </div><div class="line">            &lt;!-- 这部分放你要渲染的那些内容 --&gt;  </div><div class="line">            &lt;swiper-slide v-for=<span class="string">"item in items"</span>&gt;  </div><div class="line">            &lt;/swiper-slide&gt;  </div><div class="line">            &lt;!-- 这是轮播的小圆点 --&gt;  </div><div class="line">            &lt;div class=<span class="string">"swiper-pagination"</span> slot=<span class="string">"pagination"</span>&gt;&lt;/div&gt;  </div><div class="line">        &lt;/swiper&gt;  </div><div class="line">    &lt;/div&gt;  </div><div class="line">&lt;/template&gt;  </div><div class="line">&lt;script&gt;  </div><div class="line">    import &#123; swiper, swiperSlide &#125; from <span class="string">'vue-awesome-swiper'</span>  </div><div class="line">    <span class="built_in">export</span> default &#123;  </div><div class="line">        components: &#123;  </div><div class="line">            swiper,  </div><div class="line">            swiperSlide  </div><div class="line">        &#125;,  </div><div class="line">        <span class="function"><span class="title">data</span></span>() &#123;  </div><div class="line">            <span class="built_in">return</span> &#123;  </div><div class="line">                swiperOption: &#123;  </div><div class="line">                //是一个组件自有属性，如果notNextTick设置为<span class="literal">true</span>，组件则不会通过NextTick来实例化swiper，也就意味着你可以在第一时间获取到swiper对象，假如你需要刚加载遍使用获取swiper对象来做什么事，那么这个属性一定要是<span class="literal">true</span>  </div><div class="line">                notNextTick: <span class="literal">true</span>,  </div><div class="line">                pagination: <span class="string">'.swiper-pagination'</span>,  </div><div class="line">                slidesPerView: <span class="string">'auto'</span>,  </div><div class="line">                centeredSlides: <span class="literal">true</span>,  </div><div class="line">                paginationClickable: <span class="literal">true</span>,  </div><div class="line">                spaceBetween: 30,  </div><div class="line">                    onSlideChangeEnd: swiper =&gt; &#123;  </div><div class="line">                        //这个位置放swiper的回调方法  </div><div class="line">                        this.page = swiper.realIndex+1;  </div><div class="line">                        this.index = swiper.realIndex;  </div><div class="line">                    &#125;  </div><div class="line">                &#125;  </div><div class="line">            &#125;  </div><div class="line">        &#125;,  </div><div class="line">        //定义这个sweiper对象  </div><div class="line">        computed: &#123;  </div><div class="line">  </div><div class="line">            <span class="function"><span class="title">swiper</span></span>() &#123;  </div><div class="line">              <span class="built_in">return</span> this.<span class="variable">$refs</span>.mySwiper.swiper;  </div><div class="line">            &#125;  </div><div class="line">        &#125;,  </div><div class="line">        <span class="function"><span class="title">mounted</span></span> () &#123;  </div><div class="line">            //这边就可以使用swiper这个对象去使用swiper官网中的那些方法  </div><div class="line">            this.swiper.slideTo(0, 0, <span class="literal">false</span>); </div><div class="line">        &#125;  </div><div class="line">  </div><div class="line">    &#125;  </div><div class="line">&lt;/script&gt;  </div><div class="line">&lt;style&gt;  </div><div class="line">&lt;/style&gt;</div><div class="line">`</div></pre></td></tr></table></figure></p>
+        <h4 id="1-在JSX的元素中写入内联样式，例如"><a href="#1-在JSX的元素中写入内联样式，例如" class="headerlink" title="1 在JSX的元素中写入内联样式，例如"></a>1 在JSX的元素中写入内联样式，例如</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;div style=&#123;<span class="string">"color:blue"</span>&#125;&gt;&lt;/div&gt;</div><div class="line">报错：warning：Style prop value must be an object  react/style-prop-object</div></pre></td></tr></table></figure>
+<p>原因：在React框架的JSX编码格式要求，style必须是一个对象<br>解决方法：除了外部那个表示Javascript语句的花括号外，里面必须再写一个花括号{}包含的对象，例如<div style="{" {="" color:“blue”="" }=""></div>，外部的{ }表示这是Javascript句法，里面的{  }是一个对象</p>
+<h4 id="2-遍历数组元素："><a href="#2-遍历数组元素：" class="headerlink" title="2 遍历数组元素："></a>2 遍历数组元素：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var arr=[1,2,3]</div><div class="line">arr.map(<span class="keyword">function</span>(x)&#123;</div><div class="line">  <span class="built_in">return</span> (&lt;div&gt;&lt;/div&gt;);</div><div class="line">&#125;)</div><div class="line">报错：Warning:Each child <span class="keyword">in</span> an array or iterator should have a unique <span class="string">"key"</span> prop. Check the render method of `NavBlock`</div></pre></td></tr></table></figure>
+<p>原因：在React中数组遍历返回元素或组件时需加上key属性作为唯一标识<br>解决方法：写成<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var arr=[1,2,3]</div><div class="line">arr.map(<span class="keyword">function</span>(x,i)&#123;</div><div class="line">  <span class="built_in">return</span> (&lt;div key=i&gt;&lt;/div&gt;);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h4 id="3-在render-函数中返回时这样写："><a href="#3-在render-函数中返回时这样写：" class="headerlink" title="3 在render()函数中返回时这样写："></a>3 在render()函数中返回时这样写：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">render</span></span>()&#123;</div><div class="line">  <span class="built_in">return</span> &lt;div&gt;&lt;/div&gt;</div><div class="line">        &lt;div&gt;&lt;/div&gt;</div><div class="line">        &lt;div&gt;&lt;/div&gt;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>报错：Adjacent JSX elements must be wrapped in an enclosing tag (75:8)<br>原因：render()函数中返回的所有元素需要包裹在一个外部元素里面<br>解决方法：可改写为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">render</span></span>()&#123;</div><div class="line">  <span class="built_in">return</span>  &lt;section&gt;</div><div class="line">                &lt;div&gt;&lt;/div&gt;</div><div class="line">                &lt;div&gt;&lt;/div&gt;</div><div class="line">                &lt;div&gt;&lt;/div&gt;</div><div class="line">          &lt;/section&gt;</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<p>最后一点—不能写成：（return语句和返回元素不在同一行会被解析器视为返回null导致错误)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">render</span></span>()&#123;</div><div class="line">  <span class="built_in">return</span>  </div><div class="line">       &lt;section&gt;</div><div class="line">          &lt;div&gt;&lt;/div&gt;</div><div class="line">          &lt;div&gt;&lt;/div&gt;</div><div class="line">          &lt;div&gt;&lt;/div&gt;</div><div class="line">       &lt;/section&gt;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -374,18 +377,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/26/OpenVPN/" rel="next" title="Mac上使用OpenVPN">
-                <i class="fa fa-chevron-left"></i> Mac上使用OpenVPN
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/27/如何安装Git/" rel="prev" title="如何安装Git">
-                如何安装Git <i class="fa fa-chevron-right"></i>
+              <a href="/2017/08/03/React生命周期总结/" rel="prev" title="React生命周期总结">
+                React生命周期总结 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -508,7 +507,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一步安装"><span class="nav-number">1.</span> <span class="nav-text">第一步安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二部在main-js中引入"><span class="nav-number">2.</span> <span class="nav-text">第二部在main.js中引入</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-在JSX的元素中写入内联样式，例如"><span class="nav-number">1.</span> <span class="nav-text">1 在JSX的元素中写入内联样式，例如</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-遍历数组元素："><span class="nav-number">2.</span> <span class="nav-text">2 遍历数组元素：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-在render-函数中返回时这样写："><span class="nav-number">3.</span> <span class="nav-text">3 在render()函数中返回时这样写：</span></a></li></ol></div>
             
 
           </div>
