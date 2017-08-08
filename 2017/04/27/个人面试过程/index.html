@@ -97,7 +97,7 @@
 <meta property="og:url" content="http://zhangyuki.github.io/2017/04/27/个人面试过程/index.html">
 <meta property="og:site_name" content="玉英博客">
 <meta property="og:description" content="作为半路出家转前端开发零基础的我，在经历了几年工作后再次面试前端所获得的一些经验，我想在这给大家分享一下（也是写给多年后的自己），面试之前的小故事精心准备的我，不停刷面试题，整夜整夜的看着HTML/JS/CSS知识点，还有那些最新的、时髦的技术，看看到时候能不能唬住面试官；而有些人对自己胸有成竹，这么多年的前端经验了，啥项目没有经历过，不就一个面试，怕啥呢。 很快或者很慢的来到那天。我打扮的清清爽">
-<meta property="og:updated_time" content="2017-08-08T08:00:40.000Z">
+<meta property="og:updated_time" content="2017-08-08T08:06:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="我的面试过程">
 <meta name="twitter:description" content="作为半路出家转前端开发零基础的我，在经历了几年工作后再次面试前端所获得的一些经验，我想在这给大家分享一下（也是写给多年后的自己），面试之前的小故事精心准备的我，不停刷面试题，整夜整夜的看着HTML/JS/CSS知识点，还有那些最新的、时髦的技术，看看到时候能不能唬住面试官；而有些人对自己胸有成竹，这么多年的前端经验了，啥项目没有经历过，不就一个面试，怕啥呢。 很快或者很慢的来到那天。我打扮的清清爽">
@@ -378,10 +378,13 @@
 <p>第三种效率更高！<br>在大数据下：<br>第三种方式比第一种执行速度快3~4倍；<br>至于第三种比第三种快100多倍开外（详细数据：<a href="http://www.111cn.net/wy/js-ajax/39368.htm）" target="_blank" rel="external">http://www.111cn.net/wy/js-ajax/39368.htm）</a></p>
 <h4 id="前端开发中会遇到哪些问题需要考虑"><a href="#前端开发中会遇到哪些问题需要考虑" class="headerlink" title="前端开发中会遇到哪些问题需要考虑"></a>前端开发中会遇到哪些问题需要考虑</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1. 组建化 模块化</div><div class="line">2. 开发效率</div><div class="line">3. 运行效率</div><div class="line">4. 可维护性</div><div class="line">5. 体验优化</div></pre></td></tr></table></figure>
 <h4 id="在浏览器中输入域名-按下回车键后会发生哪些事情？"><a href="#在浏览器中输入域名-按下回车键后会发生哪些事情？" class="headerlink" title="在浏览器中输入域名 按下回车键后会发生哪些事情？"></a>在浏览器中输入域名 按下回车键后会发生哪些事情？</h4><p>步骤1：需要查找域名的IP地址，DNS查找过程：<br>（1）浏览器缓存 – 浏览器的缓存DNS记录一段时间。<br>（2）系统缓存 – 如果在浏览器缓存里没有找到需要的记录，浏览器会做一个系统调用（windows里是gethostbyname）这样便可获得系统缓存中的记录。<br>（3）路由器缓存 – 接着，前面的查询请求发向路由器，它一般会有自己的DNS缓存。<br>（4）ISP DNS 缓存 – 接下来要check的就是ISP缓存DNS的服务器。在这一般都能找到相应的缓存记录。<br>（5）递归搜索 – 你的ISP的DNS服务器从跟域名服务器开始进行递归搜索，从.com顶级域名服务器到Facebook的域名服务器。一般DNS服务器的缓存中会有.com域名服务器中的域名，所以到顶级服务器的匹配过程不是那么必要了。<br>步骤2：浏览器给web服务器发送一个HTTP请求。请求中也包含浏览器存储的该域名的cookies。可能你已经知道，在不同页面请求当中，cookies是与跟踪一个网站状态相匹配的键值。这样cookies会存储登录用户名，服务器分配的密码和一些用户设置等。Cookies会以文本文档形式存储在客户机里，每次请求时发送给服务器。<br>步骤3：服务的永久重定向响应<br>步骤4：浏览器跟踪重定向地址<br>步骤5：服务器“处理”请求<br>步骤6：服务器发回一个HTML响应<br>步骤7：浏览器开始显示HTML<br>步骤8：浏览器发送获取嵌入在HTML中的对象</p>
-<h4 id=""><a href="#" class="headerlink" title=" "></a> </h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">data.map((item) =&gt; (</div><div class="line"></div><div class="line">)) 与</div><div class="line">data.map((item) =&gt; &#123;</div><div class="line"></div><div class="line">&#125;)的区别（something） ==  <span class="built_in">return</span> &#123; something &#125;</div><div class="line">	</div><div class="line">)) &#123;&#125;</div></pre></td></tr></table></figure>
-<p>```bash<br>[“1”, “2”, “3”].map(parseInt);  //结果  [1, NaN, NaN]　如果想得到[1, 2,3]应该这么做</p>
-<p>function returnInt(element){<br>  return parseInt(element, 10);<br>}</p>
-<p>[“1”, “2”, “3”].map(returnInt);<br>```　　</p>
+<h4 id=""><a href="#" class="headerlink" title=" "></a> </h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">data.map((item) =&gt; (</div><div class="line"></div><div class="line">)) 与</div><div class="line">data.map((item) =&gt; &#123;</div><div class="line"></div><div class="line">&#125;)</div><div class="line">的区别（something） ==  <span class="built_in">return</span> &#123; something &#125;</div></pre></td></tr></table></figure>
+<p><code>bash
+[&quot;1&quot;, &quot;2&quot;, &quot;3&quot;].map(parseInt);  //结果  [1, NaN, NaN]　如果想得到[1, 2,3]应该这么做
+function returnInt(element){
+  return parseInt(element, 10);
+}
+[&quot;1&quot;, &quot;2&quot;, &quot;3&quot;].map(returnInt);</code>　　</p>
 
       
     </div>
