@@ -386,7 +386,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/04/27/hexo搭建Github个人博客/">
+    <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/04/27/如何安装Git/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="玉英（小丸子）">
@@ -408,8 +408,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/04/27/hexo搭建Github个人博客/" itemprop="url">
-                  使用Hexo搭建Github个人博客
+                <a class="post-title-link" href="/2017/04/27/如何安装Git/" itemprop="url">
+                  如何安装Git
                 </a>
               
             
@@ -462,33 +462,14 @@
       
         
           
-            <p>网上关于hexo搭建博客的文章已经有很多，这里只做为个人博客的试笔文章，记录下hexo博客搭建的过程和心得。</p>
-<h3 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h3><blockquote>
-<p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
-</blockquote>
-<h3 id="搭建准备"><a href="#搭建准备" class="headerlink" title="搭建准备"></a>搭建准备</h3><ul>
-<li>Node.js</li>
-<li>Git &amp; Github</li>
-</ul>
-<p>Node.js安装方式很多，见 <a href="../如何安装Nodejs/">如何安装Node.js</a> 文章<br>Git 安装方法，见 <a href="../如何安装Git/">如何安装Git</a> 文章</p>
-<p>node.js 和 git 都安装完成后即可开始搭建hexo个人博客了。</p>
-<h3 id="开始搭建"><a href="#开始搭建" class="headerlink" title="开始搭建"></a>开始搭建</h3><h4 id="安装-hexo"><a href="#安装-hexo" class="headerlink" title="安装 hexo"></a>安装 hexo</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> d:/hexo</div><div class="line">$ npm install hexo-cli -g</div><div class="line">$ hexo init blog</div><div class="line">$ <span class="built_in">cd</span> blog</div><div class="line">$ npm install</div><div class="line">$ hexo g <span class="comment"># 或者hexo generate</span></div><div class="line">$ hexo s <span class="comment"># 或者hexo server，可以在http://localhost:4000/ 查看</span></div></pre></td></tr></table></figure>
-<h4 id="这里有必要提下Hexo常用的几个命令："><a href="#这里有必要提下Hexo常用的几个命令：" class="headerlink" title="这里有必要提下Hexo常用的几个命令："></a>这里有必要提下Hexo常用的几个命令：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span>/themes</div><div class="line">hexo generate (hexo g) 生成静态文件，会在当前目录下生成一个新的叫做public的文件夹/</div><div class="line">hexo server (hexo s) 启动本地web服务，用于博客的预览</div><div class="line">hexo deploy (hexo d) 生成部署</div></pre></td></tr></table></figure>
-<h4 id="目前我安装所用的本地环境如下：-可以通过hexo-v查看"><a href="#目前我安装所用的本地环境如下：-可以通过hexo-v查看" class="headerlink" title="目前我安装所用的本地环境如下：(可以通过hexo -v查看)"></a>目前我安装所用的本地环境如下：(可以通过hexo -v查看)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">hexo: 3.2.0</div><div class="line">hexo-cli: 1.0.1</div><div class="line">os: Windows_NT 6.3.9600 win32 x64</div><div class="line">http_parser: 2.5.2</div><div class="line">node: 4.4.1</div><div class="line">v8: 4.5.103.35</div><div class="line">uv: 1.8.0</div><div class="line">zlib: 1.2.8</div><div class="line">ares: 1.10.1-DEV</div><div class="line">icu: 56.1</div><div class="line">modules: 46</div><div class="line">openssl: 1.0.2g</div></pre></td></tr></table></figure>
-<h4 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div></pre></td></tr></table></figure>
-<h4 id="应用主题"><a href="#应用主题" class="headerlink" title="应用主题"></a>应用主题</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span>/themes</div><div class="line">$ git <span class="built_in">clone</span> git@github.com:iissnan/hexo-theme-next.git</div><div class="line">$ git pull</div><div class="line">$ hexo g <span class="comment"># 生成</span></div><div class="line">$ hexo s <span class="comment"># 启动本地web服务器</span></div></pre></td></tr></table></figure>
-<h4 id="二：Github-Pages设置"><a href="#二：Github-Pages设置" class="headerlink" title="二：Github Pages设置"></a>二：Github Pages设置</h4><p>什么是Github Pages</p>
-<p>GitHub Pages 本用于介绍托管在GitHub的项目，不过，由于他的空间免费稳定，用来做搭建一个博客再好不过了。</p>
-<p>每个帐号只能有一个仓库来存放个人主页，而且仓库的名字必须是username/username.github.io，这是特殊的命名约定。你可以通过<a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a> 来访问你的个人主页。</p>
-<p>这里特别提醒一下，需要注意的个人主页的网站内容是在master分支下的。</p>
-<h4 id="使用hexo-deploy部署"><a href="#使用hexo-deploy部署" class="headerlink" title="使用hexo deploy部署"></a>使用hexo deploy部署</h4><p>hexo deploy可以部署到很多平台，具体可以参考这个链接. 如果部署到github，需要在配置文件_config.xml中作如下修改：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  <span class="built_in">type</span>: git</div><div class="line">  repo: git@github.com:jiji262/jiji262.github.io.git</div><div class="line">  branch: master</div><div class="line"></div><div class="line">$ <span class="built_in">cd</span>/blog</div><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure></p>
-<p> 然后在命令行中执行<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo d</div></pre></td></tr></table></figure></p>
-<p> 即可完成部署。</p>
-<p> 1）如果出现下面这样的错误：<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Permission denied (publickey).</div><div class="line">fatal: Could not <span class="built_in">read</span> from remote repository.</div><div class="line">Please make sure you have the correct access rights</div><div class="line">and the repository exists.</div></pre></td></tr></table></figure></p>
-<p>则是因为没有设置好public key所致。<br>在本机生成public key(参考github帮助)：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">＃ssh-keygen -t rsa -b 4096 -C <span class="string">"963022018@qq.com"</span></div><div class="line">回车</div><div class="line">Overwrite (y/n)? y</div><div class="line">yuying$ ls <span class="_">-a</span></div><div class="line"><span class="built_in">cd</span> /Users/yuying/.ssh/</div><div class="line">.ssh yuying$ ls <span class="_">-a</span></div><div class="line">cat id_rsa.pub</div></pre></td></tr></table></figure></p>
-<p>然后在#user_id/.ssh目录下会生成两个文件，id_rsa.pub和id_rsa.<br>然后登陆github，在SSH设置页面添加上刚才的public key文件也就是id_rsa.pub的内容即可。</p>
-<h4 id="Hexo-主题配置"><a href="#Hexo-主题配置" class="headerlink" title="Hexo 主题配置"></a>Hexo 主题配置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Header</span></div><div class="line">menu:</div><div class="line">  主页: /</div><div class="line">  所有文章: /archives</div><div class="line">  <span class="comment"># 随笔: /tags/随笔</span></div><div class="line"></div><div class="line"><span class="comment"># SubNav</span></div><div class="line">subnav:</div><div class="line">  github: <span class="string">"dushao103500"</span></div><div class="line">  weibo: <span class="string">"DanD逆光之处是暖伤"</span></div><div class="line">  rss: <span class="string">"#"</span></div><div class="line">  zhihu: <span class="string">"#"</span></div><div class="line">  <span class="comment">#douban: "#"</span></div><div class="line">  <span class="comment">#mail: "dushao1314@foxmail.com"</span></div><div class="line">  <span class="comment">#facebook: "#"</span></div><div class="line">  <span class="comment">#google: "#"</span></div><div class="line">  <span class="comment">#twitter: "#"</span></div><div class="line">  <span class="comment">#linkedin: "#"</span></div><div class="line"></div><div class="line">rss: /atom.xml</div><div class="line"></div><div class="line"><span class="comment"># Content</span></div><div class="line">excerpt_link: more</div><div class="line">fancybox: <span class="literal">true</span></div><div class="line">mathjax: <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment"># Miscellaneous</span></div><div class="line">google_analytics: <span class="string">''</span></div><div class="line">favicon: /favicon.png</div><div class="line"></div><div class="line"><span class="comment">#你的头像url</span></div><div class="line">avatar: <span class="string">""</span></div><div class="line"><span class="comment">#是否开启分享</span></div><div class="line">share: <span class="literal">true</span></div><div class="line"><span class="comment">#是否开启多说评论，填写你在多说申请的项目名称 duoshuo: duoshuo-key</span></div><div class="line"><span class="comment">#若使用disqus，请在博客config文件中填写disqus_shortname，并关闭多说评论</span></div><div class="line">duoshuo: <span class="literal">true</span></div><div class="line"><span class="comment">#是否开启云标签</span></div><div class="line">tagcloud: <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment">#是否开启友情链接</span></div><div class="line"><span class="comment">#不开启——</span></div><div class="line"><span class="comment">#friends: false</span></div><div class="line"></div><div class="line"><span class="comment">#是否开启“关于我”。</span></div><div class="line"><span class="comment">#不开启——</span></div><div class="line"><span class="comment">#aboutme: false</span></div><div class="line"><span class="comment">#开启——</span></div><div class="line">aboutme: 我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div></pre></td></tr></table></figure>
-<p>至此，Hexo+Github Pages搭建个人博客完成</p>
+            <h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p>下载安装 <a href="https://git-scm.com/downloads" target="_blank" rel="external">git</a></p>
+<h3 id="Linxu"><a href="#Linxu" class="headerlink" title="Linxu"></a>Linxu</h3><h4 id="Debian-Ubuntu"><a href="#Debian-Ubuntu" class="headerlink" title="Debian/Ubuntu"></a>Debian/Ubuntu</h4><p>12.04 下</p>
+<p>Ubuntu12.04中默认没有安装Git。需要自行安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo add-apt-repository ppa:git-core/ppa</div><div class="line">$ sudo apt-get update</div><div class="line">$ sudo apt-get install git</div></pre></td></tr></table></figure>
+<p>12.04 以上</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install git</div></pre></td></tr></table></figure>
+<h4 id="Centos-RedHat"><a href="#Centos-RedHat" class="headerlink" title="Centos/RedHat"></a>Centos/RedHat</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel</div><div class="line">$ sudo yum -y install git-core</div></pre></td></tr></table></figure>
+<h3 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h3><p>mac 下自带 git，也可以从官网下载安装 <a href="https://git-scm.com/downloads" target="_blank" rel="external">git</a></p>
 
           
         
@@ -621,6 +602,141 @@
 <p>brew 配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> NUM_DIR=~/.nvm</div><div class="line"><span class="built_in">source</span> $(brew --prefix nvm)/nvm.sh</div></pre></td></tr></table></figure></p>
 <h4 id="nvm-安装-node-js"><a href="#nvm-安装-node-js" class="headerlink" title="nvm 安装 node.js"></a>nvm 安装 node.js</h4><p>安装完成后，重启终端并执行下列命令即可安装 Node.js。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ nvm install stable</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/04/27/设置国内npm镜像/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="玉英（小丸子）">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://imgsrc.baidu.com/forum/w%3D580/sign=aa09a14c8244ebf86d716437e9f8d736/ea6dc811728b4710787b6583c6cec3fdfd032371.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="玉英博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/27/设置国内npm镜像/" itemprop="url">
+                  设置国内npm镜像
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-27T13:56:54+08:00">
+                2017-04-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>npm全称Node Package Manager，是node.js的模块依赖管理工具。由于npm的源在国外，所以国内用户使用起来各种不方便。下面整理出了一部分国内优秀的npm镜像资源，国内用户可以选择使用。</p>
+<h3 id="国内优秀npm镜像"><a href="#国内优秀npm镜像" class="headerlink" title="国内优秀npm镜像"></a>国内优秀npm镜像</h3><h4 id="淘宝npm镜像"><a href="#淘宝npm镜像" class="headerlink" title="淘宝npm镜像"></a>淘宝npm镜像</h4><ul>
+<li>搜索地址：<a href="http://npm.taobao.org/" target="_blank" rel="external">http://npm.taobao.org/</a></li>
+<li>registry地址：<a href="http://registry.npm.taobao.org/" target="_blank" rel="external">http://registry.npm.taobao.org/</a></li>
+</ul>
+<h4 id="cnpmjs镜像"><a href="#cnpmjs镜像" class="headerlink" title="cnpmjs镜像"></a>cnpmjs镜像</h4><ul>
+<li>搜索地址：<a href="http://cnpmjs.org/" target="_blank" rel="external">http://cnpmjs.org/</a></li>
+<li>registry地址：<a href="http://r.cnpmjs.org/" target="_blank" rel="external">http://r.cnpmjs.org/</a></li>
+</ul>
+<h3 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h3><p>有很多方法来配置npm的registry地址，下面根据不同情境列出几种比较常用的方法。以淘宝npm镜像举例：</p>
+<h4 id="1-临时使用"><a href="#1-临时使用" class="headerlink" title="1. 临时使用"></a>1. 临时使用</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm --registry https://registry.npm.taobao.org install express</div></pre></td></tr></table></figure>
+<h4 id="2-持久使用"><a href="#2-持久使用" class="headerlink" title="2. 持久使用"></a>2. 持久使用</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</div><div class="line">// 配置后可通过下面方式来验证是否成功</div><div class="line">$ npm config get registry</div><div class="line">// 或</div><div class="line">$ npm info express</div></pre></td></tr></table></figure>
+<h4 id="3-通过cnpm使用"><a href="#3-通过cnpm使用" class="headerlink" title="3. 通过cnpm使用"></a>3. 通过cnpm使用</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ npm install -g cnpm --registry=https://registry.npm.taobao.org</div><div class="line">// 验证</div><div class="line">cnpm install express</div></pre></td></tr></table></figure>
+<blockquote>
+<p>文章转载自 <a href="http://riny.net/2014/cnpm/" target="_blank" rel="external">国内优秀npm镜像推荐及使用</a></p>
+</blockquote>
 
           
         
@@ -812,6 +928,152 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/04/27/hexo搭建Github个人博客/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="玉英（小丸子）">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://imgsrc.baidu.com/forum/w%3D580/sign=aa09a14c8244ebf86d716437e9f8d736/ea6dc811728b4710787b6583c6cec3fdfd032371.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="玉英博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/27/hexo搭建Github个人博客/" itemprop="url">
+                  使用Hexo搭建Github个人博客
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-27T13:56:54+08:00">
+                2017-04-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>网上关于hexo搭建博客的文章已经有很多，这里只做为个人博客的试笔文章，记录下hexo博客搭建的过程和心得。</p>
+<h3 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h3><blockquote>
+<p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+</blockquote>
+<h3 id="搭建准备"><a href="#搭建准备" class="headerlink" title="搭建准备"></a>搭建准备</h3><ul>
+<li>Node.js</li>
+<li>Git &amp; Github</li>
+</ul>
+<p>Node.js安装方式很多，见 <a href="../如何安装Nodejs/">如何安装Node.js</a> 文章<br>Git 安装方法，见 <a href="../如何安装Git/">如何安装Git</a> 文章</p>
+<p>node.js 和 git 都安装完成后即可开始搭建hexo个人博客了。</p>
+<h3 id="开始搭建"><a href="#开始搭建" class="headerlink" title="开始搭建"></a>开始搭建</h3><h4 id="安装-hexo"><a href="#安装-hexo" class="headerlink" title="安装 hexo"></a>安装 hexo</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> d:/hexo</div><div class="line">$ npm install hexo-cli -g</div><div class="line">$ hexo init blog</div><div class="line">$ <span class="built_in">cd</span> blog</div><div class="line">$ npm install</div><div class="line">$ hexo g <span class="comment"># 或者hexo generate</span></div><div class="line">$ hexo s <span class="comment"># 或者hexo server，可以在http://localhost:4000/ 查看</span></div></pre></td></tr></table></figure>
+<h4 id="这里有必要提下Hexo常用的几个命令："><a href="#这里有必要提下Hexo常用的几个命令：" class="headerlink" title="这里有必要提下Hexo常用的几个命令："></a>这里有必要提下Hexo常用的几个命令：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span>/themes</div><div class="line">hexo generate (hexo g) 生成静态文件，会在当前目录下生成一个新的叫做public的文件夹/</div><div class="line">hexo server (hexo s) 启动本地web服务，用于博客的预览</div><div class="line">hexo deploy (hexo d) 生成部署</div></pre></td></tr></table></figure>
+<h4 id="目前我安装所用的本地环境如下：-可以通过hexo-v查看"><a href="#目前我安装所用的本地环境如下：-可以通过hexo-v查看" class="headerlink" title="目前我安装所用的本地环境如下：(可以通过hexo -v查看)"></a>目前我安装所用的本地环境如下：(可以通过hexo -v查看)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">hexo: 3.2.0</div><div class="line">hexo-cli: 1.0.1</div><div class="line">os: Windows_NT 6.3.9600 win32 x64</div><div class="line">http_parser: 2.5.2</div><div class="line">node: 4.4.1</div><div class="line">v8: 4.5.103.35</div><div class="line">uv: 1.8.0</div><div class="line">zlib: 1.2.8</div><div class="line">ares: 1.10.1-DEV</div><div class="line">icu: 56.1</div><div class="line">modules: 46</div><div class="line">openssl: 1.0.2g</div></pre></td></tr></table></figure>
+<h4 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div></pre></td></tr></table></figure>
+<h4 id="应用主题"><a href="#应用主题" class="headerlink" title="应用主题"></a>应用主题</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span>/themes</div><div class="line">$ git <span class="built_in">clone</span> git@github.com:iissnan/hexo-theme-next.git</div><div class="line">$ git pull</div><div class="line">$ hexo g <span class="comment"># 生成</span></div><div class="line">$ hexo s <span class="comment"># 启动本地web服务器</span></div></pre></td></tr></table></figure>
+<h4 id="二：Github-Pages设置"><a href="#二：Github-Pages设置" class="headerlink" title="二：Github Pages设置"></a>二：Github Pages设置</h4><p>什么是Github Pages</p>
+<p>GitHub Pages 本用于介绍托管在GitHub的项目，不过，由于他的空间免费稳定，用来做搭建一个博客再好不过了。</p>
+<p>每个帐号只能有一个仓库来存放个人主页，而且仓库的名字必须是username/username.github.io，这是特殊的命名约定。你可以通过<a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a> 来访问你的个人主页。</p>
+<p>这里特别提醒一下，需要注意的个人主页的网站内容是在master分支下的。</p>
+<h4 id="使用hexo-deploy部署"><a href="#使用hexo-deploy部署" class="headerlink" title="使用hexo deploy部署"></a>使用hexo deploy部署</h4><p>hexo deploy可以部署到很多平台，具体可以参考这个链接. 如果部署到github，需要在配置文件_config.xml中作如下修改：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  <span class="built_in">type</span>: git</div><div class="line">  repo: git@github.com:jiji262/jiji262.github.io.git</div><div class="line">  branch: master</div><div class="line"></div><div class="line">$ <span class="built_in">cd</span>/blog</div><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure></p>
+<p> 然后在命令行中执行<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo d</div></pre></td></tr></table></figure></p>
+<p> 即可完成部署。</p>
+<p> 1）如果出现下面这样的错误：<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Permission denied (publickey).</div><div class="line">fatal: Could not <span class="built_in">read</span> from remote repository.</div><div class="line">Please make sure you have the correct access rights</div><div class="line">and the repository exists.</div></pre></td></tr></table></figure></p>
+<p>则是因为没有设置好public key所致。<br>在本机生成public key(参考github帮助)：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">＃ssh-keygen -t rsa -b 4096 -C <span class="string">"963022018@qq.com"</span></div><div class="line">回车</div><div class="line">Overwrite (y/n)? y</div><div class="line">yuying$ ls <span class="_">-a</span></div><div class="line"><span class="built_in">cd</span> /Users/yuying/.ssh/</div><div class="line">.ssh yuying$ ls <span class="_">-a</span></div><div class="line">cat id_rsa.pub</div></pre></td></tr></table></figure></p>
+<p>然后在#user_id/.ssh目录下会生成两个文件，id_rsa.pub和id_rsa.<br>然后登陆github，在SSH设置页面添加上刚才的public key文件也就是id_rsa.pub的内容即可。</p>
+<h4 id="Hexo-主题配置"><a href="#Hexo-主题配置" class="headerlink" title="Hexo 主题配置"></a>Hexo 主题配置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Header</span></div><div class="line">menu:</div><div class="line">  主页: /</div><div class="line">  所有文章: /archives</div><div class="line">  <span class="comment"># 随笔: /tags/随笔</span></div><div class="line"></div><div class="line"><span class="comment"># SubNav</span></div><div class="line">subnav:</div><div class="line">  github: <span class="string">"dushao103500"</span></div><div class="line">  weibo: <span class="string">"DanD逆光之处是暖伤"</span></div><div class="line">  rss: <span class="string">"#"</span></div><div class="line">  zhihu: <span class="string">"#"</span></div><div class="line">  <span class="comment">#douban: "#"</span></div><div class="line">  <span class="comment">#mail: "dushao1314@foxmail.com"</span></div><div class="line">  <span class="comment">#facebook: "#"</span></div><div class="line">  <span class="comment">#google: "#"</span></div><div class="line">  <span class="comment">#twitter: "#"</span></div><div class="line">  <span class="comment">#linkedin: "#"</span></div><div class="line"></div><div class="line">rss: /atom.xml</div><div class="line"></div><div class="line"><span class="comment"># Content</span></div><div class="line">excerpt_link: more</div><div class="line">fancybox: <span class="literal">true</span></div><div class="line">mathjax: <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment"># Miscellaneous</span></div><div class="line">google_analytics: <span class="string">''</span></div><div class="line">favicon: /favicon.png</div><div class="line"></div><div class="line"><span class="comment">#你的头像url</span></div><div class="line">avatar: <span class="string">""</span></div><div class="line"><span class="comment">#是否开启分享</span></div><div class="line">share: <span class="literal">true</span></div><div class="line"><span class="comment">#是否开启多说评论，填写你在多说申请的项目名称 duoshuo: duoshuo-key</span></div><div class="line"><span class="comment">#若使用disqus，请在博客config文件中填写disqus_shortname，并关闭多说评论</span></div><div class="line">duoshuo: <span class="literal">true</span></div><div class="line"><span class="comment">#是否开启云标签</span></div><div class="line">tagcloud: <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment">#是否开启友情链接</span></div><div class="line"><span class="comment">#不开启——</span></div><div class="line"><span class="comment">#friends: false</span></div><div class="line"></div><div class="line"><span class="comment">#是否开启“关于我”。</span></div><div class="line"><span class="comment">#不开启——</span></div><div class="line"><span class="comment">#aboutme: false</span></div><div class="line"><span class="comment">#开启——</span></div><div class="line">aboutme: 我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div></pre></td></tr></table></figure>
+<p>至此，Hexo+Github Pages搭建个人博客完成</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/04/27/个人面试过程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -933,277 +1195,16 @@
 <h4 id="前端开发中会遇到哪些问题需要考虑"><a href="#前端开发中会遇到哪些问题需要考虑" class="headerlink" title="前端开发中会遇到哪些问题需要考虑"></a>前端开发中会遇到哪些问题需要考虑</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1. 组建化 模块化</div><div class="line">2. 开发效率</div><div class="line">3. 运行效率</div><div class="line">4. 可维护性</div><div class="line">5. 体验优化</div></pre></td></tr></table></figure>
 <h4 id="在浏览器中输入域名-按下回车键后会发生哪些事情？"><a href="#在浏览器中输入域名-按下回车键后会发生哪些事情？" class="headerlink" title="在浏览器中输入域名 按下回车键后会发生哪些事情？"></a>在浏览器中输入域名 按下回车键后会发生哪些事情？</h4><p>步骤1：需要查找域名的IP地址，DNS查找过程：<br>（1）浏览器缓存 – 浏览器的缓存DNS记录一段时间。<br>（2）系统缓存 – 如果在浏览器缓存里没有找到需要的记录，浏览器会做一个系统调用（windows里是gethostbyname）这样便可获得系统缓存中的记录。<br>（3）路由器缓存 – 接着，前面的查询请求发向路由器，它一般会有自己的DNS缓存。<br>（4）ISP DNS 缓存 – 接下来要check的就是ISP缓存DNS的服务器。在这一般都能找到相应的缓存记录。<br>（5）递归搜索 – 你的ISP的DNS服务器从跟域名服务器开始进行递归搜索，从.com顶级域名服务器到Facebook的域名服务器。一般DNS服务器的缓存中会有.com域名服务器中的域名，所以到顶级服务器的匹配过程不是那么必要了。<br>步骤2：浏览器给web服务器发送一个HTTP请求。请求中也包含浏览器存储的该域名的cookies。可能你已经知道，在不同页面请求当中，cookies是与跟踪一个网站状态相匹配的键值。这样cookies会存储登录用户名，服务器分配的密码和一些用户设置等。Cookies会以文本文档形式存储在客户机里，每次请求时发送给服务器。<br>步骤3：服务的永久重定向响应<br>步骤4：浏览器跟踪重定向地址<br>步骤5：服务器“处理”请求<br>步骤6：服务器发回一个HTML响应<br>步骤7：浏览器开始显示HTML<br>步骤8：浏览器发送获取嵌入在HTML中的对象</p>
 <h4 id=""><a href="#" class="headerlink" title=" "></a> </h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">data.map((item) =&gt; (</div><div class="line"></div><div class="line">)) 与</div><div class="line">data.map((item) =&gt; &#123;</div><div class="line"></div><div class="line">&#125;)</div><div class="line">的区别（something） ==  <span class="built_in">return</span> &#123; something &#125;</div></pre></td></tr></table></figure>
-<p>```bash<br>[“1”, “2”, “3”].map(parseInt);  //结果  [1, NaN, NaN]　如果想得到[1, 2,3]应该这么做</p>
-<p>function returnInt(element){<br>  return parseInt(element, 10);<br>}</p>
-<p>[“1”, “2”, “3”].map(returnInt);<br>```　　</p>
-<h4 id="cookie、-sessionStorage-、localStorage之间的区别和使用"><a href="#cookie、-sessionStorage-、localStorage之间的区别和使用" class="headerlink" title="cookie、 sessionStorage 、localStorage之间的区别和使用"></a>cookie、 sessionStorage 、localStorage之间的区别和使用</h4><p><code>bash
-1.cookie:存储在用户本地终端上的数据
-2.localStorage - 没有时间限制的数据存储
-3.sessionStorage - 针对一个 session 的数据存储,当用户关闭浏览器窗口后，数据会被删除。</code>　<br>sessionStorage 、localStorage 和 cookie 之间的区别<br>共同点：都是保存在浏览器端，且同源的.<br>区别：cookie数据始终在同源的http请求中携带，cookie在浏览器和服务器间来回传递；cookie数据不能超过4k，<br>而sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。<br>作用域不同，sessionStorage不在不同的浏览器窗口中共享，即使是同一个页面；localStorage 在所有同源窗口中都是共享的；cookie也是在所有同源窗口中都是共享的</p>
-<h4 id="HTML语义化"><a href="#HTML语义化" class="headerlink" title="HTML语义化"></a>HTML语义化</h4><p>语义化的标签 像标题（H1~H6）、列表（li）、强调（strong em）等等<br>好处：便于开发者阅读和写出更优雅的代码的同时让浏览器的爬虫和机器很好地解析</p>
-<h4 id="React中如何实现双向数据绑定"><a href="#React中如何实现双向数据绑定" class="headerlink" title="React中如何实现双向数据绑定?"></a>React中如何实现双向数据绑定?</h4>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/04/27/设置国内npm镜像/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="玉英（小丸子）">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://imgsrc.baidu.com/forum/w%3D580/sign=aa09a14c8244ebf86d716437e9f8d736/ea6dc811728b4710787b6583c6cec3fdfd032371.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="玉英博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/27/设置国内npm镜像/" itemprop="url">
-                  设置国内npm镜像
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-27T13:56:54+08:00">
-                2017-04-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>npm全称Node Package Manager，是node.js的模块依赖管理工具。由于npm的源在国外，所以国内用户使用起来各种不方便。下面整理出了一部分国内优秀的npm镜像资源，国内用户可以选择使用。</p>
-<h3 id="国内优秀npm镜像"><a href="#国内优秀npm镜像" class="headerlink" title="国内优秀npm镜像"></a>国内优秀npm镜像</h3><h4 id="淘宝npm镜像"><a href="#淘宝npm镜像" class="headerlink" title="淘宝npm镜像"></a>淘宝npm镜像</h4><ul>
-<li>搜索地址：<a href="http://npm.taobao.org/" target="_blank" rel="external">http://npm.taobao.org/</a></li>
-<li>registry地址：<a href="http://registry.npm.taobao.org/" target="_blank" rel="external">http://registry.npm.taobao.org/</a></li>
-</ul>
-<h4 id="cnpmjs镜像"><a href="#cnpmjs镜像" class="headerlink" title="cnpmjs镜像"></a>cnpmjs镜像</h4><ul>
-<li>搜索地址：<a href="http://cnpmjs.org/" target="_blank" rel="external">http://cnpmjs.org/</a></li>
-<li>registry地址：<a href="http://r.cnpmjs.org/" target="_blank" rel="external">http://r.cnpmjs.org/</a></li>
-</ul>
-<h3 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h3><p>有很多方法来配置npm的registry地址，下面根据不同情境列出几种比较常用的方法。以淘宝npm镜像举例：</p>
-<h4 id="1-临时使用"><a href="#1-临时使用" class="headerlink" title="1. 临时使用"></a>1. 临时使用</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm --registry https://registry.npm.taobao.org install express</div></pre></td></tr></table></figure>
-<h4 id="2-持久使用"><a href="#2-持久使用" class="headerlink" title="2. 持久使用"></a>2. 持久使用</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</div><div class="line">// 配置后可通过下面方式来验证是否成功</div><div class="line">$ npm config get registry</div><div class="line">// 或</div><div class="line">$ npm info express</div></pre></td></tr></table></figure>
-<h4 id="3-通过cnpm使用"><a href="#3-通过cnpm使用" class="headerlink" title="3. 通过cnpm使用"></a>3. 通过cnpm使用</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ npm install -g cnpm --registry=https://registry.npm.taobao.org</div><div class="line">// 验证</div><div class="line">cnpm install express</div></pre></td></tr></table></figure>
-<blockquote>
-<p>文章转载自 <a href="http://riny.net/2014/cnpm/" target="_blank" rel="external">国内优秀npm镜像推荐及使用</a></p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/04/27/如何安装Git/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="玉英（小丸子）">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://imgsrc.baidu.com/forum/w%3D580/sign=aa09a14c8244ebf86d716437e9f8d736/ea6dc811728b4710787b6583c6cec3fdfd032371.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="玉英博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/27/如何安装Git/" itemprop="url">
-                  如何安装Git
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-27T13:56:54+08:00">
-                2017-04-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p>下载安装 <a href="https://git-scm.com/downloads" target="_blank" rel="external">git</a></p>
-<h3 id="Linxu"><a href="#Linxu" class="headerlink" title="Linxu"></a>Linxu</h3><h4 id="Debian-Ubuntu"><a href="#Debian-Ubuntu" class="headerlink" title="Debian/Ubuntu"></a>Debian/Ubuntu</h4><p>12.04 下</p>
-<p>Ubuntu12.04中默认没有安装Git。需要自行安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo add-apt-repository ppa:git-core/ppa</div><div class="line">$ sudo apt-get update</div><div class="line">$ sudo apt-get install git</div></pre></td></tr></table></figure>
-<p>12.04 以上</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install git</div></pre></td></tr></table></figure>
-<h4 id="Centos-RedHat"><a href="#Centos-RedHat" class="headerlink" title="Centos/RedHat"></a>Centos/RedHat</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel</div><div class="line">$ sudo yum -y install git-core</div></pre></td></tr></table></figure>
-<h3 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h3><p>mac 下自带 git，也可以从官网下载安装 <a href="https://git-scm.com/downloads" target="_blank" rel="external">git</a></p>
-
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">[<span class="string">"1"</span>, <span class="string">"2"</span>, <span class="string">"3"</span>].map(parseInt);  //结果  [1, NaN, NaN]　如果想得到[1, 2,3]应该这么做</div><div class="line"></div><div class="line"><span class="keyword">function</span> <span class="built_in">return</span>Int(element)&#123;</div><div class="line">  <span class="built_in">return</span> parseInt(element, 10);</div><div class="line">&#125;</div><div class="line"></div><div class="line">[<span class="string">"1"</span>, <span class="string">"2"</span>, <span class="string">"3"</span>].map(<span class="built_in">return</span>Int);</div><div class="line">```　　</div><div class="line"><span class="comment">#### cookie、 sessionStorage 、localStorage之间的区别和使用</span></div><div class="line">```bash</div><div class="line">1.cookie:存储在用户本地终端上的数据</div><div class="line">2.localStorage - 没有时间限制的数据存储</div><div class="line">3.sessionStorage - 针对一个 session 的数据存储,当用户关闭浏览器窗口后，数据会被删除。</div><div class="line">```　</div><div class="line">sessionStorage 、<span class="built_in">local</span>Storage 和 cookie 之间的区别</div><div class="line">共同点：都是保存在浏览器端，且同源的.</div><div class="line">区别：cookie数据始终在同源的http请求中携带，cookie在浏览器和服务器间来回传递；cookie数据不能超过4k，</div><div class="line">而sessionStorage和<span class="built_in">local</span>Storage不会自动把数据发给服务器，仅在本地保存。</div><div class="line">作用域不同，sessionStorage不在不同的浏览器窗口中共享，即使是同一个页面；<span class="built_in">local</span>Storage 在所有同源窗口中都是共享的；cookie也是在所有同源窗口中都是共享的</div><div class="line"></div><div class="line"><span class="comment">#### HTML语义化</span></div><div class="line">语义化的标签 像标题（H1~H6）、列表（li）、强调（strong em）等等</div><div class="line">好处：便于开发者阅读和写出更优雅的代码的同时让浏览器的爬虫和机器很好地解析</div><div class="line"></div><div class="line"><span class="comment">#### CommonJS规范</span></div><div class="line">1、CommonJs规范的出发点：JS没有模块系统、标准库较少、缺乏包管理工具；为了让JS可以在任何地方运行，以达到Java、C<span class="comment">#、PHP这些后台语言具备开发大型应用的能力；</span></div><div class="line"></div><div class="line">2、在CommonJs规范中：</div><div class="line">一个文件就是一个模块，拥有单独的作用域；</div><div class="line">普通方式定义的变量、函数、对象都属于该模块内；</div><div class="line">通过require来加载模块；</div><div class="line">通过exports和modul.exports来暴露模块中的内容；</div><div class="line"></div><div class="line">3、所有代码都运行在模块作用域，不会污染全局作用域；模块可以多次加载，但只会在第一次加载的时候运行一次，然后运行结果就被缓存了，以后再加载，就直接读取缓存结果；模块的加载顺序，按照代码的出现顺序是同步加载的;</div><div class="line"></div><div class="line"><span class="comment">#### react-router 按需加载</span></div><div class="line">程序应当只加载当前渲染页所需的 JavaScript，也就是大家说的“代码拆分<span class="string">" — 将所有的代码分拆成多个小包，在用户浏览过程中按需加载。</span></div><div class="line"></div><div class="line">#### Webpack 配置</div><div class="line">首先在 webpack.config.js 的 output 内加上 chunkFilename</div><div class="line">```bash</div><div class="line">output: &#123;</div><div class="line">    path: path.join(__dirname, '/../dist/assets'),</div><div class="line">    filename: 'app.js',</div><div class="line">    publicPath: defaultSettings.publicPath,</div><div class="line">    // 添加 chunkFilename</div><div class="line">    chunkFilename: '[name].[chunkhash:5].chunk.js',</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
+<p>chunkhash 是文件的 hash 码，这里只使用前五位。</p>
+<h4 id="添加首页"><a href="#添加首页" class="headerlink" title="添加首页"></a>添加首页</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">ReactDOM.render(</div><div class="line">  (</div><div class="line">    &lt;Router <span class="built_in">history</span>=&#123;browserHistory&#125;&gt;</div><div class="line">      &#123;/* 主页 */&#125;</div><div class="line">      &lt;Route path=<span class="string">"/"</span> component=&#123;App&#125;&gt;</div><div class="line">        &#123;/* 默认 */&#125;</div><div class="line">        &lt;IndexRoute component=&#123;HomePage&#125; /&gt;</div><div class="line"></div><div class="line">        &#123;/* baidu */&#125;</div><div class="line">        &lt;Route path=<span class="string">"/baidu"</span> component=&#123;BaiduPage&#125;&gt;</div><div class="line">          &lt;Route path=<span class="string">"result"</span> component=&#123;BaiduResultPage&#125; /&gt;</div><div class="line">          &lt;Route path=<span class="string">"frequency"</span> component=&#123;BaiduFrequencyPage&#125; /&gt;</div><div class="line">        &lt;/Route&gt;</div><div class="line"></div><div class="line">        &#123;/* 404 */&#125;</div><div class="line">        &lt;Route path=<span class="string">'/404'</span> component=&#123;NotFoundPage&#125; /&gt;</div><div class="line">        </div><div class="line">        &#123;/* 其他重定向到 404 */&#125;</div><div class="line">        &lt;Redirect from=<span class="string">'*'</span> to=<span class="string">'/404'</span> /&gt;</div><div class="line">      &lt;/Route&gt;</div><div class="line">    &lt;/Router&gt;</div><div class="line">  ), document.getElementById(<span class="string">'app'</span>)</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>按需加载之后，我们需要让路由动态加载组件，需要将 component 换成 getComponent。首先将路由拆出来（因为路由庞大之后全部写在一起会很难看），创建一个根路由 rootRoute：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">const rootRoute = &#123;</div><div class="line">  path: <span class="string">'/'</span>,</div><div class="line">  indexRoute: &#123;</div><div class="line">    getComponent(nextState, cb) &#123;</div><div class="line">      require.ensure([], (require) =&gt; &#123;</div><div class="line">        cb(null, require(<span class="string">'components/layer/HomePage'</span>))</div><div class="line">      &#125;, <span class="string">'HomePage'</span>)</div><div class="line">    &#125;,</div><div class="line">  &#125;,</div><div class="line">  getComponent(nextState, cb) &#123;</div><div class="line">    require.ensure([], (require) =&gt; &#123;</div><div class="line">      cb(null, require(<span class="string">'components/Main'</span>))</div><div class="line">    &#125;, <span class="string">'Main'</span>)</div><div class="line">  &#125;,</div><div class="line">  childRoutes: [</div><div class="line">    require(<span class="string">'./routes/baidu'</span>),</div><div class="line">    require(<span class="string">'./routes/404'</span>),</div><div class="line">    require(<span class="string">'./routes/redirect'</span>)</div><div class="line">  ]</div><div class="line">&#125;</div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line">  (</div><div class="line">    &lt;Router</div><div class="line">      <span class="built_in">history</span>=&#123;browserHistory&#125;</div><div class="line">      routes=&#123;rootRoute&#125;</div><div class="line">      /&gt;</div><div class="line">  ), document.getElementById(<span class="string">'app'</span>)</div><div class="line">);</div></pre></td></tr></table></figure></p>
+<p>history 不变，在 Router 中添加 routes 属性，将创建的路由传递进去。</p>
+<h4 id="这里有四个属性："><a href="#这里有四个属性：" class="headerlink" title="这里有四个属性："></a>这里有四个属性：</h4><h4 id="1-path"><a href="#1-path" class="headerlink" title="1. path"></a>1. path</h4><p>将匹配的路由，也就是以前的 path。</p>
+<h4 id="2-getComponent"><a href="#2-getComponent" class="headerlink" title="2. getComponent"></a>2. getComponent</h4><p>对应于以前的 component 属性，但是这个方法是异步的，也就是当路由匹配时，才会调用这个方法。<br>这里面有个 require.ensure 方法<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">require.ensure(dependencies, callback, chunkName)</div></pre></td></tr></table></figure></p>
+<p>这是 webpack 提供的方法，这也是按需加载的核心方法。第一个参数是依赖，第二个是回调函数，第三个就是上面提到的 chunkName，用来指定这个 chunk file 的 name。</p>
+<h4 id="3-indexRoute"><a href="#3-indexRoute" class="headerlink" title="3.indexRoute"></a>3.indexRoute</h4><p>用来设置主页，对应于以前的 <indexroute>。</indexroute></p>
+<h4 id="4-childRoutes"><a href="#4-childRoutes" class="headerlink" title="4.childRoutes"></a>4.childRoutes</h4>
           
         
       
