@@ -1,0 +1,719 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="玉英博客" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="久旱逢甘露，在风雨雷电交加的那天开始了，我像一颗饥渴难耐的小树，用力吮吸着给予我生命力的雨水。。。React是一个专注于UI层的框架，它使用虚拟DOM技术，以保证它UI的高速渲染；使用单向数据流，因此它数据绑定更加简单；那么它内部是如何保持简单高效的UI渲染呢？这种渲染机制有可能存在什么性能问题呢？ React组件渲染问题引出React不直接操作DOM，它在内存中维护一个快速响应的DOM描述，re">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react性能优化">
+<meta property="og:url" content="http://zhangyuki.github.io/2017/09/09/react性能优化/index.html">
+<meta property="og:site_name" content="玉英博客">
+<meta property="og:description" content="久旱逢甘露，在风雨雷电交加的那天开始了，我像一颗饥渴难耐的小树，用力吮吸着给予我生命力的雨水。。。React是一个专注于UI层的框架，它使用虚拟DOM技术，以保证它UI的高速渲染；使用单向数据流，因此它数据绑定更加简单；那么它内部是如何保持简单高效的UI渲染呢？这种渲染机制有可能存在什么性能问题呢？ React组件渲染问题引出React不直接操作DOM，它在内存中维护一个快速响应的DOM描述，re">
+<meta property="og:updated_time" content="2017-09-09T05:30:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="react性能优化">
+<meta name="twitter:description" content="久旱逢甘露，在风雨雷电交加的那天开始了，我像一颗饥渴难耐的小树，用力吮吸着给予我生命力的雨水。。。React是一个专注于UI层的框架，它使用虚拟DOM技术，以保证它UI的高速渲染；使用单向数据流，因此它数据绑定更加简单；那么它内部是如何保持简单高效的UI渲染呢？这种渲染机制有可能存在什么性能问题呢？ React组件渲染问题引出React不直接操作DOM，它在内存中维护一个快速响应的DOM描述，re">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhangyuki.github.io/2017/09/09/react性能优化/"/>
+
+
+
+
+
+  <title>react性能优化 | 玉英博客</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">玉英博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">家庭、工作、学习、旅行</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/09/09/react性能优化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="玉英（小丸子）">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://imgsrc.baidu.com/forum/w%3D580/sign=aa09a14c8244ebf86d716437e9f8d736/ea6dc811728b4710787b6583c6cec3fdfd032371.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="玉英博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                react性能优化
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-09T11:14:14+08:00">
+                2017-09-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>久旱逢甘露，在风雨雷电交加的那天开始了，我像一颗饥渴难耐的小树，用力吮吸着给予我生命力的雨水。。。<br>React是一个专注于UI层的框架，它使用虚拟DOM技术，以保证它UI的高速渲染；使用单向数据流，因此它数据绑定更加简单；<br>那么它内部是如何保持简单高效的UI渲染呢？这种渲染机制有可能存在什么性能问题呢？</p>
+<h4 id="React组件渲染问题引出"><a href="#React组件渲染问题引出" class="headerlink" title="React组件渲染问题引出"></a>React组件渲染问题引出</h4><p>React不直接操作DOM，它在内存中维护一个快速响应的DOM描述，render方法返回一个DOM的描述，<br>React能够计算出两个DOM描述的差异，然后更新浏览器中的DOM。这就是著名的DOM Diff。</p>
+<p>就是说React在接收到属性(props)或者状态(state)更新时，就会更新UI。所以React整个UI渲染是比较快的。但是这里面可能出现的问题是：</p>
+<p>假设我们定义一个父组件，其包含了5000个子组件。我们有一个输入框输入操作，每次输入一个数字，对应的那个子组件背景色变红。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;Components&gt;</div><div class="line">  &lt;Components-1 /&gt;</div><div class="line">  &lt;Components-2 /&gt;</div><div class="line">  &lt;Components-3 /&gt;</div><div class="line">  ...</div><div class="line">  &lt;Components-5000 /&gt;</div><div class="line">&lt;/Components&gt;</div></pre></td></tr></table></figure>
+<p>这样我们输入数字1，则子组件1背景色变化，但是在这个过程中，所有的子组件都进行了重新渲染，导致整体渲染变慢。<br>造成这种现象的原因是 React中父组件更新默认触发所有子组件更新。</p>
+<p>同时，我们经常在遍历列表元素时候会遇到这样的提示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Warning: Each child <span class="keyword">in</span> an array or iterator should have a unique <span class="string">"key"</span> prop.</div></pre></td></tr></table></figure>
+<p>这就是我们今天要讨论的两个性能优化点：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">父组件更新默认触发所有子组件更新</div><div class="line">列表类型的组件默认更新方式非常复杂</div></pre></td></tr></table></figure>
+<h4 id="React性能检测工具"><a href="#React性能检测工具" class="headerlink" title="React性能检测工具"></a>React性能检测工具</h4><p>安装 react 性能检测工具 npm i react-addons-perf –save，然后在./app/index.jsx中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 性能测试 </div><div class="line">import Perf from <span class="string">'react-addons-perf'</span> </div><div class="line"><span class="keyword">if</span> (__DEV__) &#123; </div><div class="line">	window.Perf = Perf </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>检测方法，在浏览器控制台输入如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">开始记录：Perf.start()</div><div class="line">结束记录：Perf.stop()</div><div class="line">打印结果：<span class="built_in">print</span>Inclusive()</div></pre></td></tr></table></figure>
+<p>运行程序。在操作之前先运行Perf.start()开始检测，<br>然后进行若干操作，运行Perf.stop停止检测，<br>然后再运行Perf.printWasted()即可打印出浪费性能的组件列表。<br>在项目开发过程中，要经常使用检测工具来看看性能是否正常。</p>
+<p>如果性能的影响不是很大，例如每次操作多浪费几毫秒、十几毫秒，个人以为没必要深究，但是如果浪费过多影响了用户体验，就必须去搞定它。</p>
+<h4 id="PureRenderMixin-优化"><a href="#PureRenderMixin-优化" class="headerlink" title="PureRenderMixin 优化"></a>PureRenderMixin 优化</h4><p>React 最基本的优化方式是使用PureRenderMixin，<br>安装工具 npm i react-addons-pure-render-mixin –save，然后在组件中引用并使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i react-addons-pure-render-mixin --save</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">import React from <span class="string">'react'</span> </div><div class="line">import PureRenderMixin from <span class="string">'react-addons-pure-render-mixin'</span> </div><div class="line">class List extends React.Component &#123; </div><div class="line">	constructor(props, context) &#123; </div><div class="line">		super(props, context); </div><div class="line">		this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this); </div><div class="line">	&#125; </div><div class="line">	//其原理就是重写了 shouldComponentUpdate 方法。</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>React 有一个生命周期 hook 叫做shouldComponentUpdate，<br>组件每次更新之前，都要过一遍这个函数，如果这个函数返回true则更新，如果返回false则不更新。<br>而默认情况下，这个函数会一直返回true，就是说，如果有一些无效的改动触发了这个函数，也会导致无效的更新<br>那么什么是无效的改动？之前说过，组件中的props和state一旦变化会导致组件重新更新并渲染，<br>但是如果props和state没有变化也莫名其妙的触发更新了呢（这种情况确实存在）———— 这不就导致了无效渲染吗？</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">这里使用</div><div class="line">this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);</div><div class="line">的意思是重写组件的shouldComponentUpdate函数，</div><div class="line">在每次更新之前判断props和state，如果有变化则返回<span class="literal">true</span>，无变化则返回<span class="literal">false</span>。</div></pre></td></tr></table></figure>
+<p>因此，我们在开发过程中，在每个 React 组件中都尽量使用PureRenderMixin</p>
+<h4 id="PureComponent"><a href="#PureComponent" class="headerlink" title="PureComponent"></a>PureComponent</h4><p>React 15.3.0 新增了一个 PureComponent 类，<br>以 ES2015 class 的方式方便地定义纯组件 (pure component)，用于取代之前的 PureRenderMixin。</p>
+<p>这个类的用法很简单，如果你有些组件是纯组件，那么把继承类从 Component 换成 PureComponent 即可。<br>当组件更新时，如果组件的 props 和 state 都没发生改变，render 方法就不会触发，<br>省去 Virtual DOM 的生成和比对过程，达到提升性能的目的。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">import React, &#123; PureComponent &#125; from <span class="string">'react'</span></div><div class="line">class Example extends PureComponent &#123;</div><div class="line">  <span class="function"><span class="title">render</span></span>() &#123;</div><div class="line">    // ...</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>虽然React提供了Virtual DOM DOM Diff 等优秀的能力来提高渲染性能，但是在实际使用过程中，我们经常会遇到父组件更新，<br>不需要更新所以子组件的场景（分页），此时必须考虑利用React本周的渲染机制来进行优化。</p>
+<h3 id="相关代码-https-github-com-younth-react-tutorial-tree-master-E6-80-A7-E8-83-BD-E8-B0-83-E4-BC-98"><a href="#相关代码-https-github-com-younth-react-tutorial-tree-master-E6-80-A7-E8-83-BD-E8-B0-83-E4-BC-98" class="headerlink" title="相关代码:https://github.com/younth/react-tutorial/tree/master/%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98"></a>相关代码:<a href="https://github.com/younth/react-tutorial/tree/master/%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98" target="_blank" rel="external">https://github.com/younth/react-tutorial/tree/master/%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98</a></h3><h4 id="避免更新Demo"><a href="#避免更新Demo" class="headerlink" title="避免更新Demo"></a>避免更新Demo</h4><p>React 使用虚拟 DOM，它是在浏览器中的 DOM 子树的渲染描述，这个平行的描述让 React 避免创建和操作 DOM 节点，<br>这些远比操作一个 JavaScript 对象慢。当一个组件的 props 或 state 改变，<br>React 会构造一个新的虚拟 DOM 和旧的进行对比来决定真实 DOM 更新的必要性，<br>只有在它们不相等的时候，React 才会使用尽量少的改动更新 DOM。<br>在此之上，React 提供了生命周期函数 shouldComponentUpdate，<br>在重新渲染机制回路（虚拟 DOM 对比和 DOM 更新）之前会被触发，赋予开发者跳过这个过程的能力。这个函数默认返回 true，让 React 执行更新。<br>shouldComponentUpdate (nextProps, nextState) {<br>  return true;<br>}<br>返回true时就会调用componentDidUpdata() {</p>
+<p>}<br>切住，React 会非常频繁的调用这个函数shouldComponentUpdate(){}，所以要确保它的执行速度够快。</p>
+<p>假如你有个带有多个对话的消息应用，如果只有一个对话发生改变，如果我们在 ChatThread 组件执行 shouldComponentUpdate，React 可以跳过其他对话的重新渲染步骤。<br>我们可以简单的实现 shouldComponentUpdate 如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">shouldComponentUpdate (nextProps, nextState) &#123;</div><div class="line">  <span class="built_in">return</span> this.props.value !== nextProps.value;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/06/富文本编辑器使用/" rel="prev" title="wangEditor 轻量级web富文本框 http://wangEditor.github.io/">
+                wangEditor 轻量级web富文本框 http://wangEditor.github.io/ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://imgsrc.baidu.com/forum/w%3D580/sign=aa09a14c8244ebf86d716437e9f8d736/ea6dc811728b4710787b6583c6cec3fdfd032371.jpg"
+               alt="玉英（小丸子）" />
+          <p class="site-author-name" itemprop="name">玉英（小丸子）</p>
+           
+              <p class="site-description motion-element" itemprop="description">将来的你，一定会感谢现在拼命努力的自己</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangyuki" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#React组件渲染问题引出"><span class="nav-number">1.</span> <span class="nav-text">React组件渲染问题引出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#React性能检测工具"><span class="nav-number">2.</span> <span class="nav-text">React性能检测工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PureRenderMixin-优化"><span class="nav-number">3.</span> <span class="nav-text">PureRenderMixin 优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PureComponent"><span class="nav-number">4.</span> <span class="nav-text">PureComponent</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关代码-https-github-com-younth-react-tutorial-tree-master-E6-80-A7-E8-83-BD-E8-B0-83-E4-BC-98"><span class="nav-number"></span> <span class="nav-text">相关代码:https://github.com/younth/react-tutorial/tree/master/%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#避免更新Demo"><span class="nav-number">1.</span> <span class="nav-text">避免更新Demo</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">玉英（小丸子）</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
