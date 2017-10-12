@@ -263,6 +263,131 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/10/12/前端项目操作vue指南/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="玉英（小丸子）">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://imgsrc.baidu.com/forum/w%3D580/sign=aa09a14c8244ebf86d716437e9f8d736/ea6dc811728b4710787b6583c6cec3fdfd032371.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="玉英博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/10/12/前端项目操作vue指南/" itemprop="url">
+                  前端项目操作vue指南
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-12T17:37:04+08:00">
+                2017-10-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h3><p>环境搭建</p>
+<p>工具：Git   Node</p>
+<p>安装步骤</p>
+<h4 id="下载Git：https-git-scm-com-downloads"><a href="#下载Git：https-git-scm-com-downloads" class="headerlink" title="下载Git：https://git-scm.com/downloads"></a>下载Git：<a href="https://git-scm.com/downloads" target="_blank" rel="external">https://git-scm.com/downloads</a></h4><h4 id="下载Node：https-nodejs-org-en-download"><a href="#下载Node：https-nodejs-org-en-download" class="headerlink" title="下载Node：https://nodejs.org/en/download/"></a>下载Node：<a href="https://nodejs.org/en/download/" target="_blank" rel="external">https://nodejs.org/en/download/</a></h4><h4 id="项目搭建"><a href="#项目搭建" class="headerlink" title="项目搭建"></a>项目搭建</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> http://gitlab.odc.com/FE-Projects/wuxi-zhigu.git</div><div class="line"><span class="built_in">cd</span>/FE-Projects</div><div class="line">npm install </div><div class="line">npm install cooking-cli -g</div><div class="line">cooking watch -p // 启动项目</div><div class="line">cooking build -p // 打包项目</div></pre></td></tr></table></figure>
+<h4 id="项目开发说明"><a href="#项目开发说明" class="headerlink" title="项目开发说明"></a>项目开发说明</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">代码说明：</div><div class="line">&lt;script&gt;</div><div class="line">import .. from ..;  //引入组件以及其他插件</div><div class="line"><span class="built_in">export</span> default &#123;</div><div class="line">  component:&#123;</div><div class="line">    // 注册引入的组件，插件无需注册</div><div class="line">  &#125;,</div><div class="line">  <span class="function"><span class="title">data</span></span>()&#123;</div><div class="line">    <span class="built_in">return</span> &#123;</div><div class="line">      obj:&#123;&#125;,</div><div class="line">      number:0</div><div class="line">      // template中所引用的数据</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  methods:&#123; // 页面中需要用到的方法</div><div class="line">    <span class="function"><span class="title">handleDosomething</span></span>()&#123;</div><div class="line">      // 自定义方法</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  <span class="function"><span class="title">created</span></span>()&#123;</div><div class="line">    this.handleDosomething(); // 调用方法</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<h4 id="参考资料汇总："><a href="#参考资料汇总：" class="headerlink" title="参考资料汇总："></a>参考资料汇总：</h4><p>vue语法：<a href="https://cn.vuejs.org/v2/guide/" target="_blank" rel="external">https://cn.vuejs.org/v2/guide/</a><br>路由定义：<a href="https://router.vuejs.org/zh-cn/" target="_blank" rel="external">https://router.vuejs.org/zh-cn/</a><br>UI框架使用指南：<a href="http://element.eleme.io/#/zh-CN/component/installation" target="_blank" rel="external">http://element.eleme.io/#/zh-CN/component/installation</a><br>构建工具使用说明：<a href="http://cookingjs.github.io/zh-cn/index.html" target="_blank" rel="external">http://cookingjs.github.io/zh-cn/index.html</a><br>Git使用指南：<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/" target="_blank" rel="external">http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/09/09/react性能优化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1573,133 +1698,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/07/10/vue-upload/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="玉英（小丸子）">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://imgsrc.baidu.com/forum/w%3D580/sign=aa09a14c8244ebf86d716437e9f8d736/ea6dc811728b4710787b6583c6cec3fdfd032371.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="玉英博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/07/10/vue-upload/" itemprop="url">
-                  vue-upload
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-10T16:14:25+08:00">
-                2017-07-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="https-github-com-jinzhe-vue-upload"><a href="#https-github-com-jinzhe-vue-upload" class="headerlink" title="https://github.com/jinzhe/vue-upload"></a><a href="https://github.com/jinzhe/vue-upload" target="_blank" rel="external">https://github.com/jinzhe/vue-upload</a></h3><p>基于vuejs+webpack环境使用的上传组件<br>1.支持服务器的域名和接口单独设置<br>2.支持自定义提交字段<br>3.支持自定义xhr 提交的header字段/表单name/限定上传格式/文件大小／<br>4.支持图片上传前预先裁剪，其中包括裁减按钮替换、宽高、质量（quality）<br>5.支持自定义回调方法<br>6.支持裁减图片缩放，包括移动端手势支持</p>
-<h3 id="Options"><a href="#Options" class="headerlink" title="Options"></a>Options</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">:server (string) 服务器地址 // Server host,like <span class="string">"http://jinzhe.net"</span></div><div class="line">:api (string) // Server api path,like <span class="string">"/api/v1/getdata/"</span></div><div class="line">:params (object) 额外附加的字段，它是一个object</div><div class="line">:filename (string) 文件表单名称，默认为file</div><div class="line">:file (string) 返回的文件名或地址</div><div class="line">:ext (string) 限制文件格式如“jpg,png,zip”</div><div class="line">:header (object) 提交服务端的头部字段，它是一个object</div><div class="line">:<span class="built_in">limit</span> (int) 限制大小</div><div class="line">:multiple	(bool) 多文件上传</div><div class="line">:preview (bool)	预览图片</div><div class="line">:auto	(bool)	是否自动上传</div><div class="line">:crop (bool) 是否开启裁减</div><div class="line">:width (int) 裁减宽度</div><div class="line">:height (int) 裁减高度</div><div class="line">:quality (<span class="built_in">float</span>) 裁减质量 （0～1），默认0.8</div><div class="line">:ok (string) 确定裁减显示文本</div><div class="line">:cancel (string) 取消裁减显示文本</div><div class="line">:container (DOM) 包含组件的根dom节点，这个是为了在网页内容很长的情况下为了显示正常使用的（移动滚动条），不设置默认指向document.body。</div><div class="line">:success (<span class="keyword">function</span>) 成功上传回调</div></pre></td></tr></table></figure>
-<h3 id="How-to-use"><a href="#How-to-use" class="headerlink" title="How to use?"></a>How to use?</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">&lt;template&gt;</div><div class="line">&lt;div class=<span class="string">"layout"</span>&gt;</div><div class="line">    &lt;div class=<span class="string">"demo"</span>&gt;</div><div class="line">        &lt;upload </div><div class="line">        :server=<span class="string">"upload.server"</span> </div><div class="line">        :api=<span class="string">"upload.api"</span> </div><div class="line">        :params=<span class="string">"upload.params"</span></div><div class="line">        :success=<span class="string">"upload.success"</span></div><div class="line">        :file.sync=<span class="string">"upload.file"</span></div><div class="line">        :crop=<span class="string">"upload.crop"</span></div><div class="line">        :width=<span class="string">"upload.width"</span></div><div class="line">        :height=<span class="string">"upload.height"</span></div><div class="line">        :ok=<span class="string">"upload.ok"</span> </div><div class="line">        :cancel=<span class="string">"upload.cancel"</span>&gt;</div><div class="line">            &lt;img src=<span class="string">"./upload.svg"</span>&gt;</div><div class="line">        &lt;/upload&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;/template&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">import upload from <span class="string">"./upload.vue"</span></div><div class="line"><span class="built_in">export</span> default &#123;</div><div class="line">    components:&#123;</div><div class="line">        upload</div><div class="line">    &#125;,</div><div class="line">    <span class="function"><span class="title">data</span></span>() &#123;</div><div class="line">        <span class="built_in">return</span> &#123;</div><div class="line">            upload:&#123;</div><div class="line">                server:<span class="string">""</span>,</div><div class="line">                api:<span class="string">""</span>,</div><div class="line">                params:&#123;</div><div class="line">                    token:<span class="string">"test"</span></div><div class="line">                &#125;,</div><div class="line">                file:<span class="string">""</span>,</div><div class="line">                preview:<span class="literal">true</span>,</div><div class="line">                crop:<span class="literal">true</span>,</div><div class="line">                width:400,</div><div class="line">                height:400,</div><div class="line">                cancel:<span class="string">"取消"</span>,</div><div class="line">                ok:<span class="string">"裁剪"</span>,</div><div class="line">                success:(data)=&gt;&#123;</div><div class="line">                    alert(data.length)</div><div class="line">                &#125;</div><div class="line">            &#125;,</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
-<h3 id="在你的项目中执行命令"><a href="#在你的项目中执行命令" class="headerlink" title="在你的项目中执行命令"></a>在你的项目中执行命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install vue-upload --save-dev</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1744,7 +1747,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
