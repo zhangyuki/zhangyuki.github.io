@@ -1,0 +1,734 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="玉英博客" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="loading随处可见，比如一个app经常会有下拉刷新，上拉加载的功能，在刷新和加载的过程中为了让用户感知到 load 的过程，我们会使用一些过渡动画来表达。最常见的比如“转圈圈”，“省略号”等等。 网页loading有很多用处，比如页面的加载进度，数据的加载过程等等，数据的加载loading很好做，只需要在加载数据之前（before ajax）显示loading效果，在数据返回之后（ajax c">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网页进度loading">
+<meta property="og:url" content="http://zhangyuki.github.io/2017/11/03/网页进度loading/index.html">
+<meta property="og:site_name" content="玉英博客">
+<meta property="og:description" content="loading随处可见，比如一个app经常会有下拉刷新，上拉加载的功能，在刷新和加载的过程中为了让用户感知到 load 的过程，我们会使用一些过渡动画来表达。最常见的比如“转圈圈”，“省略号”等等。 网页loading有很多用处，比如页面的加载进度，数据的加载过程等等，数据的加载loading很好做，只需要在加载数据之前（before ajax）显示loading效果，在数据返回之后（ajax c">
+<meta property="og:updated_time" content="2017-11-03T02:04:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网页进度loading">
+<meta name="twitter:description" content="loading随处可见，比如一个app经常会有下拉刷新，上拉加载的功能，在刷新和加载的过程中为了让用户感知到 load 的过程，我们会使用一些过渡动画来表达。最常见的比如“转圈圈”，“省略号”等等。 网页loading有很多用处，比如页面的加载进度，数据的加载过程等等，数据的加载loading很好做，只需要在加载数据之前（before ajax）显示loading效果，在数据返回之后（ajax c">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhangyuki.github.io/2017/11/03/网页进度loading/"/>
+
+
+
+
+
+  <title>网页进度loading | 玉英博客</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">玉英博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">家庭、工作、学习、旅行</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://zhangyuki.github.io/2017/11/03/网页进度loading/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="玉英（小丸子）">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://imgsrc.baidu.com/forum/w%3D580/sign=aa09a14c8244ebf86d716437e9f8d736/ea6dc811728b4710787b6583c6cec3fdfd032371.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="玉英博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                网页进度loading
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-03T09:19:49+08:00">
+                2017-11-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>loading随处可见，比如一个app经常会有下拉刷新，上拉加载的功能，在刷新和加载的过程中为了让用户感知到 load 的过程，我们会使用一些过渡动画来表达。最常见的比如“转圈圈”，“省略号”等等。</p>
+<p>网页loading有很多用处，比如页面的加载进度，数据的加载过程等等，数据的加载loading很好做，只需要在加载数据之前（before ajax）显示loading效果，在数据返回之后（ajax completed）结束loading效果，就可以了。</p>
+<h3 id="首先准备一段loading的html："><a href="#首先准备一段loading的html：" class="headerlink" title="首先准备一段loading的html："></a>首先准备一段loading的html：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;写一个网页进度loading&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">  &lt;div class=<span class="string">"loading"</span> id=<span class="string">"loading"</span>&gt;</div><div class="line">    &lt;div class=<span class="string">"progress"</span> id=<span class="string">"progress"</span>&gt;0%&lt;/div&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h3 id="样式装扮一下："><a href="#样式装扮一下：" class="headerlink" title="样式装扮一下："></a>样式装扮一下：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">.loading &#123;</div><div class="line">  display: table;</div><div class="line">  position: fixed;</div><div class="line">  top: 0;</div><div class="line">  left: 0;</div><div class="line">  width: 100%;</div><div class="line">  height: 100%;</div><div class="line">  background-color: <span class="comment">#fff;</span></div><div class="line">  z-index: 5;</div><div class="line">&#125;</div><div class="line"> </div><div class="line">.loading .progress &#123;</div><div class="line">  display: table-cell;</div><div class="line">  vertical-align: middle;</div><div class="line">  text-align: center;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>假设这个loading只需要在页面加载完成之后隐藏，中间不需要显示进度。那么很简单，我们第一时间想到的就是window.onload：</p>
+<p>（以下内容为了方便演示，默认使用jQuery，语法有es6的箭头函数）</p>
+<p>var $loading = $(‘#loading’)<br>var $progress = $(‘#progress’)</p>
+<p>window.onload = () =&gt; {<br>  $loading.hide()<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">ok，这样基本的loading流程就有了，增加一个进度的效果，每隔100ms就自增1，一直到100%为止，而另一方面window loaded的时候，把loading给隐藏。</div><div class="line"></div><div class="line">### 补充一下进度：</div><div class="line"></div><div class="line">```bash</div><div class="line">var $loading = $(&apos;#loading&apos;)</div><div class="line">var $progress = $(&apos;#progress&apos;)</div><div class="line">var prg = 0  // 初始化进度</div><div class="line"> </div><div class="line">var timer = window.setInterval(() =&gt; &#123;  // 设置定时器</div><div class="line">  if (prg &gt;= 100) &#123;  // 到达终点，关闭定时器</div><div class="line">    window.clearInterval(timer)</div><div class="line">    prg = 100</div><div class="line">  &#125; else &#123;  // 未到终点，进度自增</div><div class="line">    prg++</div><div class="line">  &#125;</div><div class="line"> </div><div class="line">  $progress.html(prg + &apos;%&apos;)</div><div class="line">  console.log(prg)</div><div class="line">&#125;, 100)</div><div class="line"> </div><div class="line">window.onload = () =&gt; &#123;</div><div class="line">  $loading.hide()</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>效果不错，但是有个问题，万一window loaded太慢了，导致进度显示load到100%了，loading还没有隐藏，那就打脸了。所以，需要让loading在window loaded的时候才到达终点，在这之前，loading可以保持一个等待的状态，比如在80%的时候，先停一停，然后在loaded的时候快速将进度推至100%。这个做法是目前绝大部份进度条的做法。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">var <span class="variable">$loading</span> = $(<span class="string">'#loading'</span>)</div><div class="line">var <span class="variable">$progress</span> = $(<span class="string">'#progress'</span>)</div><div class="line">var prg = 0</div><div class="line"> </div><div class="line">var timer = window.setInterval(() =&gt; &#123;</div><div class="line">  <span class="keyword">if</span> (prg &gt;= 80) &#123;  // 到达第一阶段80%，关闭定时器，保持等待</div><div class="line">    window.clearInterval(timer)</div><div class="line">    prg = 100</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    prg++</div><div class="line">  &#125;</div><div class="line"> </div><div class="line">  <span class="variable">$progress</span>.html(prg + <span class="string">'%'</span>)</div><div class="line">  console.log(prg)</div><div class="line">&#125;, 100)</div><div class="line"> </div><div class="line">window.onload = () =&gt; &#123;</div><div class="line">  window.clearInterval(timer)</div><div class="line">  window.setInterval(() =&gt; &#123;</div><div class="line">    <span class="keyword">if</span> (prg &gt;= 100) &#123;  // 到达终点，关闭定时器</div><div class="line">      window.clearInterval(timer)</div><div class="line">      prg = 100</div><div class="line">      <span class="variable">$loading</span>.hide()</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      prg++</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="variable">$progress</span>.html(prg + <span class="string">'%'</span>)</div><div class="line">    console.log(prg)</div><div class="line">  &#125;, 10)  // 时间间隔缩短</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>ok，这差不多就是想要的功能了，重复的代码给封装一下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">var <span class="variable">$loading</span> = $(<span class="string">'#loading'</span>)</div><div class="line">var <span class="variable">$progress</span> = $(<span class="string">'#progress'</span>)</div><div class="line">var prg = 0</div><div class="line"> </div><div class="line">var timer = 0</div><div class="line"> </div><div class="line">progress(80, 100)</div><div class="line"> </div><div class="line">window.onload = () =&gt; &#123;</div><div class="line">  progress(100, 10, () =&gt; &#123;</div><div class="line">    <span class="variable">$loading</span>.hide()</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">function</span> progress (dist, delay, callback) &#123;</div><div class="line">  window.clearInterval(timer)</div><div class="line">  timer = window.setInterval(() =&gt; &#123;</div><div class="line">    <span class="keyword">if</span> (prg &gt;= dist) &#123;</div><div class="line">      window.clearInterval(timer)</div><div class="line">      prg = dist</div><div class="line">      callback &amp;&amp; callback()</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      prg++</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="variable">$progress</span>.html(prg + <span class="string">'%'</span>)</div><div class="line">    console.log(prg)</div><div class="line">  &#125;, delay)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>得到了一个progress函数，这个函数就是我们主要的功能模块，通过传入一个目标值、一个时间间隔，就可以模拟进度的演化过程。</p>
+<p>目前来看，这个进度还是有些问题的：</p>
+<p>进度太平均，相同的时间间隔，相同的增量，不符合网络环境的特点；<br>window.onload太快，还来不及看清100%，loading就已经不见了；<br>每次第一阶段都是在80%就暂停了，露馅儿了；</p>
+<p>第一个点，要让时间间隔随机，增量也随机；第二个点很简单，延迟一下就好了；第三点也需要我们随机产生一个初始值。</p>
+<p>增量随机很好办，如何让时间间隔随机？setInterval是无法动态设置delay的，那么我们就要把它改造一下，使用setTimeout来实现。（setInterval跟setTimeout的用法和区别就不细说了吧？）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">var <span class="variable">$loading</span> = $(<span class="string">'#loading'</span>)</div><div class="line">var <span class="variable">$progress</span> = $(<span class="string">'#progress'</span>)</div><div class="line">var prg = 0</div><div class="line"> </div><div class="line">var timer = 0</div><div class="line"> </div><div class="line">progress([80, 90], [1, 3], 100)  // 使用数组来表示随机数的区间</div><div class="line"> </div><div class="line">window.onload = () =&gt; &#123;</div><div class="line">  progress(100, [1, 5], 10, () =&gt; &#123;</div><div class="line">    window.setTimeout(() =&gt; &#123;  // 延迟了一秒再隐藏loading</div><div class="line">      <span class="variable">$loading</span>.hide()</div><div class="line">    &#125;, 1000)</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">function</span> progress (dist, speed, delay, callback) &#123;</div><div class="line">  var _dist = random(dist)</div><div class="line">  var _delay = random(delay)</div><div class="line">  var _speed = random(speed)</div><div class="line">  window.clearTimeout(timer)</div><div class="line">  timer = window.setTimeout(() =&gt; &#123;</div><div class="line">    <span class="keyword">if</span> (prg + _speed &gt;= _dist) &#123;</div><div class="line">      window.clearTimeout(timer)</div><div class="line">      prg = _dist</div><div class="line">      callback &amp;&amp; callback()</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      prg += _speed</div><div class="line">      progress (_dist, speed, delay, callback)</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="variable">$progress</span>.html(parseInt(prg) + <span class="string">'%'</span>)  // 留意，由于已经不是自增1，所以这里要取整</div><div class="line">    console.log(prg)</div><div class="line">  &#125;, _delay)</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">function</span> random (n) &#123;</div><div class="line">  <span class="keyword">if</span> (typeof n === <span class="string">'object'</span>) &#123;</div><div class="line">    var <span class="built_in">times</span> = n[1] - n[0]</div><div class="line">    var offset = n[0]</div><div class="line">    <span class="built_in">return</span> Math.random() * <span class="built_in">times</span> + offset</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">return</span> n</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>至此，差不多完成了需求。</p>
+<p>but，还有一个比较隐蔽的问题，现在使用window.onload，发现从进入页面，到window.onload这中间相隔时间十分短，基本是感受不到第一阶段进度（80%）的，如果页面的加载资源数量很多，体积很大的时候，从进入页面，到window.onload就不是这么快速了，这中间可能会很漫长（5～20秒不等），但事实上，首屏资源 的加载争取时间就可以了，不需要等待所有资源就绪，而且更快地呈现页面也是提高用户体验的关键。</p>
+<p>应该考虑页面loading停留过久的情况，需要为loading设置一个超时时间，超过这个时间，假设window.onload还没有完成，也要把进度推到100%，把loading结束掉。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">var <span class="variable">$loading</span> = $(<span class="string">'#loading'</span>)</div><div class="line">var <span class="variable">$progress</span> = $(<span class="string">'#progress'</span>)</div><div class="line">var prg = 0</div><div class="line"> </div><div class="line">var timer = 0</div><div class="line"> </div><div class="line">progress([80, 90], [1, 3], 100)  // 使用数组来表示随机数的区间</div><div class="line"> </div><div class="line">window.onload = () =&gt; &#123;</div><div class="line">  progress(100, [1, 5], 10, () =&gt; &#123;</div><div class="line">    window.setTimeout(() =&gt; &#123;  // 延迟了一秒再隐藏loading</div><div class="line">      <span class="variable">$loading</span>.hide()</div><div class="line">    &#125;, 1000)</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line"> </div><div class="line">window.setTimeout(() =&gt; &#123;  // 设置5秒的超时时间</div><div class="line">  progress(100, [1, 5], 10, () =&gt; &#123;</div><div class="line">    window.setTimeout(() =&gt; &#123;  // 延迟了一秒再隐藏loading</div><div class="line">      <span class="variable">$loading</span>.hide()</div><div class="line">    &#125;, 1000)</div><div class="line">  &#125;)</div><div class="line">&#125;, 5000)</div><div class="line"> </div><div class="line"><span class="keyword">function</span> progress (dist, speed, delay, callback) &#123;</div><div class="line">  var _dist = random(dist)</div><div class="line">  var _delay = random(delay)</div><div class="line">  var _speed = random(speed)</div><div class="line">  window.clearTimeout(timer)</div><div class="line">  timer = window.setTimeout(() =&gt; &#123;</div><div class="line">    <span class="keyword">if</span> (prg + _speed &gt;= _dist) &#123;</div><div class="line">      window.clearTimeout(timer)</div><div class="line">      prg = _dist</div><div class="line">      callback &amp;&amp; callback()</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      prg += _speed</div><div class="line">      progress (_dist, speed, delay, callback)</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="variable">$progress</span>.html(parseInt(prg) + <span class="string">'%'</span>)  // 留意，由于已经不是自增1，所以这里要取整</div><div class="line">    console.log(prg)</div><div class="line">  &#125;, _delay)</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">function</span> random (n) &#123;</div><div class="line">  <span class="keyword">if</span> (typeof n === <span class="string">'object'</span>) &#123;</div><div class="line">    var <span class="built_in">times</span> = n[1] - n[0]</div><div class="line">    var offset = n[0]</div><div class="line">    <span class="built_in">return</span> Math.random() * <span class="built_in">times</span> + offset</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">return</span> n</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>直接设置了一个定时器，5s的时间来作为超时时间。这样做是可以的。</p>
+<p>but，还是有问题，这个定时器是在js加载完毕之后才开始生效的，也就是说，忽略了js加载完毕之前的时间，这误差可大可小，设置的5s，实际用户可能等待了8s，这是有问题的。我们做用户体验，需要从实际情况去考虑，所以这个开始时间还需要再提前一些，我们在head里来记录这个开始时间，然后在js当中去做对比，如果时间差大于超时时间，那我们就可以直接执行最后的完成步骤，如果小于超时时间，则等待 剩余的时间 过后，再完成进度。</p>
+<p>先在head里埋点，记录用户进入页面的时间loadingStartTime：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">  &lt;title&gt;网页进度loading&lt;/title&gt;</div><div class="line">  &lt;script&gt;</div><div class="line">    window.loadingStartTime = new Date()</div><div class="line">  &lt;/script&gt;</div><div class="line">  &lt;script src=<span class="string">"index.js"</span>&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">  &lt;div class=<span class="string">"loading"</span> id=<span class="string">"loading"</span>&gt;</div><div class="line">    &lt;div class=<span class="string">"progress"</span> id=<span class="string">"progress"</span>&gt;0%&lt;/div&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>然后，对比 当前的时间 ，看是否超时：（为了方便复用代码，我把完成的部分封装成函数complete）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line">var <span class="variable">$loading</span> = $(<span class="string">'#loading'</span>)</div><div class="line">var <span class="variable">$progress</span> = $(<span class="string">'#progress'</span>)</div><div class="line">var prg = 0</div><div class="line"> </div><div class="line">var timer = 0</div><div class="line">var now = new Date()  // 记录当前时间</div><div class="line">var timeout = 5000  // 超时时间</div><div class="line"> </div><div class="line">progress([80, 90], [1, 3], 100)</div><div class="line"> </div><div class="line">window.onload = () =&gt; &#123;</div><div class="line">  complete()</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">if</span> (now - loadingStartTime &gt; timeout) &#123;  // 超时</div><div class="line">  complete()</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">  window.setTimeout(() =&gt; &#123;  // 未超时，则等待剩余时间</div><div class="line">    complete()</div><div class="line">  &#125;, timeout - (now - loadingStartTime))</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">complete</span></span> () &#123;  // 封装完成进度功能</div><div class="line">  progress(100, [1, 5], 10, () =&gt; &#123;</div><div class="line">    window.setTimeout(() =&gt; &#123;</div><div class="line">      <span class="variable">$loading</span>.hide()</div><div class="line">    &#125;, 1000)</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">function</span> progress (dist, speed, delay, callback) &#123;</div><div class="line">  var _dist = random(dist)</div><div class="line">  var _delay = random(delay)</div><div class="line">  var _speed = random(speed)</div><div class="line">  window.clearTimeout(timer)</div><div class="line">  timer = window.setTimeout(() =&gt; &#123;</div><div class="line">    <span class="keyword">if</span> (prg + _speed &gt;= _dist) &#123;</div><div class="line">      window.clearTimeout(timer)</div><div class="line">      prg = _dist</div><div class="line">      callback &amp;&amp; callback()</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      prg += _speed</div><div class="line">      progress (_dist, speed, delay, callback)</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="variable">$progress</span>.html(parseInt(prg) + <span class="string">'%'</span>)</div><div class="line">    console.log(prg)</div><div class="line">  &#125;, _delay)</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">function</span> random (n) &#123;</div><div class="line">  <span class="keyword">if</span> (typeof n === <span class="string">'object'</span>) &#123;</div><div class="line">    var <span class="built_in">times</span> = n[1] - n[0]</div><div class="line">    var offset = n[0]</div><div class="line">    <span class="built_in">return</span> Math.random() * <span class="built_in">times</span> + offset</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">return</span> n</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>完整地实现了这一功能。</p>
+<p>如果目的是为了写一个纯粹障眼法的伪loading，那跟其他loading的实现就没什么区别了，我们做事讲究脚踏实地，能实现的实现，不能实现的，为了团队和谐，我们不得已坑蒙拐骗。那么我们还能更贴近实际情况一点吗？其实是可以的。</p>
+<p>来分析一个场景，假设让loading更加真实一些，那么可以选择性地对页面上几个比较大的资源的加载进行跟踪，然后拆分整个进度条，比如页面有三张大图a、b、c，那么将进度条拆成五段，每加载完一张图就推进一个进度：</p>
+<p>随机初始化[10, 20] -&gt;<br>图a推进20%的进度 -&gt;<br>图b推进25%的进度 -&gt;<br>图c推进30%的进度 -&gt;<br>完成100%</p>
+<p>这三张图要占20% + 25% + 30% = 75%的进度。</p>
+<p>问题是，如果图片加载完成是按照顺序来的，那可以很简单地：10（假设初始进度是10%） -&gt; 30 -&gt; 55 -&gt; 85 -&gt; 100，但事实是，图片不会按照顺序来，谁早到谁晚到是说不准的，所以需要更合理的方式去管理这些进度增量，使它们不会互相覆盖。</p>
+<p>需要一个能够累计增量的变量next；<br>由于progress都是传目的进度的，需要另外一个函数add，来传增量进度。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div></pre></td><td class="code"><pre><div class="line">var <span class="variable">$loading</span> = $(<span class="string">'#loading'</span>)</div><div class="line">var <span class="variable">$progress</span> = $(<span class="string">'#progress'</span>)</div><div class="line">var prg = 0</div><div class="line"> </div><div class="line">var timer = 0</div><div class="line">var now = new Date()</div><div class="line">var timeout = 5000</div><div class="line"> </div><div class="line">var next = prg</div><div class="line"> </div><div class="line">add([30, 50], [1, 3], 100)  // 第一阶段</div><div class="line"> </div><div class="line">window.setTimeout(() =&gt; &#123;  // 模拟图a加载完</div><div class="line">  add(20, [1, 3], 200)</div><div class="line">&#125;, 1000)</div><div class="line"> </div><div class="line">window.setTimeout(() =&gt; &#123;  // 模拟图c加载完</div><div class="line">  add(30, [1, 3], 200)</div><div class="line">&#125;, 2000)</div><div class="line"> </div><div class="line">window.setTimeout(() =&gt; &#123;  // 模拟图b加载完</div><div class="line">  add(25, [1, 3], 200)</div><div class="line">&#125;, 2500)</div><div class="line"> </div><div class="line">window.onload = () =&gt; &#123;</div><div class="line">  complete()</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">if</span> (now - loadingStartTime &gt; timeout) &#123;</div><div class="line">  complete()</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">  window.setTimeout(() =&gt; &#123;</div><div class="line">    complete()</div><div class="line">  &#125;, timeout - (now - loadingStartTime))</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">complete</span></span> () &#123;</div><div class="line">  add(100, [1, 5], 10, () =&gt; &#123;</div><div class="line">    window.setTimeout(() =&gt; &#123;</div><div class="line">      <span class="variable">$loading</span>.hide()</div><div class="line">    &#125;, 1000)</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">function</span> add (dist, speed, delay, callback) &#123;</div><div class="line">  var _dist = random(dist)</div><div class="line">  <span class="keyword">if</span> (next + _dist &gt; 100) &#123;  // 对超出部分裁剪对齐</div><div class="line">    next = 100</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    next += _dist</div><div class="line">  &#125;</div><div class="line"> </div><div class="line">  progress(next, speed, delay, callback)</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">function</span> progress (dist, speed, delay, callback) &#123;</div><div class="line">  var _delay = random(delay)</div><div class="line">  var _speed = random(speed)</div><div class="line">  window.clearTimeout(timer)</div><div class="line">  timer = window.setTimeout(() =&gt; &#123;</div><div class="line">    <span class="keyword">if</span> (prg + _speed &gt;= dist) &#123;</div><div class="line">      window.clearTimeout(timer)</div><div class="line">      prg = dist</div><div class="line">      callback &amp;&amp; callback()</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      prg += _speed</div><div class="line">      progress (dist, speed, delay, callback)</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="variable">$progress</span>.html(parseInt(prg) + <span class="string">'%'</span>)</div><div class="line">    console.log(prg)</div><div class="line">  &#125;, _delay)</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">function</span> random (n) &#123;</div><div class="line">  <span class="keyword">if</span> (typeof n === <span class="string">'object'</span>) &#123;</div><div class="line">    var <span class="built_in">times</span> = n[1] - n[0]</div><div class="line">    var offset = n[0]</div><div class="line">    <span class="built_in">return</span> Math.random() * <span class="built_in">times</span> + offset</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">return</span> n</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>用setTimeout来模拟图片的加载，真实应用应该是使用image.onload。</p>
+<p>以上，一步步实现一个进度loading的过程了，演示代码可以戳codePen 写一个网页进度loading。</p>
+<p>看似很简单的一个功能，其实仔细推敲，还是有很多细节要考虑的。</p>
+<p>到这里，其实真的已经完成了，</p>
+<p>实现这个功能非常简单：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">var Progress = require(<span class="string">'ez-progress'</span>)</div><div class="line">var prg = new Progress()</div><div class="line"> </div><div class="line">var <span class="variable">$loading</span> = $(<span class="string">'#loading'</span>)</div><div class="line">var <span class="variable">$progress</span> = $(<span class="string">'#progress'</span>)</div><div class="line"> </div><div class="line">prg.on(<span class="string">'progress'</span>, <span class="keyword">function</span> (res) &#123;</div><div class="line">  var progress = parseInt(res.progress)  // 注意进度取整，不然有可能会出现小数</div><div class="line">  <span class="variable">$progress</span>.html(progress + <span class="string">'%'</span>)</div><div class="line">&#125;)</div><div class="line"> </div><div class="line">prg.go([60, 70], <span class="keyword">function</span> (res) &#123;</div><div class="line">  prg.complete(null, [0, 5], [0, 50])  // 飞一般地冲向终点</div><div class="line">&#125;, [0, 3], [0, 200])</div><div class="line"> </div><div class="line">window.onload = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">  prg.complete(null, [0, 5], [0, 50])  // 飞一般地冲向终点</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>木油错，94这么简单！</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/12/前端项目操作vue指南/" rel="prev" title="前端项目操作vue指南">
+                前端项目操作vue指南 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://imgsrc.baidu.com/forum/w%3D580/sign=aa09a14c8244ebf86d716437e9f8d736/ea6dc811728b4710787b6583c6cec3fdfd032371.jpg"
+               alt="玉英（小丸子）" />
+          <p class="site-author-name" itemprop="name">玉英（小丸子）</p>
+           
+              <p class="site-description motion-element" itemprop="description">将来的你，一定会感谢现在拼命努力的自己</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangyuki" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#首先准备一段loading的html："><span class="nav-number">1.</span> <span class="nav-text">首先准备一段loading的html：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#样式装扮一下："><span class="nav-number">2.</span> <span class="nav-text">样式装扮一下：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">玉英（小丸子）</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
